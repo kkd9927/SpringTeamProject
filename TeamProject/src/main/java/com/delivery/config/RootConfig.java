@@ -13,8 +13,8 @@ import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
 @Configuration
-@MapperScan(basePackages = {"com.example.mapper"})
-@ComponentScan(basePackages = {"com.example.service"})
+@MapperScan(basePackages = {"com.delivery.mapper"})
+@ComponentScan(basePackages = {"com.delivery.service"})
 public class RootConfig {
 	@Bean
 	public DataSource dataSource() {
