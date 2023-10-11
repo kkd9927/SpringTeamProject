@@ -20,7 +20,14 @@ public class RootConfig {
 	public DataSource dataSource() {
 		HikariConfig hikariConfig = new HikariConfig();
 		hikariConfig.setDriverClassName("net.sf.log4jdbc.sql.jdbcapi.DriverSpy");
-		hikariConfig.setJdbcUrl("jdbc:log4jdbc:oracle:thin:@10.100.206.86:1521:XE");
+		
+//		<main 브랜치>
+//		hikariConfig.setJdbcUrl("jdbc:log4jdbc:oracle:thin:@10.100.206.86:1521:XE");
+//		hikariConfig.setUsername("Delivery");
+//		hikariConfig.setPassword("delivery");
+		
+//		<feature/user 브랜치>
+		hikariConfig.setJdbcUrl("jdbc:log4jdbc:oracle:thin:@Localhost:1521:XE");
 		hikariConfig.setUsername("Delivery");
 		hikariConfig.setPassword("delivery");
 		
