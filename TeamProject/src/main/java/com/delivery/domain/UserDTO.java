@@ -1,5 +1,7 @@
 package com.delivery.domain;
 
+import java.util.HashMap;
+
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,4 +17,5 @@ public class UserDTO {
 	private String u_phone;
 	private String u_nname;
 	private String u_pimg;
+	private HashMap<String, String> addr;
 }

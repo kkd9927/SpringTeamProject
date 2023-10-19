@@ -1,5 +1,7 @@
 package com.delivery.service;
 
-public interface UserService {
+import com.delivery.domain.UserDTO;
 
+public interface UserService {
+	public void register(UserDTO user);
 }

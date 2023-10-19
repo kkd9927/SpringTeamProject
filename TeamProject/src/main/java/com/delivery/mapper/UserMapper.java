@@ -1,5 +1,7 @@
 package com.delivery.mapper;
 
-public interface UserMapper {
+import com.delivery.domain.UserDTO;
 
+public interface UserMapper {
+	public void insert(UserDTO user);
 }
