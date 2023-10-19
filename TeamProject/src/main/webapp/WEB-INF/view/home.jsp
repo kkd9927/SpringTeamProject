@@ -3,7 +3,7 @@
 <html>
 <head>
 	<%@ include file="/WEB-INF/view/include/metadata.jsp" %>
-	<link href="resources/css/home.css" rel="stylesheet">
+	<link href="/resources/css/home.css" rel="stylesheet">
 	
 	<title>WELCOME DELIVERY WEB!</title>
 </head>
@@ -126,5 +126,7 @@
     </div>
 	
 	<%@ include file="/WEB-INF/view/include/footer.jsp" %>
+	
+	<script src="/resources/js/delivery.js"></script>
 </body>
 </html>
