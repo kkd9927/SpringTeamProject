@@ -1,0 +1,9 @@
+/* home.jsp CSS */
+
+.row>* {
+    padding-bottom: calc(var(--bs-gutter-x) * .5 * 2);
+}
+
+.category-box img {
+    width: 100%;
+}

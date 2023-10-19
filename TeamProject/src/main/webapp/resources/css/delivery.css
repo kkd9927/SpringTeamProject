@@ -1,0 +1,53 @@
+/* 모든 view에서 공통으로 사용되는 CSS */
+
+.row>* {
+    padding-bottom: calc(var(--bs-gutter-x) * .5);
+}
+
+.container-md {
+    padding-left: var(--bs-gutter-x, 10rem);
+    padding-right: var(--bs-gutter-x, 10rem);
+}
+
+.navbar {
+    width: 100%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    z-index: 100;
+}
+
+.navbar-brand > img {
+    width: 50px;
+    height: 50px;
+}
+
+.contents {
+    padding-top: 80px;
+}
+
+.image-box {
+    width: 100%;
+    height: 300px;
+    background-color: lightgrey;
+    text-align: center;
+}
+
+.image-box img {
+    height: 100%;
+}
+
+.search-box {
+    width: 50%;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn-search {
+    margin: 5px;
+}
+
+.footer {
+    width: 100%;
+}
