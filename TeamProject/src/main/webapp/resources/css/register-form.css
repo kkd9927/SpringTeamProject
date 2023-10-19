@@ -1,0 +1,35 @@
+/* register-normal.jsp, register-business.jsp CSS */
+
+.row {
+    margin: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.row>* {
+    padding-bottom: 0;
+}
+
+.register-box {
+    width: 500px;
+    height: 100%;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn-register {
+    width: 100%;
+    height: 200px;
+    padding: 0px;
+}
+
+.btn-register img {
+    width: 100%;
+    height: 100%;
+}
+
+textarea {
+    resize: none;
+}

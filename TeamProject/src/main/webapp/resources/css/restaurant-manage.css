@@ -1,0 +1,46 @@
+.title-col {
+    padding: 0;
+    padding-left: calc(var(--bs-gutter-x) * .5);
+    padding-right: calc(var(--bs-gutter-x) * .5);
+}
+
+.mainleft-col {
+    padding-right: calc(var(--bs-gutter-x) * .25);
+}
+
+.mainright-col {
+    padding-left: calc(var(--bs-gutter-x) * .25);
+}
+
+.image-box { 
+    width: 130px;
+    height: 130px;
+    background-color: lightgrey;
+    text-align: center;
+}
+
+.image-box img {
+    width: 100%;
+    height: 100%;
+}
+
+li {
+    list-style: none;
+}
+
+textarea {
+    resize: none;
+}
+
+.btn-box {
+    padding-bottom: 0;
+    text-align: right;
+}
+
+.reviewitem-box {
+    text-align: left;
+}
+
+.reviewdate {
+    text-align: right;
+}
