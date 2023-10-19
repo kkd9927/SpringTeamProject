@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WELCOME DELIVERY WEB!</title>
+
+    <!-- 부트스트랩 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+
+    <!-- 제이쿼리 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <link href="../css/delivery.css" rel="stylesheet">
+    <link href="../css/order.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- 헤더 -->
+    <nav class="navbar navbar-light bg-danger position-fixed">
+        <div class="container-md">
+            <div>
+                <a class="navbar-brand" href="/">
+                    <img src="no-photo.png" width="30" height="30">
+                </a>
+
+                <!-- * 로그인 전에는 표시안함 -->
+                <!-- <span class="navbar-text text-white"><i class="bi bi-geo-alt-fill"></i>&nbsp;<b>주소표시</b></span>
+                <button type="button" class="btn btn-danger btn-sm"><i class="bi bi-caret-down-fill"></i></button> -->
+                <!-- -->
+            </div>
+
+            <!-- 로그인 전 -->
+            <div>
+                <button type="button" class="btn btn-light">로그인</button>
+            </div>
+
+            <!-- 로그인 후 -->
+            <!-- <div>
+                <a href="#" class="btn btn-danger"><i class="bi bi-shop" style="font-size: 1.5rem;"></i></a>
+
+                <a href="#" class="btn btn-danger position-relative">
+                    <i class="bi bi-cart" style="font-size: 1.5rem;"></i> -->
+
+            <!-- * 장바구니에 아이템 있을 시 표시 -->
+            <!-- <span
+                        class="position-absolute top-0 start-100 translate-middle p-2 bg-warning border border-light rounded-circle">
+                        <span class="visually-hidden"></span>
+                    </span> -->
+            <!--  -->
+            <!-- </a> -->
+
+            <!-- 
+                    * 버튼 클릭시 회원정보 페이지로 이동
+                -->
+            <!-- <a href="#" class="btn btn-danger"><i class="bi bi-person-fill" style="font-size: 1.5rem;"></i></a>
+
+                <button type="button" class="btn btn-light">로그아웃</button> -->
+        </div>
+        </div>
+    </nav>
+
+    <!-- 컨텐츠 -->
+    <div class="contents">
+        <div class="container-md">
+            <div class="orderlist-box">
+                <h4>배달현황</h4>
+
+                <hr>
+
+                <!-- 가게 정보 -->
+                <div class="row">
+                    <label class="col-md-3 col-form-label"><b>주문번호</b></label>
+                    <label class="col-md-9 col-form-label"><button type="button" class="text-decoration-underline bg-white border-0 p-0" data-bs-toggle="modal" data-bs-target="#exampleModal">주문번호</button></label>
+                </div>
+                <!-- 가게 정보 -->
+
+                <div class="row">
+                    <label class="col-md-3 col-form-label"><b>배달상태</b></label>
+                    <label class="col-md-9 col-form-label">배달상태</label>
+                </div>
+
+                <hr>
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="map-box">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 푸터 시작 -->
+    <div class="footer bg-light position-relative bottom-0">
+        <div class="container-md">
+            <div class="p-3">
+                <h4>DELIVERY WEB</h4>
+                <hr>
+                <p>개발: 김기덕, 노현서, 박종민, 정진성</p>
+            </div>
+        </div>
+    </div>
+    <!-- 푸터 끝 -->
+
+    <!-- 모달 -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h4>주문서</h4>
+
+                    <hr>
+
+                    <!-- 아랫것들 value 속성에 DB에서 가져온 id 값 넣어야됨 -->
+                    <input type="hidden" name="r_id" value="r_id">
+                    <input type="hidden" name="u_id" value="u_id">
+
+                    <!-- 가게 정보 -->
+                    <div class="row">
+                        <label class="col-md-3 col-sm-12 col-form-label"><b>가게정보</b></label>
+                        <div class="col-md-9 col-sm-12">
+                            <div class="card">
+                                <div class="row g-0">
+                                    <div class="col-2">
+                                        <div class="image-box">
+                                            <img src="no-photo.png" class="img-fluid rounded-start">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-10">
+                                        <div class="card-body">
+                                            <h5 class="card-title"><a href="#" class="text-decoration-none text-dark">가게 이름</a></h5>
+                                            <p class="card-text"><i class="bi bi-star-fill text-warning"></i>&nbsp;0.0(리뷰수)</p>
+                                            <p class="card-text">결제방식 | 최소주문금액</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 가게 정보 -->
+
+                    <!-- 메뉴 정보 -->
+                    <div class="row">
+                        <label class="col-4 col-form-label"><b>메뉴</b></label>
+                        <label class="col-4 col-form-label"><b>수량</b></label>
+                        <label class="col-4 col-form-label"><b>가격</b></label>
+                    </div>
+
+                    <!-- 메뉴 목록 -->
+                    <div class="row">
+                        <label class="col-4 col-form-label ps-4">메뉴1</label>
+                        <label class="col-4 col-form-label ps-4">1</label>
+                        <label class="col-4 col-form-label ps-4">10,000</label>
+                    </div>
+
+                    <!-- 위 템플릿을 여기에 한줄씩 추가하면 됨 -->
+
+                    <!-- 메뉴 목록 -->
+
+                    <!-- 합계 -->
+                    <div class="row">
+                        <div class="col-8">
+                            <b>합계</b>
+                        </div>
+
+                        <label class="col-4 col-form-label ps-4">10,000</label>
+                    </div>
+                    <!-- 합계 -->
+                    <!-- 메뉴 정보 -->
+
+                    <h4>주문정보</h4>
+
+                    <hr>
+
+                    <!-- 배달지 주소 -->
+                    <div class="row">
+                        <label for="o_addr" class="col-3 col-form-label"><b>배달지 주소</b></label>
+                        <label class="col-9 col-form-label ps-4">주소</label>
+                    </div>
+                    <!-- 배달지 주소 -->
+
+                    <!-- 결제 방식 -->
+                    <div class="row">
+                        <label for="p_code" class="col-3 col-form-label"><b>결제방식</b></label>
+                        <label class="col-9 col-form-label ps-4">결제방식</label>
+                    </div>
+                    <!-- 결제 방식 -->
+
+                    <!-- 주문 방식 -->
+                    <div class="row">
+                        <label for="t_code" class="col-3 col-form-label"><b>주문방식</b></label>
+                        <label class="col-9 col-form-label ps-4">주문방식</label>
+                    </div>
+                    <!-- 주문 방식 -->
+
+                    <!-- 요청 사항 -->
+                    <div class="row">
+                        <label for="m_intro" class="col-3 col-form-label"><b>요청사항</b></label>
+                        <label class="col-9 col-form-label ps-4">요청사항</label>
+                    </div>
+                    <!-- 요청 사항 -->
+                </div>
+
+                <div class="modal-footer p-0">
+                    <button type="button" class="btn btn-secondary m-2" data-bs-dismiss="modal">닫기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 모달 -->
+
+    <script src="/js/delivery.js"></script>
+</body>
+
+</html>
