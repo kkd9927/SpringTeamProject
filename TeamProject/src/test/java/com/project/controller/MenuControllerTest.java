@@ -34,14 +34,25 @@ public class MenuControllerTest {
 	
 	@Test //입력
 	public void TestRegister() throws Exception {
-		String resultPage = mockMvc.perform(MockMvcRequestBuilders.post("/board/register")
-																  .param("title", "테스트 새글 제목")
-																  .param("content", "테스트 새글 내용")
-																  .param("writer", "user00")
+		String resultPage = mockMvc.perform(MockMvcRequestBuilders.post("/menu/register")
+																  .param("r_id", "1")
+																  .param("m_name", "f")
+																  .param("m_price", "3500")
+																  .param("m_cat", "f메뉴")
+																  .param("m_intro", "f메뉴소개")
+																  .param("m_code", "0")
+																  .param("m_img", "m11.png")
+																  .param("maDTOList[0].m_id", "11")
+																  .param("maDTOList[0].a_name", "11추가")
+																  .param("maDTOList[0].a_price", "1000")
+																  .param("maDTOList[1].m_id", "11")
+																  .param("maDTOList[1].a_name", "11추가1")
+																  .param("maDTOList[1].a_price", "1500")
 																  )
 										.andReturn()
 										.getModelAndView()
 										.getViewName();
 		log.info(resultPage);
+		
 	}
 }

@@ -6,15 +6,15 @@
 <mapper namespace="com.project.mapper.MenuMapper">
 	<insert id="insert">
 		INSERT INTO
-        			MENU_INFO(R_ID, M_NAME, M_PRICE, M_CAT, M_INTRO, M_CODE, M_IMG)
+        			MENU_INFO(r_id, m_name,m_price, m_cat, m_intro, m_code, m_img)
 		VALUES
-        			(#{R_ID}, #{M_NAME}, #{M_PRICE}, #{M_CAT}, #{M_INTRO}, #{M_CODE}, #{M_IMG});
+        			(#{r_id}, #{m_name}, #{m_price}, #{m_cat}, #{m_intro}, #{m_code}, #{m_img})
 	</insert>
 	<insert id="insertAdd">
 		INSERT INTO
-        			MENU_ADD(M_ID, A_NAME, A_PRICE) 
+        			MENU_ADD(m_id, a_name, a_price) 
 		VALUES
-        			(#{M_ID}, #{A_NAME}, #{A_PRICE});
+        			(#{m_id}, #{a_name}, #{a_price})
 	</insert>
 	
 	<select id="getList" resultType="com.project.domain.MenuDTO">
@@ -23,7 +23,7 @@
 		from
        			menu_info
 		where
-       			r_id = #{r_id};
+       			r_id = #{r_id}
 	</select>
 	
 	<select id="read" resultType="com.project.domain.MenuDTO">
@@ -32,7 +32,7 @@
 		from
        			menu_info
 		where
-        		m_id = #{m_id};
+        		m_id = #{m_id}
 	</select>
 	
 	<select id="getAddList" resultType="com.project.domain.MenuAddDTO">
@@ -41,7 +41,7 @@
 		from
 		        menu_add
 		where
-       			m_id = #{m_id};
+       			m_id = #{m_id}
 	</select>
 	
 	<update id="update">
@@ -50,7 +50,7 @@
 		SET
 		        m_name= #{m_name}, m_price = #{m_price}, m_cat = #{m_cat}, m_intro = #{m_intro}, m_code = #{m_code}, m_img = #{m_img}
 		WHERE
-		        m_id = #{m_id};
+		        m_id = #{m_id}
 	</update>
 		
 	<update id="updateAdd">
@@ -59,20 +59,20 @@
 		SET
 		        a_name = #{a_name}, a_price= #{a_price}
 		WHERE
-		        a_id = #{a_id};
+		        a_id = #{a_id}
 	</update>
 	
 	<delete id="delete">
 		DELETE
 		        menu_info
 		WHERE
-		        m_id= #{m_id};
+		        m_id= #{m_id}
 	</delete>
 	
 	<delete id="deleteAdd">
 		DELETE
 		        menu_add
 		WHERE
-		        m_id= #{m_id};
+		        m_id = #{m_id}
 	</delete>
 </mapper>

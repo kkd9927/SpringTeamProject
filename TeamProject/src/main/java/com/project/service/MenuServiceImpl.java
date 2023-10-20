@@ -1,5 +1,6 @@
 package com.project.service;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import org.springframework.stereotype.Service;
@@ -48,9 +49,19 @@ public class MenuServiceImpl implements MenuService{
 	@Override
 	public boolean modify(MenuDTO menu, ArrayList<MenuAddDTO> maDTOList) {
 		log.info("modify......."+menu);
-		mapper.update(menu);
-		for(MenuAddDTO data : maDTOList) {
-			mapper.updateAdd(data);
+		
+		try {
+			mapper.update(menu);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			for(MenuAddDTO data : maDTOList) {
+				mapper.updateAdd(data);
+			}
+		}catch (Exception e) {
+				e.printStackTrace();
 		}
 		return true;
 	}
@@ -58,8 +69,19 @@ public class MenuServiceImpl implements MenuService{
 	@Override
 	public boolean remove(Long m_id) {
 		log.info("remove......"+m_id);
-		mapper.delete(m_id);
-		mapper.deleteAdd(m_id);
+		
+		try {
+			mapper.deleteAdd(m_id);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			mapper.delete(m_id);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
 		return true;
 	}
 
