@@ -13,6 +13,8 @@ public interface MenuMapper {
 
 	public MenuDTO read(Long m_id);
 
+	public MenuAddDTO readAdd(Long a_id);
+
 	public ArrayList<MenuDTO> getList(Long r_id);
 
 	public ArrayList<MenuAddDTO> getAddList(Long m_id);

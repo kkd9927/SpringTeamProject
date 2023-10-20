@@ -9,6 +9,8 @@ public interface MenuService {
 	public void register (MenuDTO menu, ArrayList<MenuAddDTO> maDTOList);
 	
 	public MenuDTO get(Long m_id);
+
+	public MenuAddDTO getAdd(Long a_id);
 	
 	public ArrayList<MenuAddDTO> getAddList(Long m_id);
 	

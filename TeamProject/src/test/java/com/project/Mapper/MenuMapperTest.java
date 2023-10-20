@@ -75,6 +75,13 @@ public class MenuMapperTest {
 	}
 	
 //	@Test
+	public void testReadAdd() {
+		MenuAddDTO menu = mapper.readAdd(20L);
+		
+		log.info(menu);
+	}
+	
+//	@Test
 	public void testGetAddList() {
 		mapper.getAddList(12L).forEach(menuAdd -> log.info(menuAdd));
 	}

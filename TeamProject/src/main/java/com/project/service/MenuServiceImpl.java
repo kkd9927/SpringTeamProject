@@ -1,6 +1,5 @@
 package com.project.service;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 import org.springframework.stereotype.Service;
@@ -34,6 +33,12 @@ public class MenuServiceImpl implements MenuService{
 		return mapper.read(m_id);
 	}
 
+	@Override
+	public MenuAddDTO getAdd(Long a_id) {
+		log.info("get......" + a_id);
+		return mapper.readAdd(a_id);
+	}
+	
 	@Override
 	public ArrayList<MenuAddDTO> getAddList(Long m_id) {
 		log.info("getAddList......" + m_id);
