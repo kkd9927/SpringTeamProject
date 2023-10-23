@@ -2,6 +2,8 @@ package com.project.mapper;
 
 import java.util.ArrayList;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.project.domain.MethodDTO;
 import com.project.domain.RestCatDTO;
 import com.project.domain.RestDTO;
@@ -21,7 +23,7 @@ public interface RestMapper {
 	
 	public RestDTO read(Long r_id);
 	
-	public RestOpenDTO readOpen(Long r_id, Long w_code);
+	public RestOpenDTO readOpen(@Param("r_id") Long r_id,@Param("w_code") Long w_code);
 	
 	public ArrayList<RestOpenDTO> getOpenList(Long r_id);
 

@@ -53,7 +53,6 @@ public class RestMapperTest {
 //	@Test
 	public void testInsertOpen() throws Exception {
 		SimpleDateFormat sdate = new SimpleDateFormat("HH:mm");
-//		Date date0 = sdate.parse("");
 		Date dateO1 = sdate.parse("09:00");
 		Date dateC1 = sdate.parse("22:00");
 //		RestOpenDTO restopen1 = new RestOpenDTO();
@@ -169,6 +168,13 @@ public class RestMapperTest {
 		RestDTO rest = mapper.read(12L);
 		
 		log.info(rest);
+	}
+	
+	@Test
+	public void testReadOpen() {
+		RestOpenDTO restOpen = mapper.readOpen(14L, 1L);
+		
+		log.info(restOpen);
 	}
 	
 //	@Test

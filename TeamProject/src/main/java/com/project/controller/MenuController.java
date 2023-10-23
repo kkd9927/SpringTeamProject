@@ -37,7 +37,7 @@ public class MenuController {
 //		service.register(menu,maDTOList);
 		service.register(menu);
 		rttr.addFlashAttribute("result", menu.getM_id());
-		return "redirect:/menu/list";
+		return "redirect:/menu/menuList";
 	}
 	
 	@GetMapping({"/menuGet", "/menuModify"}) // 메뉴 1개 조회 (그리고 메뉴 1개 정보 수정창 출력)
@@ -53,7 +53,7 @@ public class MenuController {
 		if(service.modify(menu)) {
 			rttr.addFlashAttribute("result", "success");
 		}
-		return "redirect:/menu/list";
+		return "redirect:/menu/menuList";
 	}
 	@RequestMapping(value="/menuRemove" , method= {RequestMethod.GET,RequestMethod.POST})
 	public String remove(@RequestParam("m_id") Long m_id, RedirectAttributes rttr) {
@@ -61,6 +61,6 @@ public class MenuController {
 		if(service.remove(m_id)) {
 			rttr.addFlashAttribute("result", "success");
 		}
-		return "redirect:/menu/list";
+		return "redirect:/menu/menuList";
 	}
 }

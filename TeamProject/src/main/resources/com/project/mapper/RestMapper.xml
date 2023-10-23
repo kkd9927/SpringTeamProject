@@ -49,7 +49,7 @@
 	
 	<select id="read" resultType="com.project.domain.RestDTO">
 		select
-		        r_lname, r_bname, r_tel, r_intro, r_minprice, r_img
+		        r_id, r_lname, r_bname, r_tel, r_intro, r_minprice, r_img
 		from
 		        rest_info
 		where
@@ -62,7 +62,7 @@
 		from
 		        rest_open
 		where
-		        r_id = #{r_id} AND w_code = #{w_code}
+		        r_id = #{r_id} and w_code = #{w_code}
 	</select>
 	
 	<select id="getOpenList" resultType="com.project.domain.RestOpenDTO">

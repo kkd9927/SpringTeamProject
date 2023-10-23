@@ -34,7 +34,7 @@ public class MenuControllerTest {
 	
 //	@Test //입력
 	public void TestRegister() throws Exception {
-		String resultPage = mockMvc.perform(MockMvcRequestBuilders.post("/menu/register")
+		String resultPage = mockMvc.perform(MockMvcRequestBuilders.post("/menu/menuRegister")
 																  .param("r_id", "1")
 																  .param("m_name", "u")
 																  .param("m_price", "3500")

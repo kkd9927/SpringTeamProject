@@ -48,6 +48,7 @@ public class MenuServiceTest {
 		menuAdd2.setA_price(12000);
 		maDTOList.add(menuAdd2);
 		
+		menu.setMaDTOList(maDTOList);
 		service.register(menu);
 //		service.register(menu, maDTOList);
 		
@@ -102,6 +103,8 @@ public class MenuServiceTest {
 		menuadd2.setA_name("d사이드메뉴추가");
 		menuadd2.setA_price(14000);
 		maDTOList.add(menuadd2);
+		
+		menu.setMaDTOList(maDTOList);
 		
 		log.info("Modify result: " + service.modify(menu));
 	}
