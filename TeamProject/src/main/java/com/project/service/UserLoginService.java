@@ -19,7 +19,7 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class UserLoginService implements UserDetailsService {
-	UserMapper mapper;
+	private final UserMapper mapper;
 	
 	@Override
 	public UserDetails loadUserByUsername(String u_id) throws UsernameNotFoundException {
