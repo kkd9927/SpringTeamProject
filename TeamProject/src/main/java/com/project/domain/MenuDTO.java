@@ -16,4 +16,8 @@ public class MenuDTO {
 	private String m_img;
 	
 	private ArrayList<MenuAddDTO> maDTOList;
+	
+	public MenuDTO() {
+		maDTOList = new ArrayList<>();
+	}
 }

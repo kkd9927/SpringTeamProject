@@ -19,10 +19,11 @@ public class MenuServiceImpl implements MenuService{
 	private MenuMapper mapper;
 	
 	@Override
-	public void register(MenuDTO menu, ArrayList<MenuAddDTO> maDTOList) {
-		log.info("register......" + menu + maDTOList);
+//	public void register(MenuDTO menu, ArrayList<MenuAddDTO> maDTOList) {
+	public void register(MenuDTO menu) {
+		log.info("register......" + menu + menu.getMaDTOList());
 		mapper.insert(menu);
-		for(MenuAddDTO data : maDTOList){
+		for(MenuAddDTO data : menu.getMaDTOList()){
 			mapper.insertAdd(data);
 		}
 	}
@@ -47,12 +48,12 @@ public class MenuServiceImpl implements MenuService{
 
 	@Override
 	public ArrayList<MenuDTO> getList(Long r_id) {
-		log.info("getAddList......");
+		log.info("getList......");
 		return mapper.getList(r_id);
 	}
 
 	@Override
-	public boolean modify(MenuDTO menu, ArrayList<MenuAddDTO> maDTOList) {
+	public boolean modify(MenuDTO menu) {
 		log.info("modify......."+menu);
 		
 		try {
@@ -62,7 +63,7 @@ public class MenuServiceImpl implements MenuService{
 		}
 		
 		try {
-			for(MenuAddDTO data : maDTOList) {
+			for(MenuAddDTO data : menu.getMaDTOList()) {
 				mapper.updateAdd(data);
 			}
 		}catch (Exception e) {

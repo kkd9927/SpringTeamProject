@@ -11,7 +11,7 @@ import org.springframework.web.servlet.view.JstlView;
 @EnableWebMvc
 @ComponentScan(basePackages = {"com.project.controller", "com.project.exception"})
 public class ServletConfig implements WebMvcConfigurer{
-
+	
 	@Override
 	public void configureViewResolvers(ViewResolverRegistry registry) {
 		
@@ -21,11 +21,9 @@ public class ServletConfig implements WebMvcConfigurer{
 		bean.setSuffix(".jsp");
 		registry.viewResolver(bean);
 	}
-
+	
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		
 		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
 	}
-	
 }

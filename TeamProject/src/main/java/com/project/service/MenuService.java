@@ -6,7 +6,8 @@ import com.project.domain.MenuAddDTO;
 import com.project.domain.MenuDTO;
 
 public interface MenuService {
-	public void register (MenuDTO menu, ArrayList<MenuAddDTO> maDTOList);
+//	public void register (MenuDTO menu, ArrayList<MenuAddDTO> maDTOList);
+	public void register (MenuDTO menu);
 	
 	public MenuDTO get(Long m_id);
 
@@ -16,7 +17,7 @@ public interface MenuService {
 	
 	public ArrayList<MenuDTO> getList(Long r_id);
 	
-	public boolean modify (MenuDTO menu, ArrayList<MenuAddDTO> maDTOList);
+	public boolean modify (MenuDTO menu);
 	
 	public boolean remove (Long m_id);
 }

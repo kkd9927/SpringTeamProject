@@ -48,7 +48,8 @@ public class MenuServiceTest {
 		menuAdd2.setA_price(12000);
 		maDTOList.add(menuAdd2);
 		
-		service.register(menu, maDTOList);
+		service.register(menu);
+//		service.register(menu, maDTOList);
 		
 		log.info("생성된 메뉴 아이디 : " + menu.getM_id());
 		log.info(maDTOList);
@@ -102,6 +103,6 @@ public class MenuServiceTest {
 		menuadd2.setA_price(14000);
 		maDTOList.add(menuadd2);
 		
-		log.info("Modify result: " + service.modify(menu, maDTOList));
+		log.info("Modify result: " + service.modify(menu));
 	}
 }
