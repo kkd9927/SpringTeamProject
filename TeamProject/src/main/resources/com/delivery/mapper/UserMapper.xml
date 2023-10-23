@@ -5,8 +5,17 @@
 <mapper namespace="com.delivery.mapper.UserMapper">
 	<insert id="insert">
 		INSERT INTO
-			USER_INFO
+			USER_INFO(U_ID, U_PW, U_RNAME, U_PHONE, U_NNAME, U_CODE, U_IMG)
 		VALUES
-			(#{u_id}, #{u_pw}, #{u_phone}, #{u_nname}, #{u_pimg})
+			(#{u_id}, #{u_pw}, #{u_rname}, #{u_phone}, #{u_nname, jdbcType=VARCHAR}, #{u_code}, #{u_img, jdbcType=VARCHAR})
 	</insert>
+	
+	<select id="selectByUserId" resultType="com.delivery.domain.UserVO">
+		SELECT
+			*
+		FROM
+			USER_INFO
+		WHERE
+			U_ID = #{u_id}
+	</select>
 </mapper>
