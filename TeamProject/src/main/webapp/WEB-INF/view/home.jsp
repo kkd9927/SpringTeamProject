@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +21,7 @@
                         <div class="carousel-item active">
                             <div class="image-box">
                                 <a href="#">
-                                    <img src="no-photo.png">
+                                    <img src="/resources/img/no-img.png">
                                 </a>
                             </div>
                         </div>
@@ -28,7 +29,7 @@
                         <div class="carousel-item">
                             <div class="image-box">
                                 <a href="#">
-                                    <img src="no-photo.png">
+                                    <img src="/resources/img/no-img.png">
                                 </a>
                             </div>
                         </div>
@@ -36,7 +37,7 @@
                         <div class="carousel-item">
                             <div class="image-box">
                                 <a href="#">
-                                    <img src="no-photo.png">
+                                    <img src="/resources/img/no-img.png">
                                 </a>
                             </div>
                         </div>
@@ -75,7 +76,7 @@
                     <div class="col-md-2 col-sm-4">
                         <div class="category-box">
                             <a href="#">
-                                <img src="no-photo.png">
+                                <img src="/resources/img/no-img.png">
                             </a>
                         </div>
                     </div>
@@ -83,7 +84,7 @@
                     <div class="col-md-2 col-sm-4">
                         <div class="category-box">
                             <a href="#">
-                                <img src="no-photo.png">
+                                <img src="/resources/img/no-img.png">
                             </a>
                         </div>
                     </div>
@@ -91,7 +92,7 @@
                     <div class="col-md-2 col-sm-4">
                         <div class="category-box">
                             <a href="#">
-                                <img src="no-photo.png">
+                                <img src="/resources/img/no-img.png">
                             </a>
                         </div>
                     </div>
@@ -99,7 +100,7 @@
                     <div class="col-md-2 col-sm-4">
                         <div class="category-box">
                             <a href="#">
-                                <img src="no-photo.png">
+                                <img src="/resources/img/no-img.png">
                             </a>
                         </div>
                     </div>
@@ -107,7 +108,7 @@
                     <div class="col-md-2 col-sm-4">
                         <div class="category-box">
                             <a href="#">
-                                <img src="no-photo.png">
+                                <img src="/resources/img/no-img.png">
                             </a>
                         </div>
                     </div>
@@ -115,7 +116,7 @@
                     <div class="col-md-2 col-sm-4">
                         <div class="category-box">
                             <a href="#">
-                                <img src="no-photo.png">
+                                <img src="/resources/img/no-img.png">
                             </a>
                         </div>
                     </div>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.project.mapper.UserMapper">
+	<insert id="insert">
+		INSERT INTO
+			USER_INFO(U_ID, U_PW, U_RNAME, U_PHONE, U_NNAME, U_CODE, U_IMG)
+		VALUES
+			(#{u_id}, #{u_pw}, #{u_rname}, #{u_phone}, #{u_nname, jdbcType=VARCHAR}, #{u_code}, #{u_img, jdbcType=VARCHAR})
+	</insert>
+	
+	<select id="selectByUserId" resultType="com.project.domain.UserVO">
+		SELECT
+			*
+		FROM
+			USER_INFO
+		WHERE
+			U_ID = #{u_id}
+	</select>
+</mapper>
