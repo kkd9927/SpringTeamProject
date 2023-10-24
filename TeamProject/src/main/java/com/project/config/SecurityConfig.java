@@ -9,7 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.project.service.UserLoginService;
+import com.project.security.CustomUserDetailsService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -17,7 +17,7 @@ import lombok.RequiredArgsConstructor;
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-	private final UserLoginService userLoginService;
+	private final CustomUserDetailsService customUserDetailsService;
 	
 	@Override
     protected void configure(HttpSecurity http) throws Exception{
@@ -28,28 +28,29 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.csrf(csrf -> csrf.disable())
             .authorizeRequests(requests -> requests
-                .antMatchers("/", "/register", "/login").permitAll()
+            	.antMatchers("/resources/css/*", "/resources/js/*", "/resources/img/*").permitAll()
+                .antMatchers("/", "/register", "/register/form").permitAll()
                 .anyRequest().authenticated()
                 .and())
             .formLogin(login -> login
                 .loginPage("/login")
+                .usernameParameter("u_id")
+                .passwordParameter("u_pw")
                 .defaultSuccessUrl("/")
-                .failureUrl("/login/failed")
-                .usernameParameter("userId")
-                .permitAll());
+                .failureUrl("/login/fail")
+                .permitAll())
+            .logout(logout -> logout
+        		.logoutUrl("/logout")
+        		.logoutSuccessUrl("/"));
     }
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication().withUser("user").password("{noop}1111").roles("USER");
-		auth.inMemoryAuthentication().withUser("business").password("{noop}1111").roles("USER", "BUSINESS");
-		auth.inMemoryAuthentication().withUser("admin").password("{noop}1111").roles("ADMIN", "USER", "BUSINESS");
-		
-		auth.userDetailsService(userLoginService).passwordEncoder(getPasswordEncoder());
+		auth.userDetailsService(customUserDetailsService).passwordEncoder(encoder());
 	}
 	
     @Bean
-    public PasswordEncoder getPasswordEncoder(){
+    public PasswordEncoder encoder(){
         return new BCryptPasswordEncoder();
     }
 }

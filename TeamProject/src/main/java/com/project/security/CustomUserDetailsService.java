@@ -1,11 +1,10 @@
-package com.project.service;
+package com.project.security;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -18,7 +17,7 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class UserLoginService implements UserDetailsService {
+public class CustomUserDetailsService implements UserDetailsService {
 	private final UserMapper mapper;
 	
 	@Override
@@ -33,13 +32,16 @@ public class UserLoginService implements UserDetailsService {
 		List<GrantedAuthority> authorities = new ArrayList<>();
 		
 		if(userCode == 0) {
-			authorities.add(new SimpleGrantedAuthority("admin"));
+			authorities.add(new SimpleGrantedAuthority("ADMIN"));
+			authorities.add(new SimpleGrantedAuthority("USER"));
+			authorities.add(new SimpleGrantedAuthority("BUSINESS"));
 		} else if(userCode == 1) {
-			authorities.add(new SimpleGrantedAuthority("user"));
+			authorities.add(new SimpleGrantedAuthority("USER"));
 		} else {
-			authorities.add(new SimpleGrantedAuthority("business"));
+			authorities.add(new SimpleGrantedAuthority("USER"));
+			authorities.add(new SimpleGrantedAuthority("BUSINESS"));
 		}
 		
-		return new User(user.getU_id(), user.getU_pw(), authorities);
+		return new CustomUser(user, authorities);
 	}
 }

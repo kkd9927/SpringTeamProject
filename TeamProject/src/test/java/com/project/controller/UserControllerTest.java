@@ -44,16 +44,44 @@ public class UserControllerTest {
 		log.info(resultPage);
 	}
 	
-//	@Test
+	@Test
 	public void registerPostTest() throws Exception {
 		String resultPage = mockMvc.perform(
 			MockMvcRequestBuilders
 			.post("/register")
+			.param("u_id", "test151")
+			.param("u_pw", "test")
+			.param("u_rname", "홍길동")
+			.param("u_phone", "01097656432")
+			.param("u_code", "2")
+		)
+		.andReturn()
+		.getModelAndView()
+		.getViewName();
+
+		log.info(resultPage);
+	}
+	
+//	@Test
+	public void loginGetTest() throws Exception {
+		String resultPage = mockMvc.perform(
+			MockMvcRequestBuilders
+			.get("/login")
+		)
+		.andReturn()
+		.getModelAndView()
+		.getViewName();
+
+		log.info(resultPage);
+	}
+	
+//	@Test
+	public void loginPostTest() throws Exception {
+		String resultPage = mockMvc.perform(
+			MockMvcRequestBuilders
+			.post("/login")
 			.param("u_id", "test_id4")
 			.param("u_pw", "test_pw")
-			.param("u_rname", "test_name")
-			.param("u_phone", "01015123171")
-			.param("u_code", "1")
 		)
 		.andReturn()
 		.getModelAndView()

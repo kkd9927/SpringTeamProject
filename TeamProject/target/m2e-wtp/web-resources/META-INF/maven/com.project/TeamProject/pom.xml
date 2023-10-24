@@ -4,7 +4,12 @@
 	<artifactId>TeamProject</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-
+	
+	<properties>
+		<spring-version>5.2.25.RELEASE</spring-version>
+		<spring-security-version>5.2.1.RELEASE</spring-security-version>
+	</properties>
+	
 	<dependencies>
 		<!-- 롬복 -->
 		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
@@ -29,25 +34,25 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
-			<version>5.2.25.RELEASE</version>
+			<version>${spring-version}</version>
 		</dependency>
 		
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
-			<version>5.2.25.RELEASE</version>
+			<version>${spring-version}</version>
 		</dependency>
 		
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-tx</artifactId>
-			<version>5.2.25.RELEASE</version>
+			<version>${spring-version}</version>
 		</dependency>
 		
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
-			<version>5.2.25.RELEASE</version>
+			<version>${spring-version}</version>
 		</dependency>
 		
 		
@@ -56,21 +61,26 @@
 		<dependency>
 		    <groupId>org.springframework.security</groupId>
 		    <artifactId>spring-security-core</artifactId>
-		    <version>5.2.1.RELEASE</version>
+		    <version>${spring-security-version}</version>
 		</dependency>
 
 		<dependency>
 		    <groupId>org.springframework.security</groupId>
 		    <artifactId>spring-security-web</artifactId>
-		    <version>5.2.1.RELEASE</version>
+		    <version>${spring-security-version}</version>
 		</dependency>
 
 		<dependency>
 		    <groupId>org.springframework.security</groupId>
 		    <artifactId>spring-security-config</artifactId>
-		    <version>5.2.1.RELEASE</version>
+		    <version>${spring-security-version}</version>
 		</dependency>
 
+		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-taglibs</artifactId>
+		    <version>${spring-security-version}</version>
+		</dependency>
 		
 		<!-- 테스트 & 디버깅 -->
 		<!-- https://mvnrepository.com/artifact/junit/junit -->
