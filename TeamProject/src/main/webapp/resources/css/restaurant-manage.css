@@ -44,3 +44,27 @@ textarea {
 .reviewdate {
     text-align: right;
 }
+
+.reviewbtn-box {
+    text-align: right;
+}
+
+.modal-footer {
+    border: none;
+}
+
+.list-box {
+    text-align: center;
+}
+
+.modal-body .card-body {
+    padding-left: 60px;
+}
+
+.modal-dialog {
+    max-width: 800px;
+}
+
+.modal-footer {
+    border: none;
+}

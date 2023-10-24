@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<div class="footer bg-light position-absolute bottom-0">
+<div class="footer bg-light position-relative bottom-0">
     <div class="container-md">
         <div class="p-3">
             <h4>DELIVERY WEB</h4>
