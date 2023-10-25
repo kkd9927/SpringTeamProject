@@ -16,7 +16,7 @@
             		<i class="bi bi-geo-alt-fill"></i>
             		<b id="text-address">주소표시</b>
             	</span>
-           		<button type="button" class="btn btn-danger btn-sm"><i class="bi bi-caret-down-fill"></i></button>
+           		<button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#addressModal"><i class="bi bi-caret-down-fill"></i></button>
         	</sec:authorize>
         </div>
 
@@ -50,6 +50,92 @@
     </div>
 </nav>
 
+<div class="modal fade" id="addressModal" tabindex="-1" aria-labelledby="addressModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h4>주소설정</h4>
+                <hr>
+                <ul id="addr-list" class="list-group list-group-flush">
+                    <li id="addr-1" class="list-group-item">
+                        <button type="button" id="btn-addr-current" class="bg-white border-0">
+                            <b id="addr-1-tag">집</b>
+                            <span id="addr-1-addr">부산광역시 부산진구</span>
+                            <spqn id="addr-1-dtad">부전동 100-1</spqn>
+                        </button>
+                        <span class="badge bg-danger">현재위치</span>
+                        <button type="button" id="btn-addr-1-delete" class="bg-white border-0"><i class="bi bi-x-lg text-danger"></i></button>
+                    </li>
+
+                    <li id="addr-2" class="list-group-item">
+                        <button type="button" id="btn-addr-2-current" class="bg-white border-0">
+                            <b id="addr-2-tag">회사</b>
+                            <span id="addr-2-addr">주소</span>
+                        </button>
+                        <button type="button" id="btn-addr-2-delete" class="bg-white border-0"><i class="bi bi-x-lg text-danger"></i></button>
+                    </li>
+
+                    <li id="addr-3" class="list-group-item">
+                        <button type="button" id="btn-addr-3-current" class="bg-white border-0">
+                            <b id="addr-3-tag"></b>
+                            <span id="addr-3-addr">주소</span>
+                        </button>
+                        <button type="button" id="btn-addr-3-delete" class="bg-white border-0"><i class="bi bi-x-lg text-danger"></i></button>
+                    </li>
+                    
+                    <li id="addr-add" class="list-group-item">
+                        <button type="button" id="btn-add-addr" class="bg-white border-0"><i class="bi bi-plus-lg text-primary"></i></button>
+                    </li>
+                    
+                    
+					<!-- 등록 폼 -->
+                    <li id="addr-add-form" class="list-group-item">
+                        <div class="row">
+                            <label class="col-2 col-form-label">태그</label>
+                            <div class="col-4">
+                                <select id="addr-tag-select" class="form-select">
+                                    <option value="집">집</option>
+                                    <option value="회사">회사</option>
+                                    <option value="직접입력">직접입력</option>
+                                </select>
+                            </div>
+
+                            <div class="col-6">
+                                <input type="text" id="addr-tag-input" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <label class="col-2 col-form-label">주소</label>
+                            <div class="col-7">
+                                <input type="text" id="addr-input" class="form-control" disabled>
+                            </div>
+                            <div class="col-3">
+                                <button id="addr-find" class="btn btn-primary">주소찾기</button>
+                            </div>
+                            <div class="col-2"></div>
+                            <div class="col-10">
+                                <input type="text" id="dtad-input" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <button id="addr-add-accept" class="btn btn-primary">확인</button>
+                                <button id="addr-add-cancel" class="btn btn-secondary">취소</button>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="modal-footer p-0">
+                <button type="button" class="btn btn-secondary m-2" data-bs-dismiss="modal">닫기</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <sec:authorize access="isAuthenticated()">
 	<script>
 		$(function() {
@@ -63,9 +149,29 @@
 			.done(function(data) {
 				if(data.length == 0) {					
 					$("#text-address").text("주소를 설정해주세요.");
-				} else {
+				} else {	
+					if(data[0].u_atag == null) {
+						$("#text-address").text(`${data[0].u_addr} ${data[0].u_dtad}`);
+					} else {					
+						$("#text-address").text(data[0].u_atag);
+					}
+					
 					for(let i=0; i<data.length; i++) {
-						$("#text-address").text(data[i].atag);
+						$("#addr-list")
+							.append($("<li>").attr("id", `addr-${i}`).attr("class", "list-group-item").attr("disabled", true)
+								.append($("<button>").attr("id", `${i}-btn`).attr("class", "bg-white border-0")
+									.append($("<b>").attr("id", `${i}-atag`).text(data[i].u_atag))
+									.append($("<span>").attr("id", `${i}-addr`).text(data[i].u_addr))
+									.append($("<span>").attr("id", `${i}-dtad`).text(data[i].u_dtad))
+								)
+								.append($("<button>").attr("id", `addr-${i}-delete`).attr("class", "bg-white border-0")
+									.append($("<i>").attr("class", "bi bi-x-lg text-danger"))
+								)
+							);
+						
+						if($(".list-group-item").attr("id") == "addr-0") {
+							
+						}
 					}
 				}
 			});

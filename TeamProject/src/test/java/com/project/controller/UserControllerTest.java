@@ -97,19 +97,7 @@ public class UserControllerTest {
 	}
 	
 	@Test
-	public void adressTest() throws Exception {
-//		String resultObject = mockMvc.perform(
-//			MockMvcRequestBuilders
-//			.get("/adress")
-//			.param("u_id", "test")
-//		)
-//		.andReturn()
-//		.getResponse()
-//		.getContentType();
-//
-//		log.info(resultObject);
-		
-		mockMvc.perform(MockMvcRequestBuilders.get("/address?u_id=test"))
+	public void adressTest() throws Exception {mockMvc.perform(MockMvcRequestBuilders.get("/address?u_id=test"))
 	        	.andExpect(MockMvcResultMatchers.status().isOk())
 	        	.andDo(MockMvcResultHandlers.print());
 	}
