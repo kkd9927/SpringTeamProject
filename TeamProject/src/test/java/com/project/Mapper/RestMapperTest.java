@@ -177,9 +177,9 @@ public class RestMapperTest {
 		log.info(restOpen);
 	}
 	
-//	@Test
+	@Test
 	public void testGetOpenList() {
-		mapper.getOpenList(12L).forEach(restOpen -> log.info(restOpen));
+		mapper.getOpenList(1L).forEach(restOpen -> log.info(restOpen));
 	}
 	
 //	@Test

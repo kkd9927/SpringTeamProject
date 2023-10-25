@@ -2,6 +2,7 @@ package com.project.service;
 
 import java.util.ArrayList;
 
+import com.project.domain.CatcodeDTO;
 import com.project.domain.MethodDTO;
 import com.project.domain.RestCatDTO;
 import com.project.domain.RestDTO;
@@ -12,6 +13,8 @@ public interface RestService {
 	public void register (RestDTO rest);
 	
 	public ArrayList<RestDTO> getList(Long c_code);
+	
+	public ArrayList<CatcodeDTO> getCodeList();
 	
 	public RestDTO get(Long r_id);
 	

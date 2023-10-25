@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.springframework.stereotype.Service;
 
+import com.project.domain.CatcodeDTO;
 import com.project.domain.MethodDTO;
 import com.project.domain.RestCatDTO;
 import com.project.domain.RestDTO;
@@ -121,6 +122,12 @@ public class RestServiceImpl implements RestService{
 			e.printStackTrace();
 		}
 		return true;
+	}
+
+	@Override
+	public ArrayList<CatcodeDTO> getCodeList() {
+		log.info("getCodeList......");
+		return mapper.getCodeList();
 	}
 
 }

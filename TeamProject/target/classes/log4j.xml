@@ -43,6 +43,9 @@
 	<logger name="jdbc.resultset">
 		<level value="warn" />
 	</logger>
+	<logger name="jdbc.resultsettable">
+		<level value="trace" />
+	</logger>
 	<logger name="jdbc.connection">
 		<level value="warn" />
 	</logger>

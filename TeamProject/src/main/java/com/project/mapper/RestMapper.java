@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.project.domain.CatcodeDTO;
 import com.project.domain.MethodDTO;
 import com.project.domain.RestCatDTO;
 import com.project.domain.RestDTO;
@@ -20,6 +21,8 @@ public interface RestMapper {
 	public void insertMethod (MethodDTO method);
 	
 	public ArrayList<RestDTO> getList(Long c_code);
+	
+	public ArrayList<CatcodeDTO> getCodeList();
 	
 	public RestDTO read(Long r_id);
 	

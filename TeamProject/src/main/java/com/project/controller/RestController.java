@@ -27,6 +27,7 @@ public class RestController {
 	public void list(@RequestParam("c_code") Long c_code, Model model) {
 		log.info("list");
 		model.addAttribute("list", service.getList(c_code));
+		model.addAttribute("category", service.getCodeList());
 	}
 	
 	@PostMapping("/restRegister") // 가게 정보 입력

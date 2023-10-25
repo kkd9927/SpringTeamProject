@@ -47,6 +47,15 @@
 		order by SUM1
 	</select>
 	
+	<select id="getCodeList" resultType="com.project.domain.CatcodeDTO">
+		select
+				 c_code, c_cname 
+		from
+				 cat_code 
+		order by
+				 c_code
+	</select>
+	
 	<select id="read" resultType="com.project.domain.RestDTO">
 		select
 		        r_id, r_lname, r_bname, r_tel, r_intro, r_minprice, r_img
@@ -67,9 +76,9 @@
 	
 	<select id="getOpenList" resultType="com.project.domain.RestOpenDTO">
 		select
-		        r_id, w_code, r_opent, r_closet
+		        r_id, A.w_code, to_char(r_opent, 'HH24:MI') as r_opent, to_char(r_closet, 'HH24:MI') as r_closet, w_cname
 		from
-		        rest_open
+		        rest_open A join week_code B on A.w_code = B.w_code
 		where
 		        r_id = #{r_id}
 	</select>
@@ -85,11 +94,13 @@
 	
 	<select id="getMethodList" resultType="com.project.domain.MethodDTO">
 		select
-				p_code, r_id
+		        A.p_code, r_id, p_cname
 		from
-				pay_method
+		        pay_method A join pay_code B on A.p_code = B.p_code
 		where
-				r_id = #{r_id}
+		        r_id = #{r_id}
+		group by A.p_code, r_id, p_cname
+		order by A.p_code
 	</select>
 	
 	<update id="update">
