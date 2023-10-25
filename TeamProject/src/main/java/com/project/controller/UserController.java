@@ -59,6 +59,6 @@ public class UserController {
 	@GetMapping("/address")
 	@ResponseBody
 	public List<UserAddrVO> address(String u_id) {
-		return userAddrService.getAddr(u_id).getAddrList();
+		return userAddrService.getAddr(u_id);
 	}
 }

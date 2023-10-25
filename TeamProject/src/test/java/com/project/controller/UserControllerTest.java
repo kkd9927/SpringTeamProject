@@ -109,10 +109,7 @@ public class UserControllerTest {
 //
 //		log.info(resultObject);
 		
-		mockMvc.perform(MockMvcRequestBuilders.get("/adress")
-					.contentType(MediaType.APPLICATION_JSON)
-					.content("{\"userId\": \"test\"}")
-					.characterEncoding("UTF-8"))
+		mockMvc.perform(MockMvcRequestBuilders.get("/address?u_id=test"))
 	        	.andExpect(MockMvcResultMatchers.status().isOk())
 	        	.andDo(MockMvcResultHandlers.print());
 	}

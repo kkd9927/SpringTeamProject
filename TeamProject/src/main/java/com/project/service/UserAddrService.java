@@ -1,7 +1,9 @@
 package com.project.service;
 
-import com.project.domain.UserAddrVOList;
+import java.util.List;
+
+import com.project.domain.UserAddrVO;
 
 public interface UserAddrService {
-	public UserAddrVOList getAddr(String u_id);
+	public List<UserAddrVO> getAddr(String u_id);
 }
