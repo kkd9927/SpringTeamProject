@@ -1,5 +1,6 @@
 package com.project.controller;
 
+<<<<<<< HEAD
 //import java.text.DateFormat;
 //import java.util.Date;
 //import java.util.Locale;
@@ -20,5 +21,15 @@ public class HomeController {
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public void home() {
 //		logger.info("Welcome home! The client locale is {}.");
+=======
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class HomeController {
+	@GetMapping("/")
+	public String home() {
+		return "home";
+>>>>>>> main
 	}
 }

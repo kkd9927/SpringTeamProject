@@ -23,6 +23,7 @@
         
         
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/target/generated-sources/annotations"/>
+<<<<<<< HEAD
                         
         
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
@@ -31,6 +32,14 @@
         
         <property name="java-output-path" value="/TeamProject/target/classes"/>
         <property name="context-root" value="/"/>
+=======
+                                
+        
+        
+        <property name="java-output-path" value="/TeamProject/build/classes"/>
+                
+        <property name="context-root" value="TeamProject"/>
+>>>>>>> main
                             
     
     
