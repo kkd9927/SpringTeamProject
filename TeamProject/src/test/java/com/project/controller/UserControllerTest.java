@@ -4,13 +4,17 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.filter.CharacterEncodingFilter;
 
 import lombok.extern.log4j.Log4j;
 
@@ -28,7 +32,9 @@ public class UserControllerTest {
 	
 	@Before
 	public void setup() {
-		this.mockMvc = MockMvcBuilders.webAppContextSetup(ctx).build();
+		this.mockMvc = MockMvcBuilders.webAppContextSetup(ctx)
+									  .addFilter(new CharacterEncodingFilter("UTF-8", true))
+									  .build();
 	}
 	
 //	@Test
@@ -44,7 +50,7 @@ public class UserControllerTest {
 		log.info(resultPage);
 	}
 	
-	@Test
+//	@Test
 	public void registerPostTest() throws Exception {
 		String resultPage = mockMvc.perform(
 			MockMvcRequestBuilders
@@ -88,5 +94,26 @@ public class UserControllerTest {
 		.getViewName();
 
 		log.info(resultPage);
+	}
+	
+	@Test
+	public void adressTest() throws Exception {
+//		String resultObject = mockMvc.perform(
+//			MockMvcRequestBuilders
+//			.get("/adress")
+//			.param("u_id", "test")
+//		)
+//		.andReturn()
+//		.getResponse()
+//		.getContentType();
+//
+//		log.info(resultObject);
+		
+		mockMvc.perform(MockMvcRequestBuilders.get("/adress")
+					.contentType(MediaType.APPLICATION_JSON)
+					.content("{\"userId\": \"test\"}")
+					.characterEncoding("UTF-8"))
+	        	.andExpect(MockMvcResultMatchers.status().isOk())
+	        	.andDo(MockMvcResultHandlers.print());
 	}
 }

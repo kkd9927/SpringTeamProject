@@ -14,21 +14,13 @@ import lombok.extern.log4j.Log4j;
 @ContextConfiguration(classes = {com.project.config.RootConfig.class,
 								 com.project.config.SecurityConfig.class})
 @Log4j
-public class UserMapperTest {
+public class UserAddrMapperTest {
 	@Autowired
-	private UserMapper mapper;
+	private UserAddrMapper mapper;
 	
 //	@Test
 	public void insertTest() {
-		UserDTO user = new UserDTO();
-		user.setU_id("test_id2");
-		user.setU_pw("test_pw");
-		user.setU_rname("test_name");
-		user.setU_phone("01012341112");
-		user.setU_code(1);
-		log.info(user);
 		
-		mapper.insert(user);
 	}
 	
 	@Test
