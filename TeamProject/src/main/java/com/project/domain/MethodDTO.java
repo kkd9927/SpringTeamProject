@@ -7,4 +7,6 @@ public class MethodDTO {
 
 	private int p_code;
 	private int r_id;
+	private String p_cname;
+	
 }

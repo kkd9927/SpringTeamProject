@@ -58,7 +58,7 @@
 	
 	<select id="read" resultType="com.project.domain.RestDTO">
 		select
-		        r_id, r_lname, r_bname, r_tel, r_intro, r_minprice, r_img
+		        r_id, r_lname, r_bname, r_tel, r_intro, r_minprice, r_img, r_addr, r_dtad
 		from
 		        rest_info
 		where
@@ -76,7 +76,7 @@
 	
 	<select id="getOpenList" resultType="com.project.domain.RestOpenDTO">
 		select
-		        r_id, A.w_code, to_char(r_opent, 'HH24:MI') as r_opent, to_char(r_closet, 'HH24:MI') as r_closet, w_cname
+		        r_id, A.w_code, r_opent, r_closet, w_cname
 		from
 		        rest_open A join week_code B on A.w_code = B.w_code
 		where

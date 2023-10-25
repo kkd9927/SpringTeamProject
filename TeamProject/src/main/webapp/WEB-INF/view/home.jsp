@@ -1,10 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<<<<<<< HEAD
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-=======
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
->>>>>>> branch 'feature/menu' of https://github.com/kkd9927/SpringTeamProject.git
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,11 +23,7 @@
                         <div class="carousel-item active">
                             <div class="image-box">
                                 <a href="#">
-<<<<<<< HEAD
-                                    <img src="/resources/img/no-photo.png">
-=======
                                     <img src="/resources/img/no-img.png">
->>>>>>> main
                                 </a>
                             </div>
                         </div>
@@ -38,11 +31,7 @@
                         <div class="carousel-item">
                             <div class="image-box">
                                 <a href="#">
-<<<<<<< HEAD
-                                    <img src="/resources/img/no-photo.png">
-=======
                                     <img src="/resources/img/no-img.png">
->>>>>>> main
                                 </a>
                             </div>
                         </div>
@@ -50,11 +39,7 @@
                         <div class="carousel-item">
                             <div class="image-box">
                                 <a href="#">
-<<<<<<< HEAD
-                                    <img src="/resources/img/no-photo.png">
-=======
                                     <img src="/resources/img/no-img.png">
->>>>>>> main
                                 </a>
                             </div>
                         </div>
@@ -90,7 +75,6 @@
             -->
             <div class="category-box">
                 <div class="row">
-<<<<<<< HEAD
                 	<c:forEach items="${category}" var="cat">
 	                    <div class="col-md-2 col-sm-4">
 	                        <div class="category-box">
@@ -101,22 +85,7 @@
 	                        </div>
 	                    </div>
                 	</c:forEach>
-                	
-=======
-                    <div class="col-md-2 col-sm-4">
-                        <div class="category-box">
-                            <a href="#">
-<<<<<<< HEAD
-                                <img src="/resources/img/no-photo.png">
-=======
-                                <img src="/resources/img/no-img.png">
->>>>>>> main
-                            </a>
-                        </div>
-                    </div>
->>>>>>> branch 'feature/menu' of https://github.com/kkd9927/SpringTeamProject.git
-
-<<<<<<< HEAD
+              
 <!--                     <div class="col-md-2 col-sm-4"> -->
 <!--                         <div class="category-box"> -->
 <!--                             <a href="#"> -->
@@ -124,21 +93,7 @@
 <!--                             </a> -->
 <!--                         </div> -->
 <!--                     </div> -->
-=======
-                    <div class="col-md-2 col-sm-4">
-                        <div class="category-box">
-                            <a href="#">
-<<<<<<< HEAD
-                                <img src="/resources/img/no-photo.png">
-=======
-                                <img src="/resources/img/no-img.png">
->>>>>>> main
-                            </a>
-                        </div>
-                    </div>
->>>>>>> branch 'feature/menu' of https://github.com/kkd9927/SpringTeamProject.git
 
-<<<<<<< HEAD
 <!--                     <div class="col-md-2 col-sm-4"> -->
 <!--                         <div class="category-box"> -->
 <!--                             <a href="#"> -->
@@ -146,21 +101,6 @@
 <!--                             </a> -->
 <!--                         </div> -->
 <!--                     </div> -->
-=======
-                    <div class="col-md-2 col-sm-4">
-                        <div class="category-box">
-                            <a href="#">
-<<<<<<< HEAD
-                                <img src="/resources/img/no-photo.png">
-=======
-                                <img src="/resources/img/no-img.png">
->>>>>>> main
-                            </a>
-                        </div>
-                    </div>
->>>>>>> branch 'feature/menu' of https://github.com/kkd9927/SpringTeamProject.git
-
-<<<<<<< HEAD
 <!--                     <div class="col-md-2 col-sm-4"> -->
 <!--                         <div class="category-box"> -->
 <!--                             <a href="#"> -->
@@ -168,21 +108,7 @@
 <!--                             </a> -->
 <!--                         </div> -->
 <!--                     </div> -->
-=======
-                    <div class="col-md-2 col-sm-4">
-                        <div class="category-box">
-                            <a href="#">
-<<<<<<< HEAD
-                                <img src="/resources/img/no-photo.png">
-=======
-                                <img src="/resources/img/no-img.png">
->>>>>>> main
-                            </a>
-                        </div>
-                    </div>
->>>>>>> branch 'feature/menu' of https://github.com/kkd9927/SpringTeamProject.git
 
-<<<<<<< HEAD
 <!--                     <div class="col-md-2 col-sm-4"> -->
 <!--                         <div class="category-box"> -->
 <!--                             <a href="#"> -->
@@ -190,21 +116,6 @@
 <!--                             </a> -->
 <!--                         </div> -->
 <!--                     </div> -->
-=======
-                    <div class="col-md-2 col-sm-4">
-                        <div class="category-box">
-                            <a href="#">
-<<<<<<< HEAD
-                                <img src="/resources/img/no-photo.png">
-=======
-                                <img src="/resources/img/no-img.png">
->>>>>>> main
-                            </a>
-                        </div>
-                    </div>
->>>>>>> branch 'feature/menu' of https://github.com/kkd9927/SpringTeamProject.git
-
-<<<<<<< HEAD
 <!--                     <div class="col-md-2 col-sm-4"> -->
 <!--                         <div class="category-box"> -->
 <!--                             <a href="#"> -->
@@ -212,19 +123,6 @@
 <!--                             </a> -->
 <!--                         </div> -->
 <!--                     </div> -->
-=======
-                    <div class="col-md-2 col-sm-4">
-                        <div class="category-box">
-                            <a href="#">
-<<<<<<< HEAD
-                                <img src="/resources/img/no-photo.png">
-=======
-                                <img src="/resources/img/no-img.png">
->>>>>>> main
-                            </a>
-                        </div>
-                    </div>
->>>>>>> branch 'feature/menu' of https://github.com/kkd9927/SpringTeamProject.git
                 </div>
             </div>
             <!-- 카테고리 끝 -->

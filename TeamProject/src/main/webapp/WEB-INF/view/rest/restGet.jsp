@@ -63,10 +63,10 @@
 
                 <button type="button" class="btn btn-light">로그아웃</button> -->
         </div>
-        </div>
     </nav>
 
     <!-- 컨텐츠 -->
+    <c:set var="rest" value="${rest}"/>
     <div class="contents">
         <div class="container-md">
             <div class="restaurant-box">
@@ -76,7 +76,8 @@
 
                 <!-- JS 이용해 라디오 버튼의 체크에 따라 해당 탭 보여줌 (부트스트랩 visually-hidden 클래스 넣고 빼는식) -->
                 <div class="title-box pt-4">
-                    <h2>가게이름</h2>
+<!--                     <h2>가게이름</h2> -->
+                    <h2>${rest.r_lname}</h2>
                     <p><i class="bi bi-star-fill text-warning"></i>&nbsp;0.0</p>
 
                     <div class="row">
@@ -183,12 +184,16 @@
 						
                         <div class="row p-2">
                             <!-- 영업시간 -->
-                            <div class="col-3">
-                                <p>영업시간</p>
-                            </div>
-							<c:forEach items="restOpen" var="open">
+                            
+<!--                             <div class="col-9"> -->
+<!--                                 <p>내용</p> -->
+<!--                             </div> -->
+							<c:forEach items="${restOpen}" var="open">
+								<div class="col-3">
+	                                <p>영업시간</p>
+	                            </div>
 	                            <div class="col-9">
-	                                <p>요일 &nbsp; ${open.r_opent} ~ $(open.r_closet)</p>
+	                                <p><b>${open.w_cname }요일</b> &nbsp; <b>${open.r_opent} ~ ${open.r_closet}</b></p>
 	                            </div>
 							</c:forEach>
 
@@ -207,7 +212,7 @@
                             </div>
 
                             <div class="col-9">
-                                <p>내용</p>
+                                <p><b>${rest.r_addr}</b><b>${rest.r_dtad}</b></p>
                             </div>
                         </div>
                     </div>
@@ -224,7 +229,7 @@
                             </div>
 
                             <div class="col-9">
-                                <p>내용</p>
+                                <p><b>${rest.r_minprice }</b></p>
                             </div>
 
                             <!-- 결제수단 -->
@@ -233,7 +238,11 @@
                             </div>
 
                             <div class="col-9">
-                                <p>내용</p>
+                                <p>
+									<c:forEach items="${restMethod}" var="method">
+										<b>${method.p_cname}</b>
+									</c:forEach>
+								</p>
                             </div>
                         </div>
                     </div>

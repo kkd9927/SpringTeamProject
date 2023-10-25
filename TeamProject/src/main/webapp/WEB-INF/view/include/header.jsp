@@ -2,13 +2,8 @@
 <nav class="navbar navbar-light bg-danger position-fixed">
     <div class="container-md">
         <div>
-<<<<<<< HEAD
-            <a class="navbar-brand" href="/home">
-                <img src="/resources/img/no-photo.png" width="30" height="30">
-=======
             <a class="navbar-brand" href="/">
                 <img src="/resources/img/no-img.png" width="30" height="30">
->>>>>>> main
             </a>
 
 			<sec:authorize access="isAuthenticated()">

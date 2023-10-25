@@ -21,7 +21,8 @@ import lombok.extern.log4j.Log4j;
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @ContextConfiguration(classes = {com.project.config.RootConfig.class,
-								 com.project.config.ServletConfig.class})
+								 com.project.config.ServletConfig.class,
+								 com.project.config.SecurityConfig.class})
 @Log4j
 public class RestControllerTest {
 
@@ -92,9 +93,16 @@ public class RestControllerTest {
 		log.info(resultPage);
 	}
 	
-//	@Test //c_code 가 ? 인 매장들 조회
+	@Test //c_code 가 ? 인 매장들 조회
 	public void testGetList() throws Exception {
 		log.info(mockMvc.perform(MockMvcRequestBuilders.get("/rest/restList").param("c_code", "22"))
+								.andReturn().getModelAndView().getModelMap()
+				);
+	}
+	
+//	@Test
+	public void testGetCodeList() throws Exception {
+		log.info(mockMvc.perform(MockMvcRequestBuilders.get("/"))
 								.andReturn().getModelAndView().getModelMap()
 				);
 	}
