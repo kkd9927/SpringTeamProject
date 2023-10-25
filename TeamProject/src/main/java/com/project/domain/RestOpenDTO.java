@@ -14,6 +14,7 @@ public class RestOpenDTO {
 	private int w_code;
 	@DateTimeFormat(pattern = "HH24:MI")
 	private Date r_opent;
+	@DateTimeFormat(pattern = "HH24:MI")
 	private Date r_closet;
 	private String w_cname;
 	
