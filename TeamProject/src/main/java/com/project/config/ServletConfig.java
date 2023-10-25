@@ -10,12 +10,8 @@ import org.springframework.web.servlet.view.JstlView;
 
 @EnableWebMvc
 @ComponentScan(basePackages = {"com.project.controller", "com.project.exception"})
-<<<<<<< HEAD
 public class ServletConfig implements WebMvcConfigurer{
 	
-=======
-public class ServletConfig implements WebMvcConfigurer {
->>>>>>> main
 	@Override
 	public void configureViewResolvers(ViewResolverRegistry registry) {
 		
