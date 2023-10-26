@@ -43,7 +43,7 @@
 			    </a>
 			    
 			    <!-- * 버튼 클릭시 회원정보 페이지로 이동 -->
-			    <a href="/user/${u_id}" id="${u_id}" class="btn btn-danger btn-user"><i class="bi bi-person-fill" style="font-size: 1.5rem;"></i></a>
+			    <a href="/user/${principal.user.u_id}" id="${principal.user.u_id}" class="btn btn-danger btn-user"><i class="bi bi-person-fill" style="font-size: 1.5rem;"></i></a>
 			
 			    <a href="/logout" class="btn btn-light">로그아웃</a>
 			</div>
@@ -56,7 +56,7 @@
 	    <div class="modal-dialog modal-dialog-scrollable">
 	        <div class="modal-content">
 	            <div class="modal-body">
-	                <h4>주소설정</h4>
+	                <h4>주소설정</h4> 
 	                
 	                <hr>
 	                
@@ -88,41 +88,43 @@
 	                    
 						<!-- 등록 폼 -->
 	                    <li id="form-addr" class="list-group-item form-toggle">
-	                        <div class="row">
-	                            <label class="col-2 col-form-label">태그</label>
-	                            <div class="col-4">
-	                                <select id="select-addr-tag" class="form-select">
-	                                    <option value="1">집</option>
-	                                    <option value="2">회사</option>
-	                                    <option value="3">직접입력</option>
-	                                </select>
-	                            </div>
-	
-	                            <div class="col-6">
-	                                <input type="text" id="input-addr-tag" class="form-control form-toggle">
-	                            </div>
-	                        </div>
-	
-	                        <div class="row">
-	                            <label class="col-2 col-form-label">주소</label>
-	                            <div class="col-7">
-	                                <input type="text" id="input-addr" class="form-control">
-	                            </div>
-	                            <div class="col-3">
-	                                <button id="addr-find" class="btn btn-primary">주소찾기</button>
-	                            </div>
-	                            <div class="col-2"></div>
-	                            <div class="col-10">
-	                                <input type="text" id="input-dtad" class="form-control">
-	                            </div>
-	                        </div>
-	
-	                        <div class="row">
-	                            <div class="col-12">
-	                                <button id="accept-addr-add" class="btn btn-primary">확인</button>
-	                                <button id="accept-addr-cancel" class="btn btn-secondary">취소</button>
-	                            </div>
-	                        </div>
+		                    <form action="/address/add" method="post">
+		                        <div class="row">
+		                            <label class="col-2 col-form-label">태그</label>
+		                            <div class="col-4">
+		                                <select id="select-addr-tag" class="form-select">
+		                                    <option value="1">집</option>
+		                                    <option value="2">회사</option>
+		                                    <option value="3">직접입력</option>
+		                                </select>
+		                            </div>
+		
+		                            <div class="col-6">
+		                                <input type="text" id="input-addr-tag" class="form-control form-toggle">
+		                            </div>
+		                        </div>
+		
+		                        <div class="row">
+		                            <label class="col-2 col-form-label">주소</label>
+		                            <div class="col-7">
+		                                <input type="text" id="input-addr" class="form-control">
+		                            </div>
+		                            <div class="col-3">
+		                                <button id="addr-find" class="btn btn-primary">주소찾기</button>
+		                            </div>
+		                            <div class="col-2"></div>
+		                            <div class="col-10">
+		                                <input type="text" id="input-dtad" class="form-control">
+		                            </div>
+		                        </div>
+		
+		                        <div class="row">
+		                            <div class="col-12">
+		                                <button id="accept-addr-add" class="btn btn-primary">확인</button>
+		                                <button id="accept-addr-cancel" class="btn btn-secondary">취소</button>
+		                            </div>
+		                        </div>
+		                    </form>
 	                    </li>
 	                </ul>
 	            </div>
@@ -166,17 +168,19 @@
 		addr = $("#input-addr").val();
 		dtad = $("#input-dtad").val();
 		
-		const param = {u_id: id, u_atag: tag, u_addr: addr, u_dtad: dtad}
+		const data = {
+			u_id: id, 
+			u_atag: tag, 
+			u_addr: addr, 
+			u_dtad: dtad
+		}
 		
 		$.ajax({
-			type: "post",
-			contentType: "application/json; charset=UTF-8",
+			type: "POST",
+			contentType: "application/json",
 			url: "/address/add",
-			data: param,
+			data: JSON.stringify(data),
 			dataType: "json"
-		})
-		.done(function(data) {
-			location.reload();
-		})
+		});
 	});
 </script>

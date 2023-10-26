@@ -1,7 +1,8 @@
 package com.project.controller;
 
-import java.util.List;
+import javax.servlet.http.HttpSession;
 
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,20 +12,18 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.domain.UserAddrDTO;
-import com.project.domain.UserAddrVO;
 import com.project.domain.UserDTO;
-import com.project.service.UserAddrService;
+import com.project.security.CustomUser;
+import com.project.security.CustomUserDetailsService;
 import com.project.service.UserService;
 
 import lombok.RequiredArgsConstructor;
-import lombok.extern.log4j.Log4j;
 
 @Controller
 @RequiredArgsConstructor
-@Log4j
 public class UserController {
 	private final UserService userService;
-	private final UserAddrService userAddrService;
+	private final CustomUserDetailsService customUserDetailsService;
 	
 	@GetMapping("/register")
 	public String register() {
@@ -60,9 +59,10 @@ public class UserController {
 	
 	@PostMapping("/address/add")
 	@ResponseBody
-	public List<UserAddrVO> addAddress(@RequestBody UserAddrDTO addr) {
-		userAddrService.addAddr(addr);
-		log.info(addr);
-		return userAddrService.getAddr(addr.getU_id());
+	public String addAddress(@RequestBody UserAddrDTO addr, @AuthenticationPrincipal CustomUser customUser, HttpSession session) {
+		UserDTO user = userService.addAddr(addr);
+		session.setAttribute("principal", customUserDetailsService.loadUserByUsername(user.getU_id()));
+		
+		return "OK";
 	}
 }
