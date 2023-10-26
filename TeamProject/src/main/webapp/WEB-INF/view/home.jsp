@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html>
@@ -73,60 +75,33 @@
             -->
             <div class="category-box">
                 <div class="row">
-                    <div class="col-md-2 col-sm-4">
-                        <div class="category-box">
-                            <a href="#">
-                                <img src="/resources/img/no-img.png">
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-md-2 col-sm-4">
-                        <div class="category-box">
-                            <a href="#">
-                                <img src="/resources/img/no-img.png">
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-md-2 col-sm-4">
-                        <div class="category-box">
-                            <a href="#">
-                                <img src="/resources/img/no-img.png">
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-md-2 col-sm-4">
-                        <div class="category-box">
-                            <a href="#">
-                                <img src="/resources/img/no-img.png">
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-md-2 col-sm-4">
-                        <div class="category-box">
-                            <a href="#">
-                                <img src="/resources/img/no-img.png">
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-md-2 col-sm-4">
-                        <div class="category-box">
-                            <a href="#">
-                                <img src="/resources/img/no-img.png">
-                            </a>
-                        </div>
-                    </div>
+                	<c:forEach items="${category}" var="cat">
+	                    <div class="col-md-2 col-sm-4">
+	                        <div class="category-box">
+	                            <a href="/rest/restList?c_code=${cat.c_code}">
+	                                <img src="/resources/img/french.png">
+	                            </a>
+	                             <p>${cat.c_cname}
+	                        </div>
+	                    </div>
+                	</c:forEach>
                 </div>
             </div>
             <!-- 카테고리 끝 -->
         </div>
     </div>
 	
-	<%@ include file="/WEB-INF/view/include/footer.jsp" %>
+	<!-- 푸터 시작 -->
+    <div class="footer bg-light position-relative bottom-0">
+        <div class="container-md">
+            <div class="p-3">
+                <h4>DELIVERY WEB</h4>
+                <hr>
+                <p>개발: 김기덕, 노현서, 박종민, 정진성</p>
+            </div>
+        </div>
+    </div>
+    <!-- 푸터 끝 -->
 	
 	<script src="/resources/js/delivery.js"></script>
 </body>
