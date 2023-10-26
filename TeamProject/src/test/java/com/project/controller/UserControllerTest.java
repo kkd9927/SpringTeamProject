@@ -96,10 +96,14 @@ public class UserControllerTest {
 		log.info(resultPage);
 	}
 	
-//	@Test
-//	public void adressTest() throws Exception {
-//		mockMvc.perform(MockMvcRequestBuilders.get("/address?u_id=test"))
-//    	.andExpect(MockMvcResultMatchers.status().isOk())
-//    	.andDo(MockMvcResultHandlers.print());
-//	}
+	@Test
+	public void adressTest() throws Exception {
+		mockMvc.perform(MockMvcRequestBuilders
+			.post("/address/add")
+			.contentType(MediaType.APPLICATION_JSON)
+			.content("{\"u_id\": \"test\", \"u_atag\": \"친구집\", \"u_addr\": \"부산시 부산진구\", \"u_dtad\": \"부전동 400-4\"}")
+		)
+    	.andExpect(MockMvcResultMatchers.status().isOk())
+    	.andDo(MockMvcResultHandlers.print());
+	}
 }

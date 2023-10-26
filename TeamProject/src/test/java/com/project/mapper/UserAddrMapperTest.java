@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.project.domain.UserDTO;
+import com.project.domain.UserAddrDTO;
 
 import lombok.extern.log4j.Log4j;
 
@@ -18,12 +18,20 @@ public class UserAddrMapperTest {
 	@Autowired
 	private UserAddrMapper mapper;
 	
-//	@Test
+	@Test
 	public void insertTest() {
+		UserAddrDTO addr = new UserAddrDTO();
+		addr.setU_id("test");
+		addr.setU_atag("회사");
+		addr.setU_addr("부산시 부산진구");
+		addr.setU_dtad("부전동 200-2");
 		
+		mapper.insert(addr);
+		
+		log.info(addr);
 	}
 	
-	@Test
+//	@Test
 	public void selectByUserIdTest() {
 		log.info(mapper.selectByUserId("test"));
 	}

@@ -88,43 +88,41 @@
 	                    
 						<!-- 등록 폼 -->
 	                    <li id="form-addr" class="list-group-item form-toggle">
-	                    	<form action="/" method="post">
-		                        <div class="row">
-		                            <label class="col-2 col-form-label">태그</label>
-		                            <div class="col-4">
-		                                <select id="select-addr-tag" class="form-select">
-		                                    <option value="1">집</option>
-		                                    <option value="2">회사</option>
-		                                    <option value="3">직접입력</option>
-		                                </select>
-		                            </div>
-		
-		                            <div class="col-6">
-		                                <input type="text" id="input-addr-tag" class="form-control form-toggle">
-		                            </div>
-		                        </div>
-		
-		                        <div class="row">
-		                            <label class="col-2 col-form-label">주소</label>
-		                            <div class="col-7">
-		                                <input type="text" id="addr-input" class="form-control" disabled>
-		                            </div>
-		                            <div class="col-3">
-		                                <button id="addr-find" class="btn btn-primary">주소찾기</button>
-		                            </div>
-		                            <div class="col-2"></div>
-		                            <div class="col-10">
-		                                <input type="text" id="dtad-input" class="form-control">
-		                            </div>
-		                        </div>
-		
-		                        <div class="row">
-		                            <div class="col-12">
-		                                <button id="accept-addr-add" class="btn btn-primary">확인</button>
-		                                <button id="accept-addr-cancel" class="btn btn-secondary">취소</button>
-		                            </div>
-		                        </div>
-	                    	</form>
+	                        <div class="row">
+	                            <label class="col-2 col-form-label">태그</label>
+	                            <div class="col-4">
+	                                <select id="select-addr-tag" class="form-select">
+	                                    <option value="1">집</option>
+	                                    <option value="2">회사</option>
+	                                    <option value="3">직접입력</option>
+	                                </select>
+	                            </div>
+	
+	                            <div class="col-6">
+	                                <input type="text" id="input-addr-tag" class="form-control form-toggle">
+	                            </div>
+	                        </div>
+	
+	                        <div class="row">
+	                            <label class="col-2 col-form-label">주소</label>
+	                            <div class="col-7">
+	                                <input type="text" id="input-addr" class="form-control">
+	                            </div>
+	                            <div class="col-3">
+	                                <button id="addr-find" class="btn btn-primary">주소찾기</button>
+	                            </div>
+	                            <div class="col-2"></div>
+	                            <div class="col-10">
+	                                <input type="text" id="input-dtad" class="form-control">
+	                            </div>
+	                        </div>
+	
+	                        <div class="row">
+	                            <div class="col-12">
+	                                <button id="accept-addr-add" class="btn btn-primary">확인</button>
+	                                <button id="accept-addr-cancel" class="btn btn-secondary">취소</button>
+	                            </div>
+	                        </div>
 	                    </li>
 	                </ul>
 	            </div>
@@ -150,17 +148,35 @@
 		}
 	});
 	
-// 	$("accept-addr-add").on("click", function() {
-// 		let param = {u_id: ${}}
+	$("#accept-addr-add").on("click", function() {
+		let id = $(".btn-user").attr("id");
+		let tag;
+		let addr;
+		let dtad;
 		
-// 		$.ajax({
-// 			type: "post",
-// 			url: "/address/add",
-// 			data: {},
-// 			dataType: "json"
-// 		})
-// 		.done(function(data) {
-			
-// 		})
-// 	});
+		let selNum = $("#select-addr-tag option:selected").val()
+		if(selNum == 1) {
+			tag = "집";
+		} else if(selNum == 2) {
+			tag = "회사";
+		} else {
+			tag = $("#input-addr-tag").val() == "" ? "null" : $("#input-addr-tag").val();
+		}
+		
+		addr = $("#input-addr").val();
+		dtad = $("#input-dtad").val();
+		
+		const param = {u_id: id, u_atag: tag, u_addr: addr, u_dtad: dtad}
+		
+		$.ajax({
+			type: "post",
+			contentType: "application/json; charset=UTF-8",
+			url: "/address/add",
+			data: param,
+			dataType: "json"
+		})
+		.done(function(data) {
+			location.reload();
+		})
+	});
 </script>

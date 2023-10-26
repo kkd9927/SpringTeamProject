@@ -7,19 +7,21 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.project.domain.UserAddrDTO;
 import com.project.domain.UserAddrVO;
 import com.project.domain.UserDTO;
 import com.project.service.UserAddrService;
 import com.project.service.UserService;
 
-import jdk.internal.org.jline.utils.Log;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j;
 
 @Controller
 @RequiredArgsConstructor
+@Log4j
 public class UserController {
 	private final UserService userService;
 	private final UserAddrService userAddrService;
@@ -41,7 +43,7 @@ public class UserController {
 		if(user.getU_code() == 1) {
 			return "redirect:/";
 		} else {
-			return "user/registerBusiForm";
+			return "/rest/restRegister";
 		}
 	}
 	
@@ -54,5 +56,13 @@ public class UserController {
 	public String loginFailed(Model model) {
 		model.addAttribute("loginError", true);
 		return "user/login";
+	}
+	
+	@PostMapping("/address/add")
+	@ResponseBody
+	public List<UserAddrVO> addAddress(@RequestBody UserAddrDTO addr) {
+		userAddrService.addAddr(addr);
+		log.info(addr);
+		return userAddrService.getAddr(addr.getU_id());
 	}
 }
