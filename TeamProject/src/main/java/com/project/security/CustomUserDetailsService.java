@@ -21,10 +21,12 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class CustomUserDetailsService implements UserDetailsService {
 	private final UserMapper userMapper;
+	private final UserAddrMapper addrMapper;
 	
 	@Override
 	public UserDetails loadUserByUsername(String u_id) throws UsernameNotFoundException {
 		UserVO user = userMapper.selectByUserId(u_id);
+		List<UserAddrVO> addr = (ArrayList<UserAddrVO>)addrMapper.selectByUserId(u_id);
 		
 		if(user == null) {
 			throw new UsernameNotFoundException("존재하지 않는 유저입니다.");
@@ -44,6 +46,6 @@ public class CustomUserDetailsService implements UserDetailsService {
 			authorities.add(new SimpleGrantedAuthority("BUSINESS"));
 		}
 		
-		return new CustomUser(user, authorities);
+		return new CustomUser(user, addr, authorities);
 	}
 }

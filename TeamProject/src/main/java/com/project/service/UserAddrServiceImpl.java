@@ -17,6 +17,6 @@ public class UserAddrServiceImpl implements UserAddrService {
 	
 	@Override
 	public List<UserAddrVO> getAddr(String u_id) {
-		return (ArrayList<UserAddrVO>)mapper.selectByUserId(u_id);
+		return mapper.selectByUserId(u_id);
 	}
 }

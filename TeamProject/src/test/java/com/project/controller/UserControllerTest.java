@@ -96,9 +96,10 @@ public class UserControllerTest {
 		log.info(resultPage);
 	}
 	
-	@Test
-	public void adressTest() throws Exception {mockMvc.perform(MockMvcRequestBuilders.get("/address?u_id=test"))
-	        	.andExpect(MockMvcResultMatchers.status().isOk())
-	        	.andDo(MockMvcResultHandlers.print());
-	}
+//	@Test
+//	public void adressTest() throws Exception {
+//		mockMvc.perform(MockMvcRequestBuilders.get("/address?u_id=test"))
+//    	.andExpect(MockMvcResultMatchers.status().isOk())
+//    	.andDo(MockMvcResultHandlers.print());
+//	}
 }

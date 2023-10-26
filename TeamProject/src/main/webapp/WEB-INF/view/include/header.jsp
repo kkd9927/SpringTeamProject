@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <sec:authorize access="isAuthenticated()">
-	<sec:authentication property="principal.user.u_id" var="u_id"/>
+	<sec:authentication property="principal.addr" var="addr"/>
+	<c:set var="current-addr" value="${addr.get(0)"/>
 </sec:authorize>
 
 <nav class="navbar navbar-light bg-danger position-fixed">
@@ -14,7 +16,7 @@
 			<sec:authorize access="isAuthenticated()">
             	<span class="navbar-text text-white">
             		<i class="bi bi-geo-alt-fill"></i>
-            		<b id="text-address">주소표시</b>
+            		<b id="current-addr"><c:out value="${current-addr.u_atag}"/></b>
             	</span>
            		<button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#addressModal"><i class="bi bi-caret-down-fill"></i></button>
         	</sec:authorize>
@@ -50,39 +52,39 @@
     </div>
 </nav>
 
+<sec:authorize access="isAuthenticated()">
 <div class="modal fade" id="addressModal" tabindex="-1" aria-labelledby="addressModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-body">
                 <h4>주소설정</h4>
+                
                 <hr>
+                
                 <ul id="addr-list" class="list-group list-group-flush">
-                    <li id="addr-1" class="list-group-item">
-                        <button type="button" id="btn-addr-current" class="bg-white border-0">
-                            <b id="addr-1-tag">집</b>
-                            <span id="addr-1-addr">부산광역시 부산진구</span>
-                            <spqn id="addr-1-dtad">부전동 100-1</spqn>
-                        </button>
-                        <span class="badge bg-danger">현재위치</span>
-                        <button type="button" id="btn-addr-1-delete" class="bg-white border-0"><i class="bi bi-x-lg text-danger"></i></button>
-                    </li>
-
-                    <li id="addr-2" class="list-group-item">
-                        <button type="button" id="btn-addr-2-current" class="bg-white border-0">
-                            <b id="addr-2-tag">회사</b>
-                            <span id="addr-2-addr">주소</span>
-                        </button>
-                        <button type="button" id="btn-addr-2-delete" class="bg-white border-0"><i class="bi bi-x-lg text-danger"></i></button>
-                    </li>
-
-                    <li id="addr-3" class="list-group-item">
-                        <button type="button" id="btn-addr-3-current" class="bg-white border-0">
-                            <b id="addr-3-tag"></b>
-                            <span id="addr-3-addr">주소</span>
-                        </button>
-                        <button type="button" id="btn-addr-3-delete" class="bg-white border-0"><i class="bi bi-x-lg text-danger"></i></button>
-                    </li>
-                    
+                	<c:forEach var="addr-item" items="${addr}" varStatus="stat">                	
+	                    <li id="list-addr-${stat.count}" class="list-group-item">
+<%-- 	                    	<c:choose> --%>
+<%-- 								<c:when test="${current-addr eq addr-item.u_atag}"> --%>
+<!-- 									<button type="button" id="addr-select" class="bg-white border-0" disabled> -->
+<%-- 								</c:when> --%>
+<%-- 								<c:otherwise> --%>
+<!-- 									<button type="button" id="addr-select" class="bg-white border-0"> -->
+<%-- 								</c:otherwise> --%>
+<%-- 	                    	</c:choose> --%>
+<!-- 	                    	<button type="button" id="addr-select" class="bg-white border-0"> -->
+<%-- 	                            <b id="addr-${stat.count}-tag"><c:out value="${addr-item.u_atag}"/></b> --%>
+<%-- 	                            <span id="addr-${stat.count}-addr"><c:out value="${addr-item.u_addr}"/></span> --%>
+<%-- 	                            <span id="addr-${stat.count}-dtad"><c:out value="${addr-item.u_dtad}"/></span> --%>
+<!-- 	                        </button> -->
+<%-- 	                        <c:if test="${addr.get(0).u_atag eq addr-item.u_atag}">	                    	 --%>
+<!-- 	                        	<span class="badge bg-danger">현재위치</span>	 -->
+<%-- 	                    	</c:if> --%>
+<!-- 	                    	<span class="badge bg-danger">현재위치</span>	 -->
+<%-- 	                        <button type="button" id="addr-${stat.count}-delete" class="bg-white border-0"><i class="bi bi-x-lg text-danger"></i></button> --%>
+	                    </li>
+                	</c:forEach>
+                	
                     <li id="addr-add" class="list-group-item">
                         <button type="button" id="btn-add-addr" class="bg-white border-0"><i class="bi bi-plus-lg text-primary"></i></button>
                     </li>
@@ -135,46 +137,4 @@
         </div>
     </div>
 </div>
-
-<sec:authorize access="isAuthenticated()">
-	<script>
-		$(function() {
-			let u_id = $(".btn-user").attr("id");
-			
-			$.ajax({
-				type: "GET",
-				url: `/address?u_id=${u_id}`,
-				dataType: "json"
-			})
-			.done(function(data) {
-				if(data.length == 0) {					
-					$("#text-address").text("주소를 설정해주세요.");
-				} else {	
-					if(data[0].u_atag == null) {
-						$("#text-address").text(`${data[0].u_addr} ${data[0].u_dtad}`);
-					} else {					
-						$("#text-address").text(data[0].u_atag);
-					}
-					
-					for(let i=0; i<data.length; i++) {
-						$("#addr-list")
-							.append($("<li>").attr("id", `addr-${i}`).attr("class", "list-group-item").attr("disabled", true)
-								.append($("<button>").attr("id", `${i}-btn`).attr("class", "bg-white border-0")
-									.append($("<b>").attr("id", `${i}-atag`).text(data[i].u_atag))
-									.append($("<span>").attr("id", `${i}-addr`).text(data[i].u_addr))
-									.append($("<span>").attr("id", `${i}-dtad`).text(data[i].u_dtad))
-								)
-								.append($("<button>").attr("id", `addr-${i}-delete`).attr("class", "bg-white border-0")
-									.append($("<i>").attr("class", "bi bi-x-lg text-danger"))
-								)
-							);
-						
-						if($(".list-group-item").attr("id") == "addr-0") {
-							
-						}
-					}
-				}
-			});
-		});
-	</script>
 </sec:authorize>

@@ -55,10 +55,4 @@ public class UserController {
 		model.addAttribute("loginError", true);
 		return "user/login";
 	}
-	
-	@GetMapping("/address")
-	@ResponseBody
-	public List<UserAddrVO> address(String u_id) {
-		return userAddrService.getAddr(u_id);
-	}
 }
