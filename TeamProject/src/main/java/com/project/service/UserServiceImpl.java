@@ -1,6 +1,7 @@
 package com.project.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -8,9 +9,9 @@ import org.springframework.stereotype.Service;
 import com.project.domain.UserAddrDTO;
 import com.project.domain.UserAddrVO;
 import com.project.domain.UserDTO;
-import com.project.domain.UserVO;
 import com.project.mapper.UserAddrMapper;
 import com.project.mapper.UserMapper;
+import com.project.security.CustomUser;
 
 import lombok.RequiredArgsConstructor;
 
@@ -36,20 +37,37 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
-	public UserDTO addAddr(UserAddrDTO addr) {
+	public void addAddr(UserAddrDTO addr) {
 		addrMapper.insert(addr);
+	}
+	
+	@Override
+	public void removeAddr(UserAddrDTO addr) {
+		addrMapper.delete(addr);
+	}
+
+	@Override
+	public void modifyNname(Map<String, String> map) {
+		userMapper.updateNname(map.get("u_id"), map.get("u_nname"));
+	}
+
+	@Override
+	public void modifyImg(Map<String, String> map) {
+		userMapper.updateImg(map.get("u_id"), map.get("u_nname"));
+	}
+
+	@Override
+	public int modifyPassword(Map<String, String> map, CustomUser user) {
+		if(!user.getUser().getU_pw().equals(encoder.encode(map.get("u_pw_before")))) {
+			return 0;
+		}
 		
-		UserVO vo = userMapper.selectByUserId(addr.getU_id());
-		UserDTO dto = new UserDTO();
-		dto.setU_id(vo.getU_id());
-		dto.setU_phone(encoder.encode(vo.getU_pw()));
-		dto.setU_rname(vo.getU_rname());
-		dto.setU_phone(vo.getU_phone());
-		dto.setU_nname(vo.getU_nname());
-		dto.setU_code(vo.getU_code());
-		dto.setU_regdate(vo.getU_regdate());
-		dto.setU_img(vo.getU_img());
-		
-		return dto;
+		userMapper.updatePassword(map.get("u_id"), encoder.encode(map.get("u_pw_after")));
+		return 1;
+	}
+
+	@Override
+	public void modifyPhone(Map<String, String> map) {
+		userMapper.updatePhone(map.get("u_id"), map.get("u_nname"));
 	}
 }

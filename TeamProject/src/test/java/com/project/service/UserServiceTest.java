@@ -1,5 +1,6 @@
 package com.project.service;
 
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -47,4 +48,18 @@ public class UserServiceTest {
 		
 		log.info(addr);
 	}
+	
+//	@Test
+	public void removeAddrTest() {
+		UserAddrDTO addr = new UserAddrDTO();
+		addr.setU_id("test");
+		addr.setU_atag("되라");
+		addr.setU_addr("되라");
+		addr.setU_dtad("되라");
+		service.removeAddr(addr);
+		
+		log.info(addr);
+	}
+	
+	
 }

@@ -18,7 +18,7 @@ public class UserAddrMapperTest {
 	@Autowired
 	private UserAddrMapper mapper;
 	
-	@Test
+//	@Test
 	public void insertTest() {
 		UserAddrDTO addr = new UserAddrDTO();
 		addr.setU_id("test");
@@ -34,5 +34,18 @@ public class UserAddrMapperTest {
 //	@Test
 	public void selectByUserIdTest() {
 		log.info(mapper.selectByUserId("test"));
+	}
+	
+	@Test
+	public void deleteTest() {
+		UserAddrDTO addr = new UserAddrDTO();
+		addr.setU_id("test");
+		addr.setU_atag("제발");
+		addr.setU_addr("제발");
+		addr.setU_dtad("제발");
+		
+		mapper.delete(addr);
+		
+		log.info(addr);
 	}
 }

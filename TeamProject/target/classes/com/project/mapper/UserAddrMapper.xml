@@ -18,4 +18,13 @@
 		VALUES
 			(#{u_id}, #{u_atag}, #{u_addr}, #{u_dtad})
 	</insert>
+	
+	<delete id="delete">
+		DELETE FROM
+			(SELECT * FROM USER_ADDR WHERE U_ID = #{u_id})
+		WHERE
+			U_ATAG = #{u_atag} AND
+			U_ADDR = #{u_addr} AND
+			U_DTAD = #{u_dtad}
+	</delete>
 </mapper>

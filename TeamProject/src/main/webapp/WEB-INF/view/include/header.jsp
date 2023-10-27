@@ -78,7 +78,7 @@
 		                        <c:if test="${principal.addr[0].u_atag eq addr.u_atag}">                        
 		                        	<span class="badge bg-danger">현재위치</span>	
 		                        </c:if>
-		                        <button type="button" id="addr-${stat.count}-delete" class="bg-white border-0"><i class="bi bi-x-lg text-danger"></i></button>
+		                        <button type="button" id="addr-${stat.count}-delete" class="bg-white border-0 btn-delete"><i class="bi bi-x-lg text-danger"></i></button>
 		                    </li>
 	                	</c:forEach>
 	                	
@@ -88,43 +88,41 @@
 	                    
 						<!-- 등록 폼 -->
 	                    <li id="form-addr" class="list-group-item form-toggle">
-		                    <form action="/address/add" method="post">
-		                        <div class="row">
-		                            <label class="col-2 col-form-label">태그</label>
-		                            <div class="col-4">
-		                                <select id="select-addr-tag" class="form-select">
-		                                    <option value="1">집</option>
-		                                    <option value="2">회사</option>
-		                                    <option value="3">직접입력</option>
-		                                </select>
-		                            </div>
-		
-		                            <div class="col-6">
-		                                <input type="text" id="input-addr-tag" class="form-control form-toggle">
-		                            </div>
-		                        </div>
-		
-		                        <div class="row">
-		                            <label class="col-2 col-form-label">주소</label>
-		                            <div class="col-7">
-		                                <input type="text" id="input-addr" class="form-control">
-		                            </div>
-		                            <div class="col-3">
-		                                <button id="addr-find" class="btn btn-primary">주소찾기</button>
-		                            </div>
-		                            <div class="col-2"></div>
-		                            <div class="col-10">
-		                                <input type="text" id="input-dtad" class="form-control">
-		                            </div>
-		                        </div>
-		
-		                        <div class="row">
-		                            <div class="col-12">
-		                                <button id="accept-addr-add" class="btn btn-primary">확인</button>
-		                                <button id="accept-addr-cancel" class="btn btn-secondary">취소</button>
-		                            </div>
-		                        </div>
-		                    </form>
+	                        <div class="row">
+	                            <label class="col-2 col-form-label">태그</label>
+	                            <div class="col-4">
+	                                <select id="select-addr-tag" class="form-select">
+	                                    <option value="1">집</option>
+	                                    <option value="2">회사</option>
+	                                    <option value="3">직접입력</option>
+	                                </select>
+	                            </div>
+	
+	                            <div class="col-6">
+	                                <input type="text" id="input-addr-tag" class="form-control form-toggle">
+	                            </div>
+	                        </div>
+	
+	                        <div class="row">
+	                            <label class="col-2 col-form-label">주소</label>
+	                            <div class="col-7">
+	                                <input type="text" id="input-addr" class="form-control">
+	                            </div>
+	                            <div class="col-3">
+	                                <button id="addr-find" class="btn btn-primary">주소찾기</button>
+	                            </div>
+	                            <div class="col-2"></div>
+	                            <div class="col-10">
+	                                <input type="text" id="input-dtad" class="form-control">
+	                            </div>
+	                        </div>
+	
+	                        <div class="row">
+	                            <div class="col-12">
+	                                <button id="accept-addr-add" class="btn btn-primary">확인</button>
+	                                <button id="accept-addr-cancel" class="btn btn-secondary">취소</button>
+	                            </div>
+	                        </div>
 	                    </li>
 	                </ul>
 	            </div>
@@ -176,11 +174,44 @@
 		}
 		
 		$.ajax({
-			type: "POST",
-			contentType: "application/json",
+			type: "post",
 			url: "/address/add",
+			headers: {
+			    'Content-Type': 'application/json'
+			},
 			data: JSON.stringify(data),
-			dataType: "json"
+			success: function(result) {
+				location.reload();
+			}
+		});
+	});
+	
+	$(".btn-delete").on("click", function() {
+		let eId = $(this).attr("id");
+		let listNum = eId.substr(5, 1);
+		
+		let id = $(".btn-user").attr("id");
+		let tag = $("#addr-" + listNum + "-tag").text();
+		let addr = $("#addr-" + listNum + "-addr").text();
+		let dtad = $("#addr-" + listNum + "-dtad").text();
+		
+		const data = {
+			u_id: id,
+			u_atag: tag,
+			u_addr: addr,
+			u_dtad: dtad
+		}
+		
+		$.ajax({
+			type: "delete",
+			url: "/address/remove",
+			headers: {
+			    'Content-Type': 'application/json'
+			},
+			data: JSON.stringify(data),
+			success: function(result) {
+				location.reload();
+			}
 		});
 	});
 </script>
