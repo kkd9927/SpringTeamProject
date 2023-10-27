@@ -1,0 +1,30 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.mapper.OrderMapper">
+    <insert id="insertOrderMenu">
+        INSERT INTO ORDER_MENU (O_NUM, M_ID, M_NUM, M_PRICE)
+        VALUES (#{orderNumber}, #{menuId}, #{menuNumber}, #{menuPrice})
+    </insert>
+
+    <insert id="insertOrderAdd">
+        INSERT INTO ORDER_ADD (O_NUM, M_ID, A_ID, A_NUM, A_PRICE)
+        VALUES (#{orderNumber}, #{menuId}, #{addId}, #{addNumber}, #{addPrice})
+    </insert>
+    
+    <select id="selectOrderMenus" resultType="com.project.domain.OrderMenu">
+	    SELECT O_NUM, M_ID, M_NUM, M_PRICE
+	    FROM ORDER_MENU
+	    WHERE O_NUM = #{orderNumber}
+	</select>
+
+	<select id="selectOrderAdds" resultType="com.project.domain.OrderAdd">
+	    SELECT O_NUM, M_ID, A_ID, A_NUM, A_PRICE
+	    FROM ORDER_ADD
+	    WHERE O_NUM = #{orderNumber} AND M_ID = #{menuId}
+	</select>
+	
+	<insert id="insertOrderInfo">
+        INSERT INTO ORDER_INFO (R_ID, U_ID, O_ADDR, P_CODE, T_CODE, S_CODE, O_TPRICE, O_REQ)
+        VALUES (#{rId}, #{uId}, #{oAddr}, #{pCode}, #{tCode},#{sCode},#{oTprice},#{oReq})
+    </insert>
+</mapper>
