@@ -1,37 +1,31 @@
 package com.project.mapper;
 
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Update;
-import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.*;
 import com.project.domain.ReviewInputDTO;
 
 public interface ReviewInputMapper {
-    // SELECT 쿼리
-    ReviewInputDTO getReviewInput(int oNum);
+    ReviewInputDTO getReviewInput(int o_num);
     
-    // INSERT 쿼리
     @Insert("INSERT INTO REVIEW_INFO (O_NUM, R_CONTENT, R_SCORE, R_WRIDATE) " +
-            "VALUES(#{oNum}, #{reviewContent}, #{reviewScore}, SYSDATE)")
+            "VALUES(#{o_num}, #{r_content}, #{r_score}, #{r_wriDate})")
     void insertReview(ReviewInputDTO reviewInput);
     
-    @Insert("INSERT INTO REVIEW_IMG (O_NUM, R_IMG) VALUES(#{oNum}, #{reviewImage})")
+    @Insert("INSERT INTO REVIEW_IMG (O_NUM, R_IMG) VALUES(#{o_num}, #{r_img})")
     void insertReviewImage(ReviewInputDTO reviewInput);
     
-    // UPDATE 쿼리
     @Update("UPDATE REVIEW_INFO " +
-            "SET R_CONTENT = #{reviewContent}, R_SCORE = #{reviewScore} " +
-            "WHERE O_NUM = #{oNum}")
+            "SET R_CONTENT = #{r_content}, R_SCORE = #{r_score} " +
+            "WHERE O_NUM = #{o_num}")
     void updateReview(ReviewInputDTO reviewInput);
     
     @Update("UPDATE REVIEW_IMG " +
-            "SET R_IMG = #{reviewImage} " +
-            "WHERE O_NUM = #{oNum}")
+            "SET R_IMG = #{r_img} " +
+            "WHERE O_NUM = #{o_num}")
     void updateReviewImage(ReviewInputDTO reviewInput);
     
-    // DELETE 쿼리
-    @Delete("DELETE FROM REVIEW_INFO WHERE O_NUM = #{oNum}")
-    void deleteReview(int oNum);
+    @Delete("DELETE FROM REVIEW_INFO WHERE O_NUM = #{o_num}")
+    void deleteReview(int o_num);
     
-    @Delete("DELETE FROM REVIEW_IMG WHERE O_NUM = #{oNum}")
-    void deleteReviewImage(int oNum);
+    @Delete("DELETE FROM REVIEW_IMG WHERE O_NUM = #{o_num}")
+    void deleteReviewImage(int o_num);
 }

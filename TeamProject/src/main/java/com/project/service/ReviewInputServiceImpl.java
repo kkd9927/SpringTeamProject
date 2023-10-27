@@ -1,19 +1,22 @@
 package com.project.service;
 
+import com.project.domain.ReviewInputDTO;
+import com.project.mapper.ReviewInputMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.project.mapper.ReviewInputMapper;
-import com.project.domain.ReviewInputDTO;
 
 @Service
 public class ReviewInputServiceImpl implements ReviewInputService {
+    private final ReviewInputMapper reviewInputMapper;
 
     @Autowired
-    private ReviewInputMapper reviewInputMapper;
+    public ReviewInputServiceImpl(ReviewInputMapper reviewInputMapper) {
+        this.reviewInputMapper = reviewInputMapper;
+    }
 
     @Override
-    public ReviewInputDTO getReviewInput(int oNum) {
-        return reviewInputMapper.getReviewInput(oNum);
+    public ReviewInputDTO getReviewInput(int o_num) {
+        return reviewInputMapper.getReviewInput(o_num);
     }
 
     @Override
@@ -37,12 +40,12 @@ public class ReviewInputServiceImpl implements ReviewInputService {
     }
 
     @Override
-    public void deleteReview(int oNum) {
-        reviewInputMapper.deleteReview(oNum);
+    public void deleteReview(int o_num) {
+        reviewInputMapper.deleteReview(o_num);
     }
 
     @Override
-    public void deleteReviewImage(int oNum) {
-        reviewInputMapper.deleteReviewImage(oNum);
+    public void deleteReviewImage(int o_num) {
+        reviewInputMapper.deleteReviewImage(o_num);
     }
 }

@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class ReviewMenuDTO {
-    private String O_NUM;
-    private String M_NAME;
+    private String o_num;
+    private String m_name;
 }

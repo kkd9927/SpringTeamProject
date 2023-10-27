@@ -5,5 +5,5 @@ import java.util.List;
 import com.project.domain.ReviewMenuDTO;
 
 public interface ReviewMenuService {
-    List<ReviewMenuDTO> getReviewMenus(int oNum);
+    List<ReviewMenuDTO> getReviewMenus(int o_num);
 }

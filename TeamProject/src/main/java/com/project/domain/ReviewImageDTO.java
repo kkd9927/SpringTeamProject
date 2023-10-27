@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class ReviewImageDTO {
-    private String O_NUM;
-    private String R_IMG;
+    private String o_num;
+    private String r_img;
 }

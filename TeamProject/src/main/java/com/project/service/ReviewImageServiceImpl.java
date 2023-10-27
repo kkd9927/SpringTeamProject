@@ -22,8 +22,8 @@ public class ReviewImageServiceImpl implements ReviewImageService {
     }
 
     @Override
-    public void deleteReviewImage(int oNum) {
-        reviewImageMapper.deleteReviewImage(oNum);
+    public void deleteReviewImage(int o_num) {
+        reviewImageMapper.deleteReviewImage(o_num);
     }
 }
 

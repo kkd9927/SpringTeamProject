@@ -14,7 +14,7 @@ public class ReviewMenuServiceImpl implements ReviewMenuService {
     private ReviewMenuMapper reviewMenuMapper;
 
     @Override
-    public List<ReviewMenuDTO> getReviewMenus(int oNum) {
+    public List<ReviewMenuDTO> getReviewMenus(int o_num) {
         return reviewMenuMapper.getReviewMenus();
     }
 }
