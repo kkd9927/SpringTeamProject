@@ -208,7 +208,7 @@
 			var temp = document.getElementById('tempCat');
 			var clon = temp.content.cloneNode(true);
 			
-			tl.appendChild(clon);
+			document.div.getElemntById('templist').appendChild(clon);
 		}
 	</script>
     <script src="/resources/js/delivery.js"></script>
