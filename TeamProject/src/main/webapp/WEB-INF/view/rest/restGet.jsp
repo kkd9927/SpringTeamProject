@@ -105,7 +105,7 @@
         <div class="container-md">
             <div class="restaurant-box">
                 <div class="titleimg-box">
-                    <img src="${rest.r_img}" class="img-fluid">
+                    <img src="/resources/upload/${rest.r_img}" class="img-fluid">
                 </div>
 
                 <!-- JS 이용해 라디오 버튼의 체크에 따라 해당 탭 보여줌 (부트스트랩 visually-hidden 클래스 넣고 빼는식) -->
@@ -227,22 +227,20 @@
 							<div class="col-3">
                                 <p>영업시간</p>
                             </div>
-                            <c:forEach items="${restOpen}" var="open">
-								<fmt:formatDate value="${open.r_opent}" pattern="HH:mm" var ="opent"/>
-								<fmt:formatDate value="${open.r_closet}" pattern="HH:mm" var="closet"/>
+                            <c:set value="${restOpen}" var="open"/>
+							<fmt:formatDate value="${open.r_opent}" pattern="HH:mm" var ="opent"/>
+							<fmt:formatDate value="${open.r_closet}" pattern="HH:mm" var="closet"/>
 	                            <div class="col-9">
 	                                <p><b> ${opent} ~ ${closet}</b></p>
 	                            </div>
-                            </c:forEach>
                             <!-- 휴무일 -->
                             <div class="col-3">
                                 <p>휴무일</p>
                             </div>
-                            <c:forEach items="${restClosed}" var="closed">
+                            <c:set value="${restClosed}" var="closed"/>
 	                            <div class="col-9">
 	                                <p><b>${closed.w_cname}요일</b></p>
 	                            </div>
-							</c:forEach>
                             <!-- 주소 -->
                             <div class="col-3">
                                 <p>주소</p>
@@ -327,6 +325,6 @@
     </div>
     <!-- 푸터 끝 -->
 
-    <script src="/js/delivery.js"></script>
+    <script src="/resources/js/delivery.js"></script>
 </body>
 </html>

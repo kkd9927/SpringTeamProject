@@ -35,7 +35,7 @@ public class UserController {
 		if(user.getU_code() == 1) {
 			return "redirect:/";
 		} else {
-			return "user/registerBusiForm";
+			return "/rest/restRegister";
 		}
 	}
 	

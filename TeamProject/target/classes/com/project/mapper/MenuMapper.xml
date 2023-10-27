@@ -34,7 +34,7 @@
 		from
 		        menu_info
 		where
-		        r_id = 1
+		        r_id = #{r_id}
 		order by
 		        m_code desc
 	</select>
@@ -57,13 +57,22 @@
         		a_id = #{a_id}
 	</select>
 	
-	<select id="getAddList" resultType="com.project.domain.MenuAddDTO">
+	<select id="getAddListM" resultType="com.project.domain.MenuAddDTO">
 		select 
-       			a_name, a_price
+       			a_id, r_id, m_id, a_name, a_price
 		from
 		        menu_add
 		where
        			m_id = #{m_id}
+	</select>
+	
+	<select id="getAddListR" resultType="com.project.domain.MenuAddDTO">
+		select 
+       			a_id, m_id, a_name, a_price
+		from
+		        menu_add
+		where
+       			r_id = #{r_id}
 	</select>
 	
 	<update id="update">

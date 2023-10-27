@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.project.domain.RestDTO;
+import com.project.domain.RestOpenDTO;
 import com.project.service.MenuService;
 import com.project.service.RestService;
 
@@ -42,32 +43,32 @@ public class RestController {
 	}
 	
 	@PostMapping("/restRegister") // 가게 정보 입력
-	public String register(RestDTO rest,@RequestPart(required = false) ArrayList<MultipartFile> files, RedirectAttributes rttr) {
+	public String register(RestDTO rest, RedirectAttributes rttr) {
 		log.info("register: " + rest);
-		String path = "/resources/upload";
-		files.forEach(file -> {
-			log.info("---------------------");
-			log.info("upload file name : " + file.getOriginalFilename());
-			log.info("upload file size : " + file.getSize());
-			
-			File savefile = new File(path, file.getOriginalFilename()); 
-			try {
-				file.transferTo(savefile);
-			}catch(Exception e) {
-				e.printStackTrace();
-			}
-		});
+//		String path = "/resources/upload";
+//		files.forEach(file -> {
+//			log.info("---------------------");
+//			log.info("upload file name : " + file.getOriginalFilename());
+//			log.info("upload file size : " + file.getSize());
+//			
+//			File savefile = new File(path, file.getOriginalFilename()); 
+//			try {
+//				file.transferTo(savefile);
+//			}catch(Exception e) {
+//				e.printStackTrace();
+//			}
+//		});
 		service.register(rest);
 		rttr.addFlashAttribute("result", rest.getR_id());
-		return "redirect:/rest/restList";
+		return "redirect:/rest/restList?c_code=0";
 	}
 	
-	@GetMapping({"/restGet", "/restModify"}) // 가게 1개조회 (가게 정보수정창 출력)
+	@GetMapping({"/restGet", "/restModify", "/restManage"}) // 가게 1개조회 (가게 정보수정창 출력)
 	public void get(@RequestParam("r_id") Long r_id, Model model) {
 		log.info("get");
 		model.addAttribute("rest", service.get(r_id));
-		model.addAttribute("restOpen", service.getOpenList(r_id));
-		model.addAttribute("restClosed", service.getClosedList(r_id));
+		model.addAttribute("restOpen", service.getOpen(r_id));
+		model.addAttribute("restClosed", service.getClosed(r_id));
 		model.addAttribute("restCat", service.getCatList(r_id));
 		model.addAttribute("restMethod", service.getMethodList(r_id));
 		model.addAttribute("menuList", service2.getList(r_id));
@@ -80,7 +81,7 @@ public class RestController {
 		if(service.modify(rest)) {
 			rttr.addFlashAttribute("result", "success");
 		}
-		return "redirect:/rest/restList";
+		return "redirect:/rest/restList?c_code=0";
 	}
 	
 	@RequestMapping(value="/restRemove" , method = {RequestMethod.GET, RequestMethod.POST})
@@ -89,6 +90,6 @@ public class RestController {
 		if(service.remove(r_id)) {
 			rttr.addFlashAttribute("result", "success");
 		}
-		return "redirect:/rest/restList";
+		return "redirect:/rest/restList?c_code=0";
 	}
 }

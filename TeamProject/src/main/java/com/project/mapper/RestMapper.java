@@ -29,11 +29,11 @@ public interface RestMapper {
 	
 	public RestDTO read(Long r_id);
 	
-	public RestOpenDTO readOpen(@Param("r_id") Long r_id,@Param("w_code") Long w_code);
+	public int insertRid();
 	
-	public ArrayList<RestOpenDTO> getOpenList(Long r_id);
-
-	public ArrayList<RestClosedDTO> getClosedList(Long r_id);
+	public RestOpenDTO readOpen(Long r_id);
+	
+	public RestClosedDTO readClosed(Long r_id);
 
 	public ArrayList<RestCatDTO> getCatList(Long r_id);
 

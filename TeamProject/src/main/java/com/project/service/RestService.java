@@ -19,11 +19,9 @@ public interface RestService {
 	
 	public RestDTO get(Long r_id);
 	
-	public RestOpenDTO getOpen(Long r_id, Long w_code);
-	
-	public ArrayList<RestOpenDTO> getOpenList (Long r_id);
+	public RestOpenDTO getOpen (Long r_id);
 
-	public ArrayList<RestClosedDTO> getClosedList (Long r_id);
+	public RestClosedDTO getClosed (Long r_id);
 	
 	public ArrayList<RestCatDTO> getCatList (Long r_id);
 

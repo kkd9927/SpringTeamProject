@@ -13,7 +13,9 @@ public interface MenuService {
 
 	public MenuAddDTO getAdd(Long a_id);
 	
-	public ArrayList<MenuAddDTO> getAddList(Long m_id);
+	public ArrayList<MenuAddDTO> getAddListM(Long m_id);
+
+	public ArrayList<MenuAddDTO> getAddListR(Long r_id);
 	
 	public ArrayList<MenuDTO> getList(Long r_id);
 

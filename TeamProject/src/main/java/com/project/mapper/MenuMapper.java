@@ -19,7 +19,9 @@ public interface MenuMapper {
 
 	public ArrayList<MenuDTO> getCatList(Long r_id);
 
-	public ArrayList<MenuAddDTO> getAddList(Long m_id);
+	public ArrayList<MenuAddDTO> getAddListM(Long m_id);
+
+	public ArrayList<MenuAddDTO> getAddListR(Long r_id);
 
 	public int update(MenuDTO menu);
 

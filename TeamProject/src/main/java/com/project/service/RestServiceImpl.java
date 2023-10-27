@@ -23,21 +23,22 @@ public class RestServiceImpl implements RestService{
 	
 	@Override
 	public void register(RestDTO rest) {
-		log.info("register....." + rest + rest.getRoDTOList() + rest.getRcaDTOList() + rest.getMDTOList());
+		log.info("register....." + rest  + rest.getRcaDTOList() + rest.getMDTOList());
+		int r_id = mapper.insertRid();
+		rest.setR_id(r_id);
+		rest.getRestOpen().setR_id(r_id);
+		rest.getRestClosed().setR_id(r_id);
 		mapper.insertR(rest);
-		for(RestOpenDTO data : rest.getRoDTOList()) {
-			mapper.insertOpen(data);
-		}
-		
-		for(RestClosedDTO data : rest.getRclDTOList()) {
-			mapper.insertClosed(data);
-		}
-		
+		mapper.insertOpen(rest.getRestOpen());
+		mapper.insertClosed(rest.getRestClosed());
+
 		for(RestCatDTO data : rest.getRcaDTOList()) {
+			data.setR_id(r_id);
 			mapper.insertCat(data);
 		}
 		
 		for(MethodDTO data : rest.getMDTOList()) {
+			data.setR_id(r_id);
 			mapper.insertMethod(data);
 		}
 		
@@ -56,15 +57,9 @@ public class RestServiceImpl implements RestService{
 	}
 
 	@Override
-	public RestOpenDTO getOpen(Long r_id, Long w_code) {
-		log.info("getOpen......" + r_id + w_code);
-		return mapper.readOpen(r_id, w_code);
-	}
-	
-	@Override
-	public ArrayList<RestOpenDTO> getOpenList(Long r_id) {
-		log.info("getOpenList....." + r_id);
-		return mapper.getOpenList(r_id);
+	public RestOpenDTO getOpen(Long r_id) {
+		log.info("getOpen....." + r_id);
+		return mapper.readOpen(r_id);
 	}
 
 	@Override
@@ -82,7 +77,9 @@ public class RestServiceImpl implements RestService{
 	@Override
 	public boolean modify(RestDTO rest) {
 		log.info("modify....."+rest);
-		
+		int r_id = rest.getR_id();
+		rest.getRestOpen().setR_id(r_id);
+		rest.getRestClosed().setR_id(r_id);
 		try {
 			mapper.update(rest);
 		} catch (Exception e) {
@@ -90,16 +87,12 @@ public class RestServiceImpl implements RestService{
 		}
 		
 		try {
-			for(RestOpenDTO data : rest.getRoDTOList()) {
-				mapper.updateOpen(data);
-			}
+			mapper.updateOpen(rest.getRestOpen());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		try {
-			for(RestClosedDTO data : rest.getRclDTOList()) {
-				mapper.updateClosed(data);
-			}
+			mapper.updateClosed(rest.getRestClosed());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -149,9 +142,9 @@ public class RestServiceImpl implements RestService{
 	}
 
 	@Override
-	public ArrayList<RestClosedDTO> getClosedList(Long r_id) {
+	public RestClosedDTO getClosed (Long r_id) {
 		log.info("getClosedList....." + r_id);
-		return mapper.getClosedList(r_id);
+		return mapper.readClosed(r_id);
 	}
 
 }

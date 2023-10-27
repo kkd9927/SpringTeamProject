@@ -12,6 +12,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.project.domain.MenuDTO;
 import com.project.service.MenuService;
+import com.project.service.RestService;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -23,6 +24,7 @@ import lombok.extern.log4j.Log4j;
 public class MenuController {
 	
 	private MenuService service;
+	private RestService service2;
 	
 	@GetMapping("/menuList") // 메뉴 목록 조회
 	public void list(@RequestParam("r_id") Long r_id, Model model) {
@@ -41,10 +43,21 @@ public class MenuController {
 	}
 	
 	@GetMapping({"/menuGet", "/menuModify"}) // 메뉴 1개 조회 (그리고 메뉴 1개 정보 수정창 출력)
-	public void get(@RequestParam("m_id") Long m_id, Model model) {
+	public void get(@RequestParam("r_id") Long r_id, Model model) {
 		log.info("/get");
-		model.addAttribute("menu", service.get(m_id));
-		model.addAttribute("menuAdd", service.getAddList(m_id));
+		model.addAttribute("rest", service2.get(r_id));
+		model.addAttribute("menuList", service.getList(r_id));
+		model.addAttribute("menuCatList", service.getCatList(r_id));
+		model.addAttribute("menuAddR", service.getAddListR(r_id));
+	}
+	
+	@GetMapping("/menuRegister") // 
+	public void getList(@RequestParam("r_id") Long r_id, Model model) {
+		log.info("/get");
+		model.addAttribute("rest", service2.get(r_id));
+		model.addAttribute("menuList", service.getList(r_id));
+		model.addAttribute("menuCatList", service.getCatList(r_id));
+		model.addAttribute("menuAddR", service.getAddListR(r_id));
 	}
 	
 	@PostMapping("/menuModify") // 메뉴 1개 수정

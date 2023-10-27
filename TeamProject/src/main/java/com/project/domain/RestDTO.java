@@ -1,6 +1,9 @@
 package com.project.domain;
 
 import java.util.ArrayList;
+import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Data;
 
@@ -22,15 +25,21 @@ public class RestDTO {
 	private double avg;
 	private double r_score;
 	
-	private ArrayList<RestOpenDTO> roDTOList;
-	private ArrayList<RestClosedDTO> rclDTOList;
+	private RestOpenDTO restOpen;
+//	private ArrayList<RestOpenDTO> roDTOList;
+	private RestClosedDTO restClosed;
 	private ArrayList<RestCatDTO> rcaDTOList;
 	private ArrayList<MethodDTO> mDTOList;
 	
 	public RestDTO() {
-		roDTOList = new ArrayList<>();
-		rclDTOList = new ArrayList<>();
+//		roDTOList = new ArrayList<>();
+		restClosed = new RestClosedDTO();
 		rcaDTOList = new ArrayList<>();
 		mDTOList = new ArrayList<>();
+		restOpen = new RestOpenDTO();
 	}
+//	
+//	public setAllRid(r_id) {
+//		
+//	}
 }

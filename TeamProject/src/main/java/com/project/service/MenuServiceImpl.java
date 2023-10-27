@@ -41,9 +41,14 @@ public class MenuServiceImpl implements MenuService{
 	}
 	
 	@Override
-	public ArrayList<MenuAddDTO> getAddList(Long m_id) {
+	public ArrayList<MenuAddDTO> getAddListM(Long m_id) {
 		log.info("getAddList......" + m_id);
-		return mapper.getAddList(m_id);
+		return mapper.getAddListM(m_id);
+	}
+	@Override
+	public ArrayList<MenuAddDTO> getAddListR(Long r_id) {
+		log.info("getAddList......" + r_id);
+		return mapper.getAddListR(r_id);
 	}
 
 	@Override

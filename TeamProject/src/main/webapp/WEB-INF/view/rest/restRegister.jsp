@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,7 +26,7 @@
     <div class="contents">
         <div class="container-md">
             <div class="register-box">
-                <form action="/rest/restRegister" method="post" class="text-align" enctype="multipart/form-data">
+                <form action="/rest/restRegister" method="post" class="text-align" >
                     <h4>사업자정보</h4>
                     <hr>
 
@@ -96,27 +97,27 @@
                     </div>
 
                     <div class="row">
-                        <label for="c_code" class="col-md-3 col-sm-12 col-form-label">카테고리</label>
+                        <label for="rcaDTOList" class="col-md-3 col-sm-12 col-form-label">카테고리</label>
                         <div class="col-md-9 col-sm-12">
-                        	<label><input type="checkbox" name="c_code" value="0"> 전체</label>
-      						<label><input type="checkbox" name="c_code" value="1"> 치킨</label>
-                        	<label><input type="checkbox" name="c_code" value="2"> 피자</label>
-      						<label><input type="checkbox" name="c_code" value="3"> 한식</label>
-                        	<label><input type="checkbox" name="c_code" value="4"> 고기/족발</label>
-      						<label><input type="checkbox" name="c_code" value="5"> 회</label>
-                        	<label><input type="checkbox" name="c_code" value="6"> 중식</label>
-      						<label><input type="checkbox" name="c_code" value="7"> 일식/돈까스</label>
-                        	<label><input type="checkbox" name="c_code" value="8"> 아시안</label>
-      						<label><input type="checkbox" name="c_code" value="9"> 양식</label>
-                        	<label><input type="checkbox" name="c_code" value="10"> 도시락</label>
-      						<label><input type="checkbox" name="c_code" value="11"> 분식</label>
-                        	<label><input type="checkbox" name="c_code" value="12"> 패스트푸드</label>
-      						<label><input type="checkbox" name="c_code" value="13"> 카페/디저트</label>
-                        	<label><input type="checkbox" name="c_code" value="20"> 포장</label>
-      						<label><input type="checkbox" name="c_code" value="21"> 신속배달</label>
-                        	<label><input type="checkbox" name="c_code" value="22"> 프렌차이즈</label>
-      						<label><input type="checkbox" name="c_code" value="23"> 1인분</label>
-                        	<label><input type="checkbox" name="c_code" value="24"> 야식</label>
+                        	<label><input type="checkbox" name="rcaDTOList[0].c_code" value="0"> 전체</label>
+      						<label><input type="checkbox" name="rcaDTOList[1].c_code" value="1"> 치킨</label>
+                        	<label><input type="checkbox" name="rcaDTOList[2].c_code" value="2"> 피자</label>
+      						<label><input type="checkbox" name="rcaDTOList[3].c_code" value="3"> 한식</label>
+                        	<label><input type="checkbox" name="rcaDTOList[4].c_code" value="4"> 고기/족발</label>
+      						<label><input type="checkbox" name="rcaDTOList[5].c_code" value="5"> 회</label>
+                        	<label><input type="checkbox" name="rcaDTOList[6].c_code" value="6"> 중식</label>
+      						<label><input type="checkbox" name="rcaDTOList[7].c_code" value="7"> 일식/돈까스</label>
+                        	<label><input type="checkbox" name="rcaDTOList[8].c_code" value="8"> 아시안</label>
+      						<label><input type="checkbox" name="rcaDTOList[9].c_code" value="9"> 양식</label>
+                        	<label><input type="checkbox" name="rcaDTOList[10].c_code" value="10"> 도시락</label>
+      						<label><input type="checkbox" name="rcaDTOList[11].c_code" value="11"> 분식</label>
+                        	<label><input type="checkbox" name="rcaDTOList[12].c_code" value="12"> 패스트푸드</label>
+      						<label><input type="checkbox" name="rcaDTOList[13].c_code" value="13"> 카페/디저트</label>
+                        	<label><input type="checkbox" name="rcaDTOList[14].c_code" value="20"> 포장</label>
+      						<label><input type="checkbox" name="rcaDTOList[15].c_code" value="21"> 신속배달</label>
+                        	<label><input type="checkbox" name="rcaDTOList[16].c_code" value="22"> 프렌차이즈</label>
+      						<label><input type="checkbox" name="rcaDTOList[17].c_code" value="23"> 1인분</label>
+                        	<label><input type="checkbox" name="rcaDTOList[18].c_code" value="24"> 야식</label>
                         </div>
                     </div>
 
@@ -135,64 +136,64 @@
                     </div>
                     
                     <div class="row">
-                        <label for="r_opent" class="col-md-3 col-sm-12 col-form-label">영업시간</label>
+                        <label for="r_opentS" class="col-md-3 col-sm-12 col-form-label">영업시간</label>
                         <div class="col-md-4 col-sm-6">
-                            <select class="form-select" id="r_opent">
+                            <select class="form-select" name="restOpen.r_opentS" id="r_opentS">
                                 <!-- DB에서 R_OPENT 데이터 들고와서 맞는곳에 selected 속성 부여해야함 -->
-                                <option value="1">01:00</option>
-                                <option value="2">02:00</option>
-                                <option value="3">03:00</option>
-                                <option value="4">04:00</option>
-                                <option value="5">05:00</option>
-                                <option value="6">06:00</option>
-                                <option value="7">07:00</option>
-                                <option value="8">08:00</option>
-                                <option value="9">09:00</option>
-                                <option value="10">10:00</option>
-                                <option value="11">11:00</option>
-                                <option value="12">12:00</option>
-                                <option value="13">13:00</option>
-                                <option value="14">14:00</option>
-                                <option value="15">15:00</option>
-                                <option value="16">16:00</option>
-                                <option value="17">17:00</option>
-                                <option value="18">18:00</option>
-                                <option value="19">19:00</option>
-                                <option value="20">20:00</option>
-                                <option value="21">21:00</option>
-                                <option value="22">22:00</option>
-                                <option value="23">23:00</option>
-                                <option value="24">24:00</option>
+                                <option value="01:00">01:00</option>
+                                <option value="02:00">02:00</option>
+                                <option value="03:00">03:00</option>
+                                <option value="04:00">04:00</option>
+                                <option value="05:00">05:00</option>
+                                <option value="06:00">06:00</option>
+                                <option value="07:00">07:00</option>
+                                <option value="08:00">08:00</option>
+                                <option value="09:00">09:00</option>
+                                <option value="10:00">10:00</option>
+                                <option value="11:00">11:00</option>
+                                <option value="12:00">12:00</option>
+                                <option value="13:00">13:00</option>
+                                <option value="14:00">14:00</option>
+                                <option value="15:00">15:00</option>
+                                <option value="16:00">16:00</option>
+                                <option value="17:00">17:00</option>
+                                <option value="18:00">18:00</option>
+                                <option value="19:00">19:00</option>
+                                <option value="20:00">20:00</option>
+                                <option value="21:00">21:00</option>
+                                <option value="22:00">22:00</option>
+                                <option value="23:00">23:00</option>
+                                <option value="24:00">24:00</option>
                             </select>
                         </div>
-                        <label for="r_closet" class="col-md-1 col-sm-12 col-form-label">~</label>
+                        <label for="r_closetS" class="col-md-1 col-sm-12 col-form-label">~</label>
                         <div class="col-md-4 col-sm-6">
-                            <select class="form-select" id="r_closet">
+                            <select class="form-select" name="restOpen.r_closetS" id="r_closetS">
                                 <!-- DB에서 R_OPENT 데이터 들고와서 맞는곳에 selected 속성 부여해야함 -->
-                                <option value="1">01:00</option>
-                                <option value="2">02:00</option>
-                                <option value="3">03:00</option>
-                                <option value="4">04:00</option>
-                                <option value="5">05:00</option>
-                                <option value="6">06:00</option>
-                                <option value="7">07:00</option>
-                                <option value="8">08:00</option>
-                                <option value="9">09:00</option>
-                                <option value="10">10:00</option>
-                                <option value="11">11:00</option>
-                                <option value="12">12:00</option>
-                                <option value="13">13:00</option>
-                                <option value="14">14:00</option>
-                                <option value="15">15:00</option>
-                                <option value="16">16:00</option>
-                                <option value="17">17:00</option>
-                                <option value="18">18:00</option>
-                                <option value="19">19:00</option>
-                                <option value="20">20:00</option>
-                                <option value="21">21:00</option>
-                                <option value="22">22:00</option>
-                                <option value="23">23:00</option>
-                                <option value="24">24:00</option>
+                                <option value="01:00">01:00</option>
+                                <option value="02:00">02:00</option>
+                                <option value="03:00">03:00</option>
+                                <option value="04:00">04:00</option>
+                                <option value="05:00">05:00</option>
+                                <option value="06:00">06:00</option>
+                                <option value="07:00">07:00</option>
+                                <option value="08:00">08:00</option>
+                                <option value="09:00">09:00</option>
+                                <option value="10:00">10:00</option>
+                                <option value="11:00">11:00</option>
+                                <option value="12:00">12:00</option>
+                                <option value="13:00">13:00</option>
+                                <option value="14:00">14:00</option>
+                                <option value="15:00">15:00</option>
+                                <option value="16:00">16:00</option>
+                                <option value="17:00">17:00</option>
+                                <option value="18:00">18:00</option>
+                                <option value="19:00">19:00</option>
+                                <option value="20:00">20:00</option>
+                                <option value="21:00">21:00</option>
+                                <option value="22:00">22:00</option>
+                                <option value="23:00">23:00</option>
+                                <option value="24:00">24:00</option>
                             </select>
                         </div>
                     </div>
@@ -200,7 +201,7 @@
                     <div class="row">
                         <label for="w_code" class="col-md-3 col-sm-12 col-form-label">휴무요일</label>
                         <div class="col-md-9 col-sm-12">
-                            <select class="form-select" id="w_code">
+                            <select class="form-select" name="restClosed.w_code" id="w_code">
                                 <!-- DB에서 WEEK_CODE 데이터 들고와서 맞는곳에 selected 속성 부여해야함 -->
                                 <option value="0">일</option>
                                 <option value="1">월</option>
@@ -219,7 +220,7 @@
                     <div class="row">
                         <label for="r_minprice" class="col-md-3 col-sm-12 col-form-label">최소주문금액</label>
                         <div class="col-md-9 col-sm-12">
-                            <select class="form-select" id="r_minprice">
+                            <select class="form-select" name="r_minprice" id="r_minprice">
                                 <!-- DB에서 최소주문금액 데이터 들고와서 맞는곳에 selected 속성 부여해야함 -->
                                 <option value="0">0</option>
                                 <option value="1000">1000</option>
@@ -257,14 +258,14 @@
                     </div>
 
                     <div class="row">
-                        <label for="p_code" class="col-md-3 col-sm-12 col-form-label">결제수단</label>
+                        <label for="mDTOList" class="col-md-3 col-sm-12 col-form-label">결제수단</label>
                         <div class="col-md-9 col-sm-12">
-                        	<label><input type="checkbox" name="p_code" value="0"> 현금</label>
-                        	<label><input type="checkbox" name="p_code" value="1"> 카드</label>
-                        	<label><input type="checkbox" name="p_code" value="2"> 네이버페이</label>
-                        	<label><input type="checkbox" name="p_code" value="3"> 카카오페이</label>
-                        	<label><input type="checkbox" name="p_code" value="4"> 삼성페이</label>
-                        	<label><input type="checkbox" name="p_code" value="5"> 애플페이</label>
+                        	<label><input type="checkbox" name="mDTOList[0].p_code" value="0"> 현금</label>
+                        	<label><input type="checkbox" name="mDTOList[1].p_code" value="1"> 카드</label>
+                        	<label><input type="checkbox" name="mDTOList[2].p_code" value="2"> 네이버페이</label>
+                        	<label><input type="checkbox" name="mDTOList[3].p_code" value="3"> 카카오페이</label>
+                        	<label><input type="checkbox" name="mDTOList[4].p_code" value="4"> 삼성페이</label>
+                        	<label><input type="checkbox" name="mDTOList[5].p_code" value="5"> 애플페이</label>
                         </div>
                     </div>
 

@@ -6,16 +6,20 @@
 <mapper namespace="com.project.mapper.RestMapper">
 	<insert id="insertR">
 		INSERT INTO
-		            REST_INFO(r_licnum, u_id, r_lname, r_addr, r_dtad, r_bname, r_tel, f_code, r_intro, r_minprice, r_img)
+		            REST_INFO(r_id, r_licnum, u_id, r_lname, r_addr, r_dtad, r_bname, r_tel, f_code, r_intro, r_minprice, r_img)
 		VALUES
-		            (#{r_licnum}, #{u_id}, #{r_lname}, #{r_addr}, #{r_dtad}, #{r_bname}, #{r_tel}, #{f_code}, #{r_intro}, #{r_minprice}, #{r_img})
+		            (#{r_id}, #{r_licnum}, #{u_id}, #{r_lname}, #{r_addr}, #{r_dtad}, #{r_bname}, #{r_tel}, #{f_code}, #{r_intro}, #{r_minprice}, #{r_img})
 	</insert>
+	
+	<select id="insertRid" resultType="int">
+		select ri_rid_seq.nextval from dual
+	</select>
 	
 	<insert id="insertOpen">
 		INSERT INTO
 		            REST_OPEN (r_id, r_opent, r_closet) 
 		VALUES 
-		            (#{r_id}, #{r_opent}, #{r_closet})
+		            (#{r_id}, to_date(#{r_opentS}, 'HH24:MI'), to_date(#{r_closetS}, 'HH24:MI'))
 	</insert>
 	
 	<insert id="insertClosed">
@@ -65,13 +69,13 @@
 	
 	<select id="read" resultType="com.project.domain.RestDTO">
 		select
-				        A.r_id, r_licnum, r_lname, r_bname, r_tel, r_intro, r_minprice, r_img, r_addr, r_dtad, TRUNC(AVG(r_score),1) AS AVG
+				        A.r_id, A.u_id, r_licnum, r_lname, r_bname, r_tel, r_intro, r_minprice, r_img, r_addr, r_dtad, TRUNC(AVG(r_score),1) AS AVG
 		from
 		                rest_info A left join order_info B on A.r_id = B.r_id
 		                            left join review_info C on B.o_num = C.o_num
 		where
 		                A.r_id = #{r_id}
-		group by        A.r_id, r_licnum, r_lname, r_bname, r_tel, r_intro, r_minprice, r_img, r_addr, r_dtad
+		group by        A.r_id, A.u_id, r_licnum, r_lname, r_bname, r_tel, r_intro, r_minprice, r_img, r_addr, r_dtad
 	</select>
 	
 	<select id="readOpen" resultType="com.project.domain.RestOpenDTO">
@@ -92,7 +96,7 @@
 		        r_id = #{r_id}
 	</select>
 	
-	<select id="getClosedList" resultType="com.project.domain.RestClosedDTO">
+	<select id="readClosed" resultType="com.project.domain.RestClosedDTO">
 		select
 		        r_id, A.w_code, w_cname
 		from
@@ -125,7 +129,7 @@
 		UPDATE 
 		        rest_info
 		SET
-		        r_lname = #{r_lname}, r_addr = #{r_addr}, r_dtad = #{r_dtad}, r_bname = #{r_bname}, r_tel = #{r_tel}, f_code = #{f_code}, r_intro = #{r_intro}, r_minprice = #{r_minprice}, r_img = #{r_img}
+		        r_lname = #{r_lname}, r_addr = #{r_addr}, r_dtad = #{r_dtad}, r_bname = #{r_bname}, r_tel = #{r_tel}, r_intro = #{r_intro}, r_minprice = #{r_minprice}, r_img = #{r_img}
 		WHERE
 		        r_id = #{r_id}
 	</update>
@@ -134,7 +138,7 @@
 		UPDATE
 		        rest_open
 		SET
-		        r_opent = #{r_opent}, r_closet = #{r_closet}
+		        r_opent = to_date(#{r_opentS}, 'HH24:MI'), r_closet = to_date(#{r_closetS}, 'HH24:MI')
 		WHERE
 		        r_id = #{r_id}
 	</update>
