@@ -51,3 +51,11 @@
 .footer {
     width: 100%;
 }
+
+.form-toggle {
+	display: none;
+}
+
+.modal-footer {
+    border: none;
+}

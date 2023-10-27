@@ -10,7 +10,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import com.project.domain.UserAddrVO;
 import com.project.domain.UserVO;
+import com.project.mapper.UserAddrMapper;
 import com.project.mapper.UserMapper;
 
 import lombok.RequiredArgsConstructor;
@@ -18,11 +20,13 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class CustomUserDetailsService implements UserDetailsService {
-	private final UserMapper mapper;
+	private final UserMapper userMapper;
+	private final UserAddrMapper addrMapper;
 	
 	@Override
 	public UserDetails loadUserByUsername(String u_id) throws UsernameNotFoundException {
-		UserVO user = mapper.selectByUserId(u_id);
+		UserVO user = userMapper.selectByUserId(u_id);
+		List<UserAddrVO> addr = (ArrayList<UserAddrVO>)addrMapper.selectByUserId(u_id);
 		
 		if(user == null) {
 			throw new UsernameNotFoundException("존재하지 않는 유저입니다.");
@@ -42,6 +46,6 @@ public class CustomUserDetailsService implements UserDetailsService {
 			authorities.add(new SimpleGrantedAuthority("BUSINESS"));
 		}
 		
-		return new CustomUser(user, authorities);
+		return new CustomUser(user, addr, authorities);
 	}
 }

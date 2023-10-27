@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.project.domain.UserDTO;
+import com.project.domain.UserAddrDTO;
 
 import lombok.extern.log4j.Log4j;
 
@@ -14,24 +14,24 @@ import lombok.extern.log4j.Log4j;
 @ContextConfiguration(classes = {com.project.config.RootConfig.class,
 								 com.project.config.SecurityConfig.class})
 @Log4j
-public class UserMapperTest {
+public class UserAddrMapperTest {
 	@Autowired
-	private UserMapper mapper;
-	
-//	@Test
-	public void insertTest() {
-		UserDTO user = new UserDTO();
-		user.setU_id("test_id2");
-		user.setU_pw("test_pw");
-		user.setU_rname("test_name");
-		user.setU_phone("01012341112");
-		user.setU_code(1);
-		log.info(user);
-		
-		mapper.insert(user);
-	}
+	private UserAddrMapper mapper;
 	
 	@Test
+	public void insertTest() {
+		UserAddrDTO addr = new UserAddrDTO();
+		addr.setU_id("test");
+		addr.setU_atag("회사");
+		addr.setU_addr("부산시 부산진구");
+		addr.setU_dtad("부전동 200-2");
+		
+		mapper.insert(addr);
+		
+		log.info(addr);
+	}
+	
+//	@Test
 	public void selectByUserIdTest() {
 		log.info(mapper.selectByUserId("test"));
 	}
