@@ -111,6 +111,15 @@ public class UserController {
 		return new ResponseDTO("success", HttpStatus.OK);
 	}
 	
+	@DeleteMapping("/user/remove")
+	@ResponseBody
+	public ResponseDTO withdraw(@RequestBody HashMap<String, String> map) {
+		userService.withdraw(map);
+		authReload();
+		
+		return new ResponseDTO("success", HttpStatus.OK);
+	}
+	
 	@PostMapping("/address/add")
 	@ResponseBody
 	public ResponseDTO addAddress(@RequestBody UserAddrDTO addr) {

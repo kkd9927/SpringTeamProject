@@ -24,4 +24,6 @@ public interface UserService {
 	public int modifyPassword(Map<String, String> map, CustomUser user);
 	
 	public void modifyPhone(Map<String, String> map);
+	
+	public void withdraw(Map<String, String> map);
 }

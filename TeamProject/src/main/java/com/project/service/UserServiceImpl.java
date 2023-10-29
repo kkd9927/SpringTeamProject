@@ -70,4 +70,9 @@ public class UserServiceImpl implements UserService {
 	public void modifyPhone(Map<String, String> map) {
 		userMapper.updatePhone(map.get("u_id"), map.get("u_nname"));
 	}
+
+	@Override
+	public void withdraw(Map<String, String> map) {
+		userMapper.delete(map.get("u_id"));
+	}
 }

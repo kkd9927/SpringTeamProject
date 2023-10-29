@@ -23,13 +23,13 @@ public class ReviewMapperTest {
         List<ReviewDTO> reviews = reviewMapper.getReviews();
 
         for (ReviewDTO review : reviews) {
-            System.out.println("ONUM: " + review.getO_NUM());
-            System.out.println("RBNAME: " + review.getR_BNAME());
-            System.out.println("UNNAME: " + review.getU_NNAME());
-            System.out.println("RCONTENT: " + review.getR_CONTENT());
-            System.out.println("RSCORE: " + review.getR_SCORE());
-            System.out.println("RWRIDATE: " + review.getR_WRIDATE());
-            System.out.println("RIMG: " + review.getR_IMG());
+            System.out.println("ONUM: " + review.getO_num());
+            System.out.println("RBNAME: " + review.getR_bname());
+            System.out.println("UNNAME: " + review.getU_nname());
+            System.out.println("RCONTENT: " + review.getR_content());
+            System.out.println("RSCORE: " + review.getR_score());
+            System.out.println("RWRIDATE: " + review.getR_wridate());
+            System.out.println("RIMG: " + review.getR_img());
         }
 
 

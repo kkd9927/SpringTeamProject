@@ -17,7 +17,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
     <link href="../css/delivery.css" rel="stylesheet">
-    <link href="../css/register-form.css" rel="stylesheet>
+    <link href="../css/register-form.css" rel="stylesheet">
 </head>
 <body>
     <!-- 헤더 -->

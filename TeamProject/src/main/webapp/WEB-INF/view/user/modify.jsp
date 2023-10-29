@@ -44,10 +44,10 @@
                 <div class="row">
                     <label for="u_img" class="col-md-3 col-sm-12 col-form-label">프로필사진</label>
                     <div class="col-md-6 col-sm-9">
-                        <input type="file" id="u_img" name="u_img" class="form-control">
+                        <input type="file" id="u_img" name="u_img" class="form-control" disabled>
                     </div>
                     <div class="col-md-3 col-sm-3">
-                        <button id="btn-img-change" class="btn btn-primary">변경하기</button>
+                        <button id="btn-img-change" class="btn btn-primary" disabled>변경하기</button>
                     </div>
                 </div>
 
@@ -112,7 +112,7 @@
 			
 			$.ajax({
 				type: "put",
-				url: `/user/${principal.user.u_id}/modify-nname`,
+				url: `/user/${id}/modify-nname`,
 				headers: {
 				    'Content-Type': 'application/json'
 				},
@@ -134,7 +134,7 @@
 			
 			$.ajax({
 				type: "put",
-				url: `/user/${principal.user.u_id}/modify-img`,
+				url: `/user/${id}/modify-img`,
 				headers: {
 				    'Content-Type': 'multipart/form-data'
 				},
@@ -158,7 +158,7 @@
 			
 			$.ajax({
 				type: "put",
-				url: `/user/${principal.user.u_id}/modify-password`,
+				url: `/user/${id}/modify-password`,
 				headers: {
 				    'Content-Type': 'application/json'
 				},
@@ -179,7 +179,7 @@
 			
 			$.ajax({
 				type: "put",
-				url: `/user/${principal.user.u_id}/modify-phone`,
+				url: `/user/${id}/modify-phone`,
 				headers: {
 				    'Content-Type': 'application/json'
 				},

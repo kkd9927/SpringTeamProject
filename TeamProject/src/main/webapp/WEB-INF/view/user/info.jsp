@@ -22,7 +22,7 @@
                                 <img src="no-photo.png" class="rounded-circle">
                             </div>
 
-                            <h3 class="mt-1">${principal.user.u_rname}</h3>
+                            <h3 class="mt-1">${principal.user.u_nname}</h3>
                         </div>
                     </div>
                 </div>
@@ -171,8 +171,30 @@
 	
 	<script type="text/javascript">
 		$("#btn-user-remove").on("click", function() {
+			let u_code = ${principal.user.u_code};
+			if(u_code == 2) {
+				alert("먼저 사업장 등록해제를 해주세요.");
+				return;
+			}
+			
 			if(confirm("정말 탈퇴 하시겠습니까?")) {
-				location.href("/user/remove");
+				let id = $(".btn-user").attr("id");
+				
+				const data = {
+					u_id: id
+				}
+				
+				$.ajax({
+					type: "delete",
+					url: "/user/remove",
+					headers: {
+					    'Content-Type': 'application/json'
+					},
+					data: JSON.stringify(data),
+					success: function(result) {
+						location.href("/logout");
+					}
+				});
 			}
 		});
 	</script>

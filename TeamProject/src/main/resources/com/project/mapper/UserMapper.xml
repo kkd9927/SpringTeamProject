@@ -54,4 +54,11 @@
 		WHERE
 			U_ID = #{arg0}
 	</update>
+	
+	<delete id="delete">
+		DELETE FROM
+			USER_INFO
+		WHERE
+			U_ID = #{u_id}
+	</delete>
 </mapper>

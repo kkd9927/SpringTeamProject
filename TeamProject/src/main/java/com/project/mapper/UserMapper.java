@@ -15,4 +15,6 @@ public interface UserMapper {
 	public void updatePassword(String arg0, String arg1);
 	
 	public void updatePhone(String arg0, String arg1);
+	
+	public void delete(String u_id);
 }
