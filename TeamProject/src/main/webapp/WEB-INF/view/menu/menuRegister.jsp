@@ -64,11 +64,11 @@
 		                                        <span class="bg-light rounded p-2">
 		                                            <b>분류명</b>
 		
-		                                            <span class="position-absolute end-0 pe-2">
-		                                                <button type="button" id="menu-add" class="btn btn-light p-0" data-bs-toggle="tooltip" data-bs-placement="bottom" title="메뉴 추가" onclick="addMenu()"><i class="bi bi-plus-square"></i></button>
-		                                                <button type="button" id="cat-edit" class="btn btn-light p-0" data-bs-toggle="tooltip" data-bs-placement="bottom" title="분류 수정"><i class="bi bi-pencil-square"></i></button>
-		                                                <button type="button" id="cat-delete" class="btn btn-light p-0" data-bs-toggle="tooltip" data-bs-placement="bottom" title="분류 삭제"><i class="bi bi-x-square"></i></button>
-		                                            </span>
+<!-- 		                                            <span class="position-absolute end-0 pe-2"> -->
+<!-- 		                                                <button type="button" id="menu-add" class="btn btn-light p-0" data-bs-toggle="tooltip" data-bs-placement="bottom" title="메뉴 추가" onclick="addMenu()"><i class="bi bi-plus-square"></i></button> -->
+<!-- 		                                                <button type="button" id="cat-edit" class="btn btn-light p-0" data-bs-toggle="tooltip" data-bs-placement="bottom" title="분류 수정"><i class="bi bi-pencil-square"></i></button> -->
+<!-- 		                                                <button type="button" id="cat-delete" class="btn btn-light p-0" data-bs-toggle="tooltip" data-bs-placement="bottom" title="분류 삭제"><i class="bi bi-x-square"></i></button> -->
+<!-- 		                                            </span> -->
 		                                        </span>
 		                                    </div>
 		                                    <!-- 분류명 템플릿 -->
@@ -80,7 +80,7 @@
 		                                            <div class="row edit-box">
 		                                                <label for="m_cat" class="col-md-2 col-sm-12 col-form-label">분류명</label>
 		                                                <div class="col-md-4 col-sm-12">
-		                                                    <input type="text" id="m_cat" class="form-control">
+		                                                    <input type="text" name="m_cat" id="m_cat" class="form-control">
 		                                                </div>
 		                                            </div>
 		                                        </span>
@@ -91,97 +91,91 @@
 		
 		                                    <!-- 메뉴 템플릿 -->
 		                                    <!-- 메뉴 추가 버튼 클릭시 아래 템플릿 append -->
-		                                    <div id="tempMlist">
-			                                    <template id="tempMenu">
-			                                    <div class="d-grid gap-2">
-			                                        <span class="bg-white rounded p-2">
-			                                            <span>메뉴명</span>
-			                                            
-			                                            <span class="btn-box position-absolute end-0 pe-2">
-			                                                <button type="button" id="submenu-add" class="btn btn-white p-0" data-bs-toggle="tooltip" data-bs-placement="bottom" title="부가메뉴 추가" onclick="addMenuAdd()"><i class="bi bi-plus-square"></i></button>
-			                                                <button type="button" id="menu-edit" class="btn btn-white p-0" data-bs-toggle="tooltip" data-bs-placement="bottom" title="메뉴 수정"><i class="bi bi-pencil-square"></i></button>
-			                                                <button type="button" id="menu-delete" class="btn btn-white p-0" data-bs-toggle="tooltip" data-bs-placement="bottom" title="메뉴 삭제"><i class="bi bi-x-square"></i></button>
-			                                            </span>
-			                                        </span>
-			                                    </div>
-			                                    <!-- 메뉴 템플릿 -->
-			
-			                                    <!-- 메뉴 수정 템플릿 -->
-			                                    <!-- 메뉴 수정 버튼 클릭시 아래 템플릿 append -->
-			                                    <div class="d-grid gap-2">
-			                                        <span class="bg-white rounded shadow-sm mb-1 p-2">
-			                                            <div class="row edit-box">
-			                                                <label for="m_name" class="col-md-2 col-sm-12 col-form-label">메뉴명</label>
-			                                                <div class="col-md-4 col-sm-12">
-			                                                    <input type="text" id="m_name" value="${menu.m_name}" class="form-control">
-			                                                </div>
-			
-			                                                <label for="m_price" class="col-md-2 col-sm-12 col-form-label">가격</label>
-			                                                <div class="col-md-4 col-sm-12">
-			                                                    <input type="text" value="${menu.m_price}" id="m_price" class="form-control">
-			                                                </div>
-			
-			                                                <label for="m_intro" class="col-2 col-form-label">설명</label>
-			                                                <div class="col-10">
-			                                                    <textarea type="text" id="m_intro" placeholder="${menu.m_intro}" class="form-control"></textarea>
-			                                                </div>
-			
-			                                                <label for="m_img" class="col-2 col-form-label">대표사진</label>
-			                                                <div class="col-4">
-			                                                    <input class="form-control" value="${menu.m_img}" type="file" id="m_img">
-			                                                </div>
-			
-			                                                <div class="col-12 btn-box ps-0">
-			                                                    <button type="button" id="" class="btn btn-primary btn-sm m-1">적용</button>
-			                                                    <button type="button" id="" class="btn btn-secondary btn-sm m-1">취소</button>
-			                                                </div>
-			                                            </div>
-			                                        </span>
-			                                    </div>
-		                                   <!-- 메뉴 수정 템플릿 -->
 		                                   
-		                                   <!-- 부가메뉴 템플릿 -->
-		                                   <!-- 부가메뉴 추가 버튼 클릭시 아래 템플릿 append -->
-		                                   		<div id="tempAlist">
-				                                    <template id="tempMenuAdd">
-					                                    <div class="d-grid gap-2">
-					                                        <span class="bg-white rounded p-2">
-					                                            <span>└</span>
-					                                            <span>부가메뉴명</span>
-					                                            
-					                                            <span class="btn-box position-absolute end-0 pe-2">
-					                                                <button type="button" id="menu-edit" class="btn btn-white p-0" data-bs-toggle="tooltip" data-bs-placement="bottom" title="부가메뉴 수정"><i class="bi bi-pencil-square"></i></button>
-					                                                <button type="button" id="menu-delete" class="btn btn-white p-0" data-bs-toggle="tooltip" data-bs-placement="bottom" title="부가메뉴 삭제"><i class="bi bi-x-square"></i></button>
-					                                            </span>
-					                                        </span>
-					                                    </div>
-					                                    <!-- 부가메뉴 템플릿 -->
-					
-					                                    <!-- 부가메뉴 수정 템플릿 -->
-					                                    <!-- 부가메뉴 수정 버튼 클릭시 아래 템플릿 append -->
-					                                    <div class="d-grid gap-2">
-					                                        <span class="bg-white rounded shadow-sm mb-1 p-2">
-					                                            <div class="row edit-box">
-					                                                <label for="m_name" class="col-md-2 col-sm-12 col-form-label">메뉴명</label>
-					                                                <div class="col-md-4 col-sm-12">
-					                                                    <input type="text" id="a_name" value="${menuAdd.a_name }" class="form-control">
-					                                                </div>
-					
-					                                                <label for="m_price" class="col-md-2 col-sm-12 col-form-label">가격</label>
-					                                                <div class="col-md-4 col-sm-12">
-					                                                    <input type="text" id="a_price" value="${menuAdd.a_price }" class="form-control">
-					                                                </div>
-					
-					                                                <div class="col-12 btn-box ps-0">
-					                                                    <button type="button" id="" class="btn btn-primary btn-sm m-1">적용</button>
-					                                                    <button type="button" id="" class="btn btn-secondary btn-sm m-1">취소</button>
-					                                                </div>
-					                                            </div>
-					                                        </span>
-					                                    </div>
-				                                    </template>
-			                                    </div>
-			                                    </template>
+		                                    <div class="d-grid gap-2">
+		                                        <span class="bg-white rounded p-2">
+		                                            <span>메뉴명</span>
+		                                            
+<!-- 		                                            <span class="btn-box position-absolute end-0 pe-2"> -->
+<!-- 		                                                <button type="button" id="submenu-add" class="btn btn-white p-0" data-bs-toggle="tooltip" data-bs-placement="bottom" title="부가메뉴 추가" onclick="addMenuAdd()"><i class="bi bi-plus-square"></i></button> -->
+<!-- 		                                                <button type="button" id="menu-edit" class="btn btn-white p-0" data-bs-toggle="tooltip" data-bs-placement="bottom" title="메뉴 수정"><i class="bi bi-pencil-square"></i></button> -->
+<!-- 		                                                <button type="button" id="menu-delete" class="btn btn-white p-0" data-bs-toggle="tooltip" data-bs-placement="bottom" title="메뉴 삭제"><i class="bi bi-x-square"></i></button> -->
+<!-- 		                                            </span> -->
+		                                        </span>
+		                                    </div>
+		                                    <!-- 메뉴 템플릿 -->
+		
+		                                    <!-- 메뉴 수정 템플릿 -->
+		                                    <!-- 메뉴 수정 버튼 클릭시 아래 템플릿 append -->
+		                                    <div class="d-grid gap-2">
+		                                        <span class="bg-white rounded shadow-sm mb-1 p-2">
+		                                            <div class="row edit-box">
+		                                                <label for="m_name" class="col-md-2 col-sm-12 col-form-label">메뉴명</label>
+		                                                <div class="col-md-4 col-sm-12">
+		                                                    <input type="text" name="m_name" id="m_name" class="form-control">
+		                                                </div>
+		
+		                                                <label for="m_price" class="col-md-2 col-sm-12 col-form-label">가격</label>
+		                                                <div class="col-md-4 col-sm-12">
+		                                                    <input type="text" name="m_price" id="m_price" class="form-control">
+		                                                </div>
+		
+		                                                <label for="m_intro" class="col-2 col-form-label">설명</label>
+		                                                <div class="col-10">
+		                                                    <textarea type="text" name="m_intro" id="m_intro" class="form-control"></textarea>
+		                                                </div>
+		
+		                                                <label for="m_img" class="col-2 col-form-label">대표사진</label>
+		                                                <div class="col-4">
+		                                                    <input class="form-control" name="m_img" type="file" id="m_img">
+		                                                </div>
+		
+		                                                <div class="col-12 btn-box ps-0">
+		                                                    <button type="submit" class="btn btn-primary btn-sm m-1">입력</button>
+		                                                    <button type="reset" class="btn btn-secondary btn-sm m-1">취소</button>
+		                                                </div>
+		                                            </div>
+		                                        </span>
+		                                    </div>
+	                                   <!-- 메뉴 수정 템플릿 -->
+	                                   
+	                                   <!-- 부가메뉴 템플릿 -->
+	                                   <!-- 부가메뉴 추가 버튼 클릭시 아래 템플릿 append -->
+	                                   		
+		                                    <div class="d-grid gap-2">
+		                                        <span class="bg-white rounded p-2">
+		                                            <span>└</span>
+		                                            <span>부가메뉴명</span>
+		                                            
+<!-- 		                                            <span class="btn-box position-absolute end-0 pe-2"> -->
+<!-- 		                                                <button type="button" id="menu-edit" class="btn btn-white p-0" data-bs-toggle="tooltip" data-bs-placement="bottom" title="부가메뉴 수정"><i class="bi bi-pencil-square"></i></button> -->
+<!-- 		                                                <button type="button" id="menu-delete" class="btn btn-white p-0" data-bs-toggle="tooltip" data-bs-placement="bottom" title="부가메뉴 삭제"><i class="bi bi-x-square"></i></button> -->
+<!-- 		                                            </span> -->
+		                                        </span>
+		                                    </div>
+		                                    <!-- 부가메뉴 템플릿 -->
+		
+		                                    <!-- 부가메뉴 수정 템플릿 -->
+		                                    <!-- 부가메뉴 수정 버튼 클릭시 아래 템플릿 append -->
+		                                    <div class="d-grid gap-2">
+		                                        <span class="bg-white rounded shadow-sm mb-1 p-2">
+		                                            <div class="row edit-box">
+		                                                <label for="m_name" class="col-md-2 col-sm-12 col-form-label">메뉴명</label>
+		                                                <div class="col-md-4 col-sm-12">
+		                                                    <input type="text" name="a_name" id="a_name" class="form-control">
+		                                                </div>
+		
+		                                                <label for="m_price" class="col-md-2 col-sm-12 col-form-label">가격</label>
+		                                                <div class="col-md-4 col-sm-12">
+		                                                    <input type="text" name="a_price" id="a_price" class="form-control">
+		                                                </div>
+		
+		                                                <div class="col-12 btn-box ps-0">
+		                                                    <button type="submit" class="btn btn-primary btn-sm m-1">입력</button>
+		                                                    <button type="reset" class="btn btn-secondary btn-sm m-1">취소</button>
+		                                                </div>
+		                                            </div>
+		                                        </span>
 		                                    </div>
 	                                    </template>
 	                                    <!-- 부가메뉴 수정 템플릿 -->
@@ -214,20 +208,20 @@
 			
 			tl.appendChild(clon);
 		}
-		function addMenu(){
-			var tl = document.getElementById('tempMlist');
-			var temp = document.getElementById('tempMenu');
-			var clon = temp.content.cloneNode(true);
+// 		function addMenu(){
+// 			var tl = document.getElementById('tempMlist');
+// 			var temp = document.getElementById('tempMenu');
+// 			var clon = temp.content.cloneNode(true);
 			
-			tl.appendChild(clon);
-		}
-		function addMenuAdd(){
-			var tl = document.getElementById('tempAlist');
-			var temp = document.getElementById('tempMenuAdd');
-			var clon = temp.content.cloneNode(true);
+// 			tl.appendChild(clon);
+// 		}
+// 		function addMenuAdd(){
+// 			var tl = document.getElementById('tempAlist');
+// 			var temp = document.getElementById('tempMenuAdd');
+// 			var clon = temp.content.cloneNode(true);
 			
-			tl.appendChild(clon);
-		}
+// 			tl.appendChild(clon);
+// 		}
 	</script>
     <script src="/resources/js/delivery.js"></script>
     <script src="/resources/js/restaurant-editmenu.js"></script>
