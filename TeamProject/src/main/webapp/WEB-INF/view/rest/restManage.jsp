@@ -217,7 +217,8 @@
                                     <div class="card bg-light">
                                         <div class="card-body">
                                             <span class="h5 fw-bold">메뉴목록</span>
-                                            <a href="/menu/menuRegister?r_id=${rest.r_id}" class="badge bg-secondary border-0"><i class="bi bi-pencil"></i>&nbsp;편집</a>
+                                            <a href="/menu/menuRegister?r_id=${rest.r_id}" class="badge bg-success border-0"><i class="bi bi-pencil"></i>&nbsp;등록</a>
+                                            <a href="/menu/menuModify?r_id=${rest.r_id}" class="badge bg-secondary border-0"><i class="bi bi-pencil"></i>&nbsp;편집</a>
 
                                             <hr>
 
