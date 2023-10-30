@@ -22,8 +22,11 @@ public class MenuServiceImpl implements MenuService{
 //	public void register(MenuDTO menu, ArrayList<MenuAddDTO> maDTOList) {
 	public void register(MenuDTO menu) {
 		log.info("register......" + menu + menu.getMaDTOList());
+		int m_id = mapper.insertMid();
+		menu.setM_id(m_id);
 		mapper.insertM(menu);
 		for(MenuAddDTO data : menu.getMaDTOList()){
+			data.setM_id(m_id);
 			mapper.insertAdd(data);
 		}
 	}

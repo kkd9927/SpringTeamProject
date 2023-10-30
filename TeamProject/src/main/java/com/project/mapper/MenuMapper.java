@@ -10,6 +10,8 @@ public interface MenuMapper {
 	public void insertM(MenuDTO menu);
 
 	public void insertAdd(MenuAddDTO menuAdd);
+	
+	public int insertMid();
 
 	public MenuDTO read(Long m_id);
 

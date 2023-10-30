@@ -134,6 +134,7 @@
 		                                                    <button type="submit" class="btn btn-primary btn-sm m-1">입력</button>
 		                                                    <button type="reset" class="btn btn-secondary btn-sm m-1">취소</button>
 		                                                </div>
+		                                                <input type="hidden" name="r_id" value="${rest.r_id}">
 		                                            </div>
 		                                        </span>
 		                                    </div>
@@ -162,14 +163,14 @@
 		                                            <div class="row edit-box">
 		                                                <label for="m_name" class="col-md-2 col-sm-12 col-form-label">메뉴명</label>
 		                                                <div class="col-md-4 col-sm-12">
-		                                                    <input type="text" name="a_name" id="a_name" class="form-control">
+		                                                    <input type="text" name="MaDTOList[0].a_name" id="a_name" class="form-control">
 		                                                </div>
 		
 		                                                <label for="m_price" class="col-md-2 col-sm-12 col-form-label">가격</label>
 		                                                <div class="col-md-4 col-sm-12">
-		                                                    <input type="text" name="a_price" id="a_price" class="form-control">
+		                                                    <input type="text" name="MaDTOList[0].a_price" id="a_price" class="form-control">
 		                                                </div>
-		
+															<input type="hidden" name="MaDTOList[0].r_id" value="${rest.r_id}">
 		                                                <div class="col-12 btn-box ps-0">
 		                                                    <button type="submit" class="btn btn-primary btn-sm m-1">입력</button>
 		                                                    <button type="reset" class="btn btn-secondary btn-sm m-1">취소</button>

@@ -39,7 +39,7 @@ public class MenuController {
 //		service.register(menu,maDTOList);
 		service.register(menu);
 		rttr.addFlashAttribute("result", menu.getM_id());
-		return "redirect:/menu/menuList";
+		return "redirect:/rest/restList?c_code=1";
 	}
 	
 	@GetMapping({"/menuGet", "/menuModify"}) // 메뉴 1개 조회 (그리고 메뉴 1개 정보 수정창 출력)
@@ -74,6 +74,6 @@ public class MenuController {
 		if(service.remove(m_id)) {
 			rttr.addFlashAttribute("result", "success");
 		}
-		return "redirect:/menu/menuList";
+		return "redirect:/rest/restList?c_code=1";
 	}
 }

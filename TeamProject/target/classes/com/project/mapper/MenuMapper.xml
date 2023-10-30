@@ -6,15 +6,20 @@
 <mapper namespace="com.project.mapper.MenuMapper">
 	<insert id="insertM">
 		INSERT INTO
-        			MENU_INFO(r_id, m_name,m_price, m_cat, m_intro, m_code, m_img)
+        			MENU_INFO(m_id, r_id, m_name,m_price, m_cat, m_intro, m_code, m_img)
 		VALUES
-        			(#{r_id}, #{m_name}, #{m_price}, #{m_cat}, #{m_intro}, #{m_code}, #{m_img})
+        			(#{m_id}, #{r_id}, #{m_name}, #{m_price}, #{m_cat}, #{m_intro}, #{m_code}, #{m_img})
 	</insert>
+	
+	<select id="insertMid" resultType="int">
+		select mi_mid_seq.nextval from dual
+	</select>
+	
 	<insert id="insertAdd">
 		INSERT INTO
-        			MENU_ADD(m_id, a_name, a_price) 
+        			MENU_ADD(m_id, r_id, a_name, a_price) 
 		VALUES
-        			(#{m_id}, #{a_name}, #{a_price})
+        			(#{m_id}, #{r_id}, #{a_name}, #{a_price})
 	</insert>
 	
 	<select id="getList" resultType="com.project.domain.MenuDTO">
