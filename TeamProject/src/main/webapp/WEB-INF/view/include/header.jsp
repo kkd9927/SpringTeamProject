@@ -29,9 +29,9 @@
 
         <sec:authorize access="isAuthenticated()">
 			<div>
-				<sec:authorize access="hasRole('BUSINESS')">
-			    	<a href="#" class="btn btn-danger"><i class="bi bi-shop" style="font-size: 1.5rem;"></i></a>
-				</sec:authorize>
+				<sec:authorize access="hasAuthority('BUSINESS')">
+					<a href="/rest/restManage?r_id=${principal.rid}" class="btn btn-danger"><i class="bi bi-shop" style="font-size: 1.5rem;"></i></a>
+			    </sec:authorize>
 			
 			    <a href="#" class="btn btn-danger position-relative">
 			        <i class="bi bi-cart" style="font-size: 1.5rem;"></i>
@@ -41,10 +41,6 @@
 			            <span class="visually-hidden"></span>
 			        </span>
 			    </a>
-			    
-			    <sec:authorize access="hasRole('BUSINESS')">
- 					<a href="/rest/restManage?r_id=${principal.rId}" class="btn btn-danger"><i class="bi bi-shop" style="font-size: 1.5rem;"></i></a>
-			    </sec:authorize>
 			    
 			    <!-- * 버튼 클릭시 회원정보 페이지로 이동 -->
 			    <a href="/user/${principal.user.u_id}" id="${principal.user.u_id}" class="btn btn-danger btn-user"><i class="bi bi-person-fill" style="font-size: 1.5rem;"></i></a>

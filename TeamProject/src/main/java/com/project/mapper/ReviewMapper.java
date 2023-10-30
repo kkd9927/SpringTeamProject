@@ -8,7 +8,7 @@ import com.project.domain.ReviewDTO;
 
 public interface ReviewMapper {
 
-	@Select("SELECT RI.O_NUM, U.U_NNAME, RI.R_CONTENT, RI.R_SCORE, RI.R_WRIDATE, R.R_BNAME, R.R_IMG " +
+	@Select("SELECT RI.O_NUM, U.U_NNAME, RI.R_CONTENT, RI.R_SCORE, TO_CHAR(RI.R_WRIDATE, 'yyyy-MM-dd') AS R_WRIDATE, R.R_BNAME, R.R_IMG " +
 	        "FROM REVIEW_INFO RI " +
 	        "JOIN ORDER_INFO OI ON RI.O_NUM = OI.O_NUM " +
 	        "JOIN USER_INFO U ON OI.U_ID = U.U_ID " +

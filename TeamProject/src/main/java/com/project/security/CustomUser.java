@@ -17,7 +17,7 @@ public class CustomUser extends User {
 	
 	private UserVO user;
 	private List<UserAddrVO> addr;
-	private int rId;
+	private int rid;
 	
 	public CustomUser(String username, String password, Collection<? extends GrantedAuthority> authorities) {
 		super(username, password, authorities);
@@ -28,6 +28,6 @@ public class CustomUser extends User {
 		
 		this.user = user;
 		this.addr = addr;
-		this.rId = rId;
+		this.rid = rId;
 	}
 }
