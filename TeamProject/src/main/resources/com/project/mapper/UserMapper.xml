@@ -12,10 +12,53 @@
 	
 	<select id="selectByUserId" resultType="com.project.domain.UserVO">
 		SELECT
-			*
+			U_ID, U_PW, U_RNAME, U_PHONE, U_NNAME, U_CODE, TO_CHAR(U_REGDATE, 'yyyy-MM-dd') AS U_REGDATE, U_IMG
 		FROM
 			USER_INFO
 		WHERE
 			U_ID = #{u_id}
 	</select>
+	
+	<update id="updateNname">
+		UPDATE
+			USER_INFO
+		SET
+			U_NNAME = #{arg1}
+		WHERE
+			U_ID = #{arg0}
+	</update>
+	
+	<update id="updateImg">
+		UPDATE
+			USER_INFO
+		SET
+			U_IMG = #{arg1}
+		WHERE
+			U_ID = #{arg0}
+	</update>
+	
+	<update id="updatePassword">
+		UPDATE
+			USER_INFO
+		SET
+			U_PW = #{arg1}
+		WHERE
+			U_ID = #{arg0}
+	</update>
+	
+	<update id="updatePhone">
+		UPDATE
+			USER_INFO
+		SET
+			U_PHONE = #{arg1}
+		WHERE
+			U_ID = #{arg0}
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM
+			USER_INFO
+		WHERE
+			U_ID = #{u_id}
+	</delete>
 </mapper>

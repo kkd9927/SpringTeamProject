@@ -33,6 +33,6 @@ public class SecurityTest {
 	
 	@Test
 	public void loadUserByUsernameTest() {
-		log.info(customUserDetailsService.loadUserByUsername("test_id9"));
+		log.info(customUserDetailsService.loadUserByUsername("test"));
 	}
 }
