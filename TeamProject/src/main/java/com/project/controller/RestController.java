@@ -60,7 +60,7 @@ public class RestController {
 //		});
 		service.register(rest);
 		rttr.addFlashAttribute("result", rest.getR_id());
-		return "redirect:/rest/restList?c_code=0";
+		return "redirect:/rest/restList?c_code=1";
 	}
 	
 	@GetMapping({"/restGet", "/restModify", "/restManage"}) // 가게 1개조회 (가게 정보수정창 출력)
@@ -81,7 +81,7 @@ public class RestController {
 		if(service.modify(rest)) {
 			rttr.addFlashAttribute("result", "success");
 		}
-		return "redirect:/rest/restList?c_code=0";
+		return "redirect:/rest/restList?c_code=1";
 	}
 	
 	@RequestMapping(value="/restRemove" , method = {RequestMethod.GET, RequestMethod.POST})
@@ -90,6 +90,6 @@ public class RestController {
 		if(service.remove(r_id)) {
 			rttr.addFlashAttribute("result", "success");
 		}
-		return "redirect:/rest/restList?c_code=0";
+		return "redirect:/rest/restList?c_code=1";
 	}
 }

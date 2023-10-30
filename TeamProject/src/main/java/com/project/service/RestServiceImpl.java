@@ -34,12 +34,16 @@ public class RestServiceImpl implements RestService{
 
 		for(RestCatDTO data : rest.getRcaDTOList()) {
 			data.setR_id(r_id);
-			mapper.insertCat(data);
+			if(data.getC_code() != 0) {
+				mapper.insertCat(data);
+			}
 		}
 		
 		for(MethodDTO data : rest.getMDTOList()) {
 			data.setR_id(r_id);
-			mapper.insertMethod(data);
+			if(data.getP_code() != 0) {
+				mapper.insertMethod(data);
+			}
 		}
 		
 	}
