@@ -152,7 +152,7 @@
 			                                    <div class="row g-0">
 			                                        <div class="col-2">
 			                                            <div class="image-box">
-			                                                <img src="${menu.m_img}" class="img-fluid rounded-start">
+			                                                <img src="/resources/upload/${menu.m_img}" class="img-fluid rounded-start">
 			                                            </div>
 			                                        </div>
 			    
