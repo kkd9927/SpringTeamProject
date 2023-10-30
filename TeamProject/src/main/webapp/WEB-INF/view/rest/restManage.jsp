@@ -31,24 +31,25 @@
 	</script>
 </head>
 <body>
+	<%@ include file="/WEB-INF/view/include/header.jsp" %>
 	<!-- 헤더 -->
-    <nav class="navbar navbar-light bg-danger position-fixed">
-        <div class="container-md">
-            <div>
-                <a class="navbar-brand" href="/">
-                    <img src="no-photo.png">
-                </a>
+<!--     <nav class="navbar navbar-light bg-danger position-fixed"> -->
+<!--         <div class="container-md"> -->
+<!--             <div> -->
+<!--                 <a class="navbar-brand" href="/"> -->
+<!--                     <img src="no-photo.png"> -->
+<!--                 </a> -->
 
                 <!-- * 로그인 전에는 표시안함 -->
                 <!-- <span class="navbar-text text-white"><i class="bi bi-geo-alt-fill"></i>&nbsp;<b>주소표시</b></span>
                 <button type="button" class="btn btn-danger btn-sm"><i class="bi bi-caret-down-fill"></i></button> -->
                 <!-- -->
-            </div>
+<!--             </div> -->
 
             <!-- 로그인 전 -->
-            <div>
-                <button type="button" class="btn btn-light">로그인</button>
-            </div>
+<!--             <div> -->
+<!--                 <button type="button" class="btn btn-light">로그인</button> -->
+<!--             </div> -->
 
             <!-- 로그인 후 -->
             <!-- <div>
@@ -71,8 +72,8 @@
             <!-- <a href="#" class="btn btn-danger"><i class="bi bi-person-fill" style="font-size: 1.5rem;"></i></a>
 
                 <button type="button" class="btn btn-light">로그아웃</button> -->
-        </div>
-    </nav>
+<!--         </div> -->
+<!--     </nav> -->
 	<c:set value="${rest}" var="rest"/>
     <!-- 컨텐츠 -->
     <div class="contents">
