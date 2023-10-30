@@ -73,7 +73,7 @@ public class UserController {
 		return "user/modify";
 	}
 	
-	@PutMapping("/user/{user}/modify-nname")
+	@PutMapping("/user/modify-nname")
 	@ResponseBody
 	public ResponseDTO modifyNname(@RequestBody HashMap<String, String> map) {
 		userService.modifyNname(map);
@@ -82,7 +82,7 @@ public class UserController {
 		return new ResponseDTO("success", HttpStatus.OK);
 	}
 	
-	@PutMapping("/user/{user}/modify-img")
+	@PutMapping("/user/modify-img")
 	@ResponseBody
 	public ResponseDTO modifyImg(@RequestBody HashMap<String, String> map) {
 		userService.modifyImg(map);
@@ -91,7 +91,7 @@ public class UserController {
 		return new ResponseDTO("success", HttpStatus.OK);
 	}
 	
-	@PutMapping("/user/{user}/modify-password")
+	@PutMapping("/user/modify-password")
 	@ResponseBody
 	public ResponseDTO modifyPassword(@RequestBody HashMap<String, String> map) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -102,7 +102,7 @@ public class UserController {
 		return result == 1 ? new ResponseDTO("success", HttpStatus.OK) : new ResponseDTO("fail", HttpStatus.OK);
 	}
 	
-	@PutMapping("/user/{user}/modify-phone")
+	@PutMapping("/user/modify-phone")
 	@ResponseBody
 	public ResponseDTO modifyPhone(@RequestBody HashMap<String, String> map) {
 		userService.modifyPhone(map);
