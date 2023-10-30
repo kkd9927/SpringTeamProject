@@ -112,7 +112,7 @@
 			
 			$.ajax({
 				type: "put",
-				url: `/user/${id}/modify-nname`,
+				url: "/user/modify-nname",
 				headers: {
 				    'Content-Type': 'application/json'
 				},
@@ -134,7 +134,7 @@
 			
 			$.ajax({
 				type: "put",
-				url: `/user/${id}/modify-img`,
+				url: "/user/modify-img",
 				headers: {
 				    'Content-Type': 'multipart/form-data'
 				},
@@ -158,7 +158,7 @@
 			
 			$.ajax({
 				type: "put",
-				url: `/user/${id}/modify-password`,
+				url: "/user/modify-password",
 				headers: {
 				    'Content-Type': 'application/json'
 				},
@@ -179,7 +179,7 @@
 			
 			$.ajax({
 				type: "put",
-				url: `/user/${id}/modify-phone`,
+				url: "/user/modify-phone",
 				headers: {
 				    'Content-Type': 'application/json'
 				},
