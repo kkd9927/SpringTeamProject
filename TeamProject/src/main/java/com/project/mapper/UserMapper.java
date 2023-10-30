@@ -17,4 +17,6 @@ public interface UserMapper {
 	public void updatePhone(String arg0, String arg1);
 	
 	public void delete(String u_id);
+	
+	public int selectRIdByUserId(String u_id);
 }

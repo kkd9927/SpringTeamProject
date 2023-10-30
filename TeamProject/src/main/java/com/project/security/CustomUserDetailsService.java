@@ -46,6 +46,11 @@ public class CustomUserDetailsService implements UserDetailsService {
 			authorities.add(new SimpleGrantedAuthority("BUSINESS"));
 		}
 		
-		return new CustomUser(user, addr, authorities);
+		if(userCode == 2) {
+			int rId = userMapper.selectRIdByUserId(u_id);
+			return new CustomUser(user, addr, authorities, rId);
+		}
+		
+		return new CustomUser(user, addr, authorities, 0);
 	}
 }

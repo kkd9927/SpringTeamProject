@@ -17,15 +17,17 @@ public class CustomUser extends User {
 	
 	private UserVO user;
 	private List<UserAddrVO> addr;
+	private int rId;
 	
 	public CustomUser(String username, String password, Collection<? extends GrantedAuthority> authorities) {
 		super(username, password, authorities);
 	}
 
-	public CustomUser(UserVO user, List<UserAddrVO> addr, Collection<? extends GrantedAuthority> authorities) {
+	public CustomUser(UserVO user, List<UserAddrVO> addr, Collection<? extends GrantedAuthority> authorities, int rId) {
 		super(user.getU_id(), user.getU_pw(), authorities);
 		
 		this.user = user;
 		this.addr = addr;
+		this.rId = rId;
 	}
 }

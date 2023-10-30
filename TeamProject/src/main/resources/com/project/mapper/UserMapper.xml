@@ -61,4 +61,13 @@
 		WHERE
 			U_ID = #{u_id}
 	</delete>
+	
+	<select id="selectRIdByUserId" resultType="int">
+		SELECT
+			R_ID
+		FROM
+			REST_INFO
+		WHERE
+			U_ID = #{u_id}
+	</select>
 </mapper>
