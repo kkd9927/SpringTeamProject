@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.project.mapper.MenuMapper">
+	<insert id="insertM">
+		INSERT INTO
+        			MENU_INFO(m_id, r_id, m_name,m_price, m_cat, m_intro, m_code, m_img)
+		VALUES
+        			(#{m_id}, #{r_id}, #{m_name}, #{m_price}, #{m_cat}, #{m_intro}, #{m_code}, #{m_img})
+	</insert>
+	
+	<select id="insertMid" resultType="int">
+		select mi_mid_seq.nextval from dual
+	</select>
+	
+	<insert id="insertAdd">
+		INSERT INTO
+        			MENU_ADD(m_id, r_id, a_name, a_price) 
+		VALUES
+        			(#{m_id}, #{r_id}, #{a_name}, #{a_price})
+	</insert>
+	
+	<select id="getList" resultType="com.project.domain.MenuDTO">
+		select
+       			m_id, m_name, m_price, m_cat, m_intro, m_code, m_img
+		from
+       			menu_info
+		where
+       			r_id = #{r_id}
+       	order by
+        		m_code desc
+	</select>
+	
+	<select id="getCatList" resultType="com.project.domain.MenuDTO">
+		select distinct
+		        m_cat, m_code
+		from
+		        menu_info
+		where
+		        r_id = #{r_id}
+		order by
+		        m_code desc
+	</select>
+	
+	<select id="read" resultType="com.project.domain.MenuDTO">
+		select
+       			m_id, r_id, m_name, m_price, m_cat, m_code, m_intro, m_img
+		from
+       			menu_info
+		where
+        		m_id = #{m_id}
+	</select>
+	
+	<select id="readAdd" resultType="com.project.domain.MenuAddDTO">
+		select
+       			a_id, m_id, a_name, a_price
+		from
+       			menu_add
+		where
+        		a_id = #{a_id}
+	</select>
+	
+	<select id="getAddListM" resultType="com.project.domain.MenuAddDTO">
+		select 
+       			a_id, r_id, m_id, a_name, a_price
+		from
+		        menu_add
+		where
+       			m_id = #{m_id}
+	</select>
+	
+	<select id="getAddListR" resultType="com.project.domain.MenuAddDTO">
+		select 
+       			a_id, m_id, a_name, a_price
+		from
+		        menu_add
+		where
+       			r_id = #{r_id}
+	</select>
+	
+	<update id="update">
+		UPDATE
+		        menu_info
+		SET
+		        m_name= #{m_name}, m_price = #{m_price}, m_cat = #{m_cat}, m_intro = #{m_intro}, m_code = #{m_code}, m_img = #{m_img}
+		WHERE
+		        m_id = #{m_id}
+	</update>
+		
+	<update id="updateAdd">
+		UPDATE
+		        menu_add
+		SET
+		        a_name = #{a_name}, a_price= #{a_price}
+		WHERE
+		        a_id = #{a_id}
+	</update>
+	
+	<delete id="delete">
+		DELETE
+		        menu_info
+		WHERE
+		        m_id= #{m_id}
+	</delete>
+	
+	<delete id="deleteAdd">
+		DELETE
+		        menu_add
+		WHERE
+		        m_id = #{m_id}
+	</delete>
+</mapper>

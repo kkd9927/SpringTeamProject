@@ -29,9 +29,9 @@
 
         <sec:authorize access="isAuthenticated()">
 			<div>
-				<sec:authorize access="hasRole('BUSINESS')">
-			    	<a href="#" class="btn btn-danger"><i class="bi bi-shop" style="font-size: 1.5rem;"></i></a>
-				</sec:authorize>
+				<sec:authorize access="hasAuthority('BUSINESS')">
+					<a href="/rest/restManage?r_id=${principal.rid}" class="btn btn-danger"><i class="bi bi-shop" style="font-size: 1.5rem;"></i></a>
+			    </sec:authorize>
 			
 			    <a href="#" class="btn btn-danger position-relative">
 			        <i class="bi bi-cart" style="font-size: 1.5rem;"></i>
@@ -42,8 +42,9 @@
 			        </span>
 			    </a>
 			    
+			    
 			    <!-- * 버튼 클릭시 회원정보 페이지로 이동 -->
-			    <a href="/user/${u_id}" id="${u_id}" class="btn btn-danger btn-user"><i class="bi bi-person-fill" style="font-size: 1.5rem;"></i></a>
+			    <a href="/user/${principal.user.u_id}" id="${principal.user.u_id}" class="btn btn-danger btn-user"><i class="bi bi-person-fill" style="font-size: 1.5rem;"></i></a>
 			
 			    <a href="/logout" class="btn btn-light">로그아웃</a>
 			</div>
@@ -56,7 +57,7 @@
 	    <div class="modal-dialog modal-dialog-scrollable">
 	        <div class="modal-content">
 	            <div class="modal-body">
-	                <h4>주소설정</h4>
+	                <h4>주소설정</h4> 
 	                
 	                <hr>
 	                
@@ -78,7 +79,7 @@
 		                        <c:if test="${principal.addr[0].u_atag eq addr.u_atag}">                        
 		                        	<span class="badge bg-danger">현재위치</span>	
 		                        </c:if>
-		                        <button type="button" id="addr-${stat.count}-delete" class="bg-white border-0"><i class="bi bi-x-lg text-danger"></i></button>
+		                        <button type="button" id="addr-${stat.count}-delete" class="bg-white border-0 btn-delete"><i class="bi bi-x-lg text-danger"></i></button>
 		                    </li>
 	                	</c:forEach>
 	                	
@@ -166,17 +167,52 @@
 		addr = $("#input-addr").val();
 		dtad = $("#input-dtad").val();
 		
-		const param = {u_id: id, u_atag: tag, u_addr: addr, u_dtad: dtad}
+		const data = {
+			u_id: id, 
+			u_atag: tag, 
+			u_addr: addr, 
+			u_dtad: dtad
+		}
 		
 		$.ajax({
 			type: "post",
-			contentType: "application/json; charset=UTF-8",
 			url: "/address/add",
-			data: param,
-			dataType: "json"
-		})
-		.done(function(data) {
-			location.reload();
-		})
+			headers: {
+			    'Content-Type': 'application/json'
+			},
+			data: JSON.stringify(data),
+			success: function(result) {
+				location.reload();
+			}
+		});
+	});
+	
+	$(".btn-delete").on("click", function() {
+		let eId = $(this).attr("id");
+		let listNum = eId.substr(5, 1);
+		
+		let id = $(".btn-user").attr("id");
+		let tag = $("#addr-" + listNum + "-tag").text();
+		let addr = $("#addr-" + listNum + "-addr").text();
+		let dtad = $("#addr-" + listNum + "-dtad").text();
+		
+		const data = {
+			u_id: id,
+			u_atag: tag,
+			u_addr: addr,
+			u_dtad: dtad
+		}
+		
+		$.ajax({
+			type: "delete",
+			url: "/address/remove",
+			headers: {
+			    'Content-Type': 'application/json'
+			},
+			data: JSON.stringify(data),
+			success: function(result) {
+				location.reload();
+			}
+		});
 	});
 </script>

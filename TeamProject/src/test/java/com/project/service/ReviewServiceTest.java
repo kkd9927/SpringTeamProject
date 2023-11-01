@@ -24,13 +24,13 @@ public class ReviewServiceTest {
         List<ReviewDTO> reviews = reviewService.getReviews();
         assertNotNull(reviews);
         for (ReviewDTO review : reviews) {
-            System.out.println("O_NUM: " + review.getO_NUM());
-            System.out.println("R_BNAME: " + review.getR_BNAME());
-            System.out.println("U_NNAME: " + review.getU_NNAME());
-            System.out.println("R_CONTENT: " + review.getR_CONTENT());
-            System.out.println("R_SCORE: " + review.getR_SCORE());
-            System.out.println("R_WRIDATE: " + review.getR_WRIDATE());
-            System.out.println("R_IMG: " + review.getR_IMG());
+            System.out.println("O_NUM: " + review.getO_num());
+            System.out.println("R_BNAME: " + review.getR_bname());
+            System.out.println("U_NNAME: " + review.getR_bname());
+            System.out.println("R_CONTENT: " + review.getR_content());
+            System.out.println("R_SCORE: " + review.getR_score());
+            System.out.println("R_WRIDATE: " + review.getR_wridate());
+            System.out.println("R_IMG: " + review.getR_img());
         }
     }
 }

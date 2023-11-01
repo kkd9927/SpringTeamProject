@@ -23,6 +23,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 	private final UserMapper userMapper;
 	private final UserAddrMapper addrMapper;
 	
+	// 로그인 요청이 들어오면 아래 메소드를 거쳐 인증객체를 생성함
 	@Override
 	public UserDetails loadUserByUsername(String u_id) throws UsernameNotFoundException {
 		UserVO user = userMapper.selectByUserId(u_id);
@@ -34,6 +35,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 		
 		int userCode = user.getU_code();
 		List<GrantedAuthority> authorities = new ArrayList<>();
+		// 유저의 권한 설정을 위한 리스트
 		
 		if(userCode == 0) {
 			authorities.add(new SimpleGrantedAuthority("ADMIN"));
@@ -46,6 +48,11 @@ public class CustomUserDetailsService implements UserDetailsService {
 			authorities.add(new SimpleGrantedAuthority("BUSINESS"));
 		}
 		
-		return new CustomUser(user, addr, authorities);
+		if(userCode == 2) {
+			int rId = userMapper.selectRIdByUserId(u_id);
+			return new CustomUser(user, addr, authorities, rId);
+		}
+		
+		return new CustomUser(user, addr, authorities, 0);
 	}
 }

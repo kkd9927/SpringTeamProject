@@ -24,8 +24,8 @@ public class ReviewMenuMapperTest {
             List<ReviewMenuDTO> reviewMenus = reviewMenuMapper.getReviewMenus();
 
             for (ReviewMenuDTO reviewMenu : reviewMenus) {
-                System.out.println("O_NUM" + reviewMenu.getO_NUM());
-                System.out.println("M_NAME" + reviewMenu.getM_NAME());
+                System.out.println("O_NUM" + reviewMenu.getO_num());
+                System.out.println("M_NAME" + reviewMenu.getM_name());
             }
         } finally {
             context.close();

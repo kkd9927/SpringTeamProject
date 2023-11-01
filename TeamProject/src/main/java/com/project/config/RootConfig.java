@@ -22,7 +22,7 @@ public class RootConfig {
 		hikariConfig.setDriverClassName("net.sf.log4jdbc.sql.jdbcapi.DriverSpy");
 		
 //		<통합 테스트용>
-//		hikariConfig.setJdbcUrl("jdbc:log4jdbc:oracle:thin:@10.100.206.86:1521:XE");
+//		hikariConfig.setJdbcUrl("jdbc:log4jdbc:oracle:thin:@10.100.206.79:1521:XE");
 //		hikariConfig.setUsername("Delivery");
 //		hikariConfig.setPassword("delivery");
 		

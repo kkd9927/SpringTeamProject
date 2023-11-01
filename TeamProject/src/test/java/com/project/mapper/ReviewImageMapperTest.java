@@ -24,8 +24,8 @@ public class ReviewImageMapperTest {
             List<ReviewImageDTO> reviewImages = reviewImageMapper.getReviewImages();
 
             for (ReviewImageDTO reviewImage : reviewImages) {
-                System.out.println("O_NUM" + reviewImage.getO_NUM());
-                System.out.println("R_IMG" + reviewImage.getR_IMG());
+                System.out.println("O_NUM" + reviewImage.getO_num());
+                System.out.println("R_IMG" + reviewImage.getR_img());
             }
         } finally {
             context.close();

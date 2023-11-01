@@ -3,6 +3,7 @@ package com.project.mapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -18,6 +19,9 @@ public class UserMapperTest {
 	@Autowired
 	private UserMapper mapper;
 	
+	@Autowired
+	private PasswordEncoder encoder;
+	
 //	@Test
 	public void insertTest() {
 		UserDTO user = new UserDTO();
@@ -31,8 +35,33 @@ public class UserMapperTest {
 		mapper.insert(user);
 	}
 	
-	@Test
+//	@Test
 	public void selectByUserIdTest() {
+		log.info(mapper.selectByUserId("test"));
+	}
+	
+//	@Test
+	public void updateNname() {
+		mapper.updateNname("test", "수정된닉네임");
+		log.info(mapper.selectByUserId("test"));
+	}
+	
+//	@Test
+	public void updateImg() {
+		mapper.updateImg("test", "수정된이미지");
+		log.info(mapper.selectByUserId("test"));
+	}
+	
+//	@Test
+	public void updatePassword() {
+		log.info("변경전:" + mapper.selectByUserId("test").getU_pw());
+		mapper.updatePassword("test", encoder.encode("테스트1"));
+		log.info("변경후:" + mapper.selectByUserId("test").getU_pw());
+	}
+	
+	@Test
+	public void updatePhone() {
+		mapper.updatePhone("test", "01012345678");
 		log.info(mapper.selectByUserId("test"));
 	}
 }
