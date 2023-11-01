@@ -76,9 +76,9 @@
                     <div class="card bg-light mt-4">
                         <div class="card-body">
                             <div class="image-box" style="width: 100%;">
-                                <img src="../resources/img/${reviews[0].r_img}" class="img-fluid rounded-start" alt="Restaurant Image" />
+                                <img src="../resources/img/${reviews[0].u_img}" class="img-fluid rounded-start" alt="User Image" />
                             </div>
-                            <h3 class="mt-1"><c:out value="${reviews[0].r_bname}" /></h3>
+                            <h3 class="mt-1"><c:out value="${reviews[0].u_nname}" /></h3>
                         </div>
                     </div>
                 </div>

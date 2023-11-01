@@ -3,6 +3,6 @@ package com.project.service;
 import com.project.domain.ReviewDTO;
 import java.util.List;
 
-public interface ReviewService {
-    List<ReviewDTO> getReviews(int restaurantId);
+public interface ReviewUserService {
+    List<ReviewDTO> getuserReviews(String userId);
 }

@@ -66,11 +66,6 @@
                         </label>
                     </div>
                     <div class="row">
-                        <label for="r_date" class="col-md-3 col-sm-12 col-form-label">작성날짜
-                            <input type="text" id="r_date" name="r_wriDate" value="${reviewInput.r_wriDate}" readonly>
-                        </label>
-                    </div>
-                    <div class="row">
                         <label for="r_score" class="col-md-3 col-sm-12 col-form-label">리뷰점수
                             <input type="text" id="r_score" name="r_score" value="${reviewInput.r_score}">
                             <div class="star-container"></div>
