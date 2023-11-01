@@ -1,14 +1,17 @@
 package com.project.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.project.domain.RestDTO;
 import com.project.domain.UserAddrDTO;
 import com.project.domain.UserAddrVO;
 import com.project.domain.UserDTO;
+import com.project.mapper.RestMapper;
 import com.project.mapper.UserAddrMapper;
 import com.project.mapper.UserMapper;
 import com.project.security.CustomUser;
@@ -20,6 +23,7 @@ import lombok.RequiredArgsConstructor;
 public class UserServiceImpl implements UserService {
 	private final UserMapper userMapper;
 	private final UserAddrMapper addrMapper;
+	private final RestMapper restMapper;
 	private final PasswordEncoder encoder;
 
 	@Override
@@ -32,20 +36,10 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
-	public List<UserAddrVO> getAddr(String u_id) {
-		return addrMapper.selectByUserId(u_id);
+	public ArrayList<RestDTO> getFavList(String u_id) {
+		return null;
 	}
 	
-	@Override
-	public void addAddr(UserAddrDTO addr) {
-		addrMapper.insert(addr);
-	}
-	
-	@Override
-	public void removeAddr(UserAddrDTO addr) {
-		addrMapper.delete(addr);
-	}
-
 	@Override
 	public void modifyNname(Map<String, String> map) {
 		userMapper.updateNname(map.get("u_id"), map.get("u_nname"));
@@ -74,5 +68,20 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void withdraw(Map<String, String> map) {
 		userMapper.delete(map.get("u_id"));
+	}
+	
+	@Override
+	public List<UserAddrVO> getAddr(String u_id) {
+		return addrMapper.selectByUserId(u_id);
+	}
+	
+	@Override
+	public void addAddr(UserAddrDTO addr) {
+		addrMapper.insert(addr);
+	}
+	
+	@Override
+	public void removeAddr(UserAddrDTO addr) {
+		addrMapper.delete(addr);
 	}
 }

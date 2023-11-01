@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -66,6 +67,21 @@ public class UserController {
 	@GetMapping("/user/{user}")
 	public String info() {
 		return "user/info";
+	}
+	
+	@GetMapping("/user/{u_id}/favorite")
+	public String favorite(@PathVariable String u_id, Model model) {
+		return "user/favorite";
+	}
+	
+	@GetMapping("/user/{u_id}/order")
+	public String order(@PathVariable String u_id, Model model) {
+		return "user/order";
+	}
+	
+	@GetMapping("/user/{u_id}/review")
+	public String review(@PathVariable String u_id, Model model) {
+		return "user/review";
 	}
 	
 	@GetMapping("/user/{user}/modify")
