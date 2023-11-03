@@ -24,18 +24,18 @@ public class ReviewInputController {
         this.reviewService = reviewService;
     }
 
-    @GetMapping("/review-input")
-    public String showReviewInputForm(Model model, @RequestParam("o_num") int o_num) {
-        ReviewDTO review = reviewService.getReviewByOrderNumber(o_num);
-        ReviewInputDTO reviewInput = new ReviewInputDTO();
-        reviewInput.setO_num(o_num);
-
-        model.addAttribute("reviewInput", reviewInput);
-        model.addAttribute("r_bname", review.getR_bname());
-        model.addAttribute("u_nname", review.getU_nname());
-
-        return "review-input";
-    }
+//    @GetMapping("/review-input")
+//    public String showReviewInputForm(Model model, @RequestParam("o_num") int o_num) {
+//        ReviewDTO review = reviewService.getReviewByOrderNumber(o_num);
+//        ReviewInputDTO reviewInput = new ReviewInputDTO();
+//        reviewInput.setO_num(o_num);
+//
+//        model.addAttribute("reviewInput", reviewInput);
+//        model.addAttribute("r_bname", review.getR_bname());
+//        model.addAttribute("u_nname", review.getU_nname());
+//
+//        return "review-input";
+//    }
 
     @PostMapping("/review-input")
     public String handleReviewInput(
