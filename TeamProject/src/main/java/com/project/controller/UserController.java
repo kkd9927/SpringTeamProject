@@ -153,17 +153,4 @@ public class UserController {
 		
 		return new ResponseDTO("success", HttpStatus.OK);
 	}
-//	protected void authReload() {
-//		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//		CustomUser user = (CustomUser) authentication.getPrincipal();
-//	    SecurityContextHolder.getContext().setAuthentication(createNewAuthentication(authentication, user.getUsername()));
-//	}
-//	
-//	protected Authentication createNewAuthentication(Authentication currentAuth, String username) {
-//	    CustomUser newPrincipal = (CustomUser) customUserDetailsService.loadUserByUsername(username);
-//	    UsernamePasswordAuthenticationToken newAuth = new UsernamePasswordAuthenticationToken(newPrincipal, currentAuth.getCredentials(), newPrincipal.getAuthorities());
-//	    newAuth.setDetails(currentAuth.getDetails());
-//	    
-//	    return newAuth;
-//	}
 }
