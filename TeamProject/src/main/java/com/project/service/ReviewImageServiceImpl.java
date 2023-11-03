@@ -4,12 +4,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.project.mapper.ReviewImageMapper;
 import com.project.domain.ReviewImageDTO;
+import java.util.List;
 
 @Service
 public class ReviewImageServiceImpl implements ReviewImageService {
 
     @Autowired
     private ReviewImageMapper reviewImageMapper;
+
+    @Override
+    public List<ReviewImageDTO> getReviewImages() {
+        return reviewImageMapper.getReviewImages();
+    }
 
     @Override
     public void insertReviewImage(ReviewImageDTO reviewImage) {
@@ -26,4 +32,3 @@ public class ReviewImageServiceImpl implements ReviewImageService {
         reviewImageMapper.deleteReviewImage(o_num);
     }
 }
-

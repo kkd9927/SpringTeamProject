@@ -17,4 +17,5 @@ public class ReviewDTO {
     @DateTimeFormat(pattern = "yyyyMMdd")
     private Date r_wridate;
     private String r_img;
+    private String u_img;
 }

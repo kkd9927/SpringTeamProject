@@ -107,7 +107,7 @@
                                     <div class="card bg-light">
                                         <div class="card-body">
                                             <span class="h5 fw-bold">찜목록</span>
-                                            <button type="button" class="badge bg-secondary border-0 text-white text-decoration-none"><i class="bi bi-pencil"></i>&nbsp;조회</button>
+                                            <a href="/user/${principal.user.u_id}/favorite" class="badge bg-secondary border-0 text-white text-decoration-none"><i class="bi bi-pencil"></i>&nbsp;조회</a>
 
                                             <hr>
 
@@ -124,7 +124,7 @@
                                     <div class="card bg-light">
                                         <div class="card-body">
                                             <span class="h5 fw-bold">주문내역</span>
-                                            <button type="button" class="badge bg-secondary border-0 text-white text-decoration-none"><i class="bi bi-pencil"></i>&nbsp;조회</button>
+                                            <a href="/user/${principal.user.u_id}/order" class="badge bg-secondary border-0 text-white text-decoration-none"><i class="bi bi-pencil"></i>&nbsp;조회</a>
 
                                             <hr>
 
@@ -141,7 +141,7 @@
                                     <div class="card bg-light">
                                         <div class="card-body">
                                             <span class="h5 fw-bold">리뷰목록</span>
-                                            <button type="button" class="badge bg-secondary border-0 text-white text-decoration-none"><i class="bi bi-pencil"></i>&nbsp;조회</button>
+                                            <a href="/user/${principal.user.u_id}/review" class="badge bg-secondary border-0 text-white text-decoration-none"><i class="bi bi-pencil"></i>&nbsp;조회</a>
 
                                             <hr>
 
