@@ -27,16 +27,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .authorizeRequests(requests -> requests // 요청 URL에 대한 권한설정
             	.antMatchers("/resources/css/*", "/resources/js/*", "/resources/img/*").permitAll()
                 .antMatchers("/", "/register", "/register/form").permitAll()
-<<<<<<< HEAD
                 .antMatchers("/reviews", "/user-reviews", "/restaurant-reviewcreate", "/restaurant-reviewcreate/review-input/*").permitAll()
-                .anyRequest().authenticated()
-=======
                 .antMatchers("/rest/restRegister", "/rest/restList", "/rest/restGet").permitAll()
                 // antMatchers() => 요청 URL 지정
                 // permitAll() => 무조건 허용
                 // hasRole(), hasAuthority()등 별도의 권한설정을 해주는 메소드가 존재함
                 .anyRequest().authenticated() // 이외 모든 요청에대해 인증된 권한이 필요
->>>>>>> 9e6e646b70ff4c30cae281a2e7e5d9e0b25bf870
                 .and())
             .formLogin(login -> login // 로그인 페이지를 지정해서 로그인 요청(POST)에 대해 자동으로 파라미터 수집
                 .loginPage("/login") // 로그인 URL 설정, 로그인 페이지로 이동하는 GET 요청에 대해서는 컨트롤러에서 처리

@@ -93,7 +93,7 @@ public class UserController {
 	@ResponseBody
 	public ResponseDTO modifyNname(@RequestBody HashMap<String, String> map) {
 		userService.modifyNname(map);
-		authReload();
+		customUserDetailsService.createNewAuthentication();
 		
 		return new ResponseDTO("success", HttpStatus.OK);
 	}
@@ -102,7 +102,7 @@ public class UserController {
 	@ResponseBody
 	public ResponseDTO modifyImg(@RequestBody HashMap<String, String> map) {
 		userService.modifyImg(map);
-		authReload();
+		customUserDetailsService.createNewAuthentication();
 		
 		return new ResponseDTO("success", HttpStatus.OK);
 	}
@@ -113,7 +113,7 @@ public class UserController {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		CustomUser user = (CustomUser) authentication.getPrincipal();
 		int result = userService.modifyPassword(map, user);
-		authReload();
+		customUserDetailsService.createNewAuthentication();
 		
 		return result == 1 ? new ResponseDTO("success", HttpStatus.OK) : new ResponseDTO("fail", HttpStatus.OK);
 	}
@@ -122,7 +122,7 @@ public class UserController {
 	@ResponseBody
 	public ResponseDTO modifyPhone(@RequestBody HashMap<String, String> map) {
 		userService.modifyPhone(map);
-		authReload();
+		customUserDetailsService.createNewAuthentication();
 		
 		return new ResponseDTO("success", HttpStatus.OK);
 	}
@@ -131,7 +131,7 @@ public class UserController {
 	@ResponseBody
 	public ResponseDTO withdraw(@RequestBody HashMap<String, String> map) {
 		userService.withdraw(map);
-		authReload();
+		customUserDetailsService.createNewAuthentication();
 		
 		return new ResponseDTO("success", HttpStatus.OK);
 	}
@@ -140,7 +140,7 @@ public class UserController {
 	@ResponseBody
 	public ResponseDTO addAddress(@RequestBody UserAddrDTO addr) {
 		userService.addAddr(addr);
-		authReload();
+		customUserDetailsService.createNewAuthentication();
 		
 		return new ResponseDTO("success", HttpStatus.OK);
 	}
@@ -149,22 +149,21 @@ public class UserController {
 	@ResponseBody
 	public ResponseDTO removeAddress(@RequestBody UserAddrDTO addr) {
 		userService.removeAddr(addr);
-		authReload();
+		customUserDetailsService.createNewAuthentication();
 		
 		return new ResponseDTO("success", HttpStatus.OK);
 	}
-	
-	protected void authReload() {
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		CustomUser user = (CustomUser) authentication.getPrincipal();
-	    SecurityContextHolder.getContext().setAuthentication(createNewAuthentication(authentication, user.getUsername()));
-	}
-	
-	protected Authentication createNewAuthentication(Authentication currentAuth, String username) {
-	    CustomUser newPrincipal = (CustomUser) customUserDetailsService.loadUserByUsername(username);
-	    UsernamePasswordAuthenticationToken newAuth = new UsernamePasswordAuthenticationToken(newPrincipal, currentAuth.getCredentials(), newPrincipal.getAuthorities());
-	    newAuth.setDetails(currentAuth.getDetails());
-	    
-	    return newAuth;
-	}
+//	protected void authReload() {
+//		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//		CustomUser user = (CustomUser) authentication.getPrincipal();
+//	    SecurityContextHolder.getContext().setAuthentication(createNewAuthentication(authentication, user.getUsername()));
+//	}
+//	
+//	protected Authentication createNewAuthentication(Authentication currentAuth, String username) {
+//	    CustomUser newPrincipal = (CustomUser) customUserDetailsService.loadUserByUsername(username);
+//	    UsernamePasswordAuthenticationToken newAuth = new UsernamePasswordAuthenticationToken(newPrincipal, currentAuth.getCredentials(), newPrincipal.getAuthorities());
+//	    newAuth.setDetails(currentAuth.getDetails());
+//	    
+//	    return newAuth;
+//	}
 }

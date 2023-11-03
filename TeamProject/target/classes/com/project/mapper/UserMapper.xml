@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.project.mapper.UserMapper">
+	<insert id="insert">
+		INSERT INTO
+			USER_INFO(U_ID, U_PW, U_RNAME, U_PHONE, U_NNAME, U_CODE, U_IMG)
+		VALUES
+			(#{u_id}, #{u_pw}, #{u_rname}, #{u_phone}, #{u_nname, jdbcType=VARCHAR}, #{u_code}, #{u_img, jdbcType=VARCHAR})
+	</insert>
+	
+	<select id="selectByUserId" resultType="com.project.domain.UserVO">
+		SELECT
+			U_ID, U_PW, U_RNAME, U_PHONE, U_NNAME, U_CODE, TO_CHAR(U_REGDATE, 'yyyy-MM-dd') AS U_REGDATE, U_IMG
+		FROM
+			USER_INFO
+		WHERE
+			U_ID = #{u_id}
+	</select>
+	
+	<update id="updateNname">
+		UPDATE
+			USER_INFO
+		SET
+			U_NNAME = #{arg1}
+		WHERE
+			U_ID = #{arg0}
+	</update>
+	
+	<update id="updateImg">
+		UPDATE
+			USER_INFO
+		SET
+			U_IMG = #{arg1}
+		WHERE
+			U_ID = #{arg0}
+	</update>
+	
+	<update id="updatePassword">
+		UPDATE
+			USER_INFO
+		SET
+			U_PW = #{arg1}
+		WHERE
+			U_ID = #{arg0}
+	</update>
+	
+	<update id="updatePhone">
+		UPDATE
+			USER_INFO
+		SET
+			U_PHONE = #{arg1}
+		WHERE
+			U_ID = #{arg0}
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM
+			USER_INFO
+		WHERE
+			U_ID = #{u_id}
+	</delete>
+	
+	<select id="selectRIdByUserId" resultType="int">
+		SELECT
+			R_ID
+		FROM
+			REST_INFO
+		WHERE
+			U_ID = #{u_id}
+	</select>
+</mapper>

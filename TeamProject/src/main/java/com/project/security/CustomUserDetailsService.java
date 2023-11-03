@@ -3,8 +3,11 @@ package com.project.security;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -54,5 +57,16 @@ public class CustomUserDetailsService implements UserDetailsService {
 		}
 		
 		return new CustomUser(user, addr, authorities, 0);
+	}
+	
+	public void createNewAuthentication() {
+		Authentication currentAuth = SecurityContextHolder.getContext().getAuthentication();
+		CustomUser oldPrincipal = (CustomUser) currentAuth.getPrincipal();
+		CustomUser newPrincipal = (CustomUser) loadUserByUsername(oldPrincipal.getUsername());
+		
+		UsernamePasswordAuthenticationToken newAuth = new UsernamePasswordAuthenticationToken(newPrincipal, currentAuth.getCredentials(), newPrincipal.getAuthorities());
+		newAuth.setDetails(currentAuth.getDetails());
+		
+		SecurityContextHolder.getContext().setAuthentication(newAuth);
 	}
 }
