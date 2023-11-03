@@ -55,6 +55,41 @@
 			});
 		});
 		
+		//모달창
+        function loadMenuAddList(m_id,m_num, m_price) {
+        $.ajax({
+            url: "/menu/menuAddList",
+            type: "GET",
+            data: {m_id: m_id},
+            success: function(menuAddList) 
+            {
+                var html = "";
+                $.each(menuAddList, function(index, menuAdd) 
+                {
+                    html += '<li>';
+                    html += '<input type="checkbox" class="menu-add-checkbox" data-a-id="'+menuAdd.a_id+'" data-a-name="' + menuAdd.a_name + '"data-a-price="' + menuAdd.a_price + '">';                                 
+                    html +=  menuAdd.a_name + ":" + menuAdd.a_price + "원";
+                    html += '수량 : <select class="menu-add-quantity">';
+                        for(var i =1; i<=5; i++) 
+                        {
+                            html += '<option value="' + i + '">' + i + '</option>';
+                        }
+                    html += '</select>';        
+                    html += '</li>';
+                });
+                $("#ulModal").html(html);
+                $('#add-to-cart-btn').data('m-id', m_id);
+                $('#add-to-cart-btn').data('m-num', m_num);
+                $('#add-to-cart-btn').data('m-price', m_price);
+                $("#menuModal").modal('show');
+            },
+            error: function(error) 
+            {
+                console.error("Error", error);
+            }
+            });
+        }
+		
 	</script>
 	<%@ include file="/WEB-INF/view/include/header.jsp" %>
 	<!-- 헤더 -->
@@ -146,7 +181,7 @@
 	                            -->
 	                            <c:forEach items="${menuList}" var="menu">
 		                            <c:if test="${menu.m_cat eq menuCat.m_cat}">
-			                            <button class="menuitem-box p-1 bg-white border-0" id="${menu.m_id}">
+			                            <button type="button" onclick="loadMenuAddList(${menu.m_id}, 1, ${menu.m_price})" class="menuitem-box p-1 bg-white border-0">
 			                                <div class="card rounded-0 border-0">
 			                                	
 			                                    <div class="row g-0">
@@ -313,6 +348,118 @@
             </div>
         </div>
     </div>
+
+	<!--모달 -->
+	<div class="modal fade" id="menuModal" tabindex="-1" aria-labelledby="menuAddModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+	    	<div class="modal-content">
+	      		<div class="modal-header">
+	        		<h5 class="modal-title" id="menuAddModalLabel">추가 메뉴</h5>
+	        		<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">x</button>
+	     		</div>
+		      	<div class="modal-body">
+		      	    <input type="hidden" id="m_id_input" name="m_id">
+				    <input type="hidden" id="m_num_input" name="m_num">
+				    <input type="hidden" id="m_price_input" name="m_price">
+			        
+			        <ul id="ulModal">
+
+			        </ul>
+			        
+		      	</div>
+	   			<div class="modal-footer">
+	   			
+					<!--세션에 담겨야하는 컨트롤러를 구현 --> 	
+					 				
+	   				<button onclick="addToCart($(this).data('m-id'), $(this).data('m-num'), $(this).data('m-price'))">담기</button>
+
+		      	</div>
+    		</div>
+   		</div>
+	</div>
+    <!--모달 -->
+	
+	<!-- 주문서 작성 -->
+	<button id="orderDetail">주문서 이동</button>
+	<!-- 주문서 작성 -->    
+    
+    <script>
+	    $(document).ready(function() {
+	        // 페이지가 로드될 때 메뉴 정보를 가져오는 AJAX 요청
+	        $.ajax({
+	            url: '/menu/getMenuInfo',
+	            type: 'GET',
+	            success: function(menu) {
+	                // 버튼에 click 이벤트 리스너 추가
+	                $('#addToCartButton').click(function() {
+	                    addToCart(menu.mId, 1, menu.mPrice);
+	                });
+	            },
+	            error: function(error) {
+	                console.error('메뉴 정보를 가져오는데 실패했습니다.', error);
+	            }
+	        });
+	    });
+        //세션에 저장하는 스크립트
+        function addToCart(m_id, m_num, m_price)
+        {
+            var selectedItems = []//배열 초기화
+        
+            $('.menu-add-checkbox:checked').each(function(){
+                //메뉴항목 정보
+                var MenuItem = {
+                    //m_id값도 저장할수있나?
+                    m_id: m_id,
+                    m_num: m_num,
+                    m_price: m_price,
+                    a_id: $(this).data("a-id"),
+                    a_name: $(this).data("a-name"),
+                    a_price: $(this).data("a-price"),
+                    a_quantity: $(this).closest("li").find(".menu-add-quantity").val()
+                };            
+                selectedItems.push(MenuItem);
+            });
+            $.ajax({
+            url: "/menu/sessionCart",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify(selectedItems),
+            success: function(response) 
+            {
+                console.log("메뉴가 담겼습니다.:", response);
+                alert("성공적으로 담겼습니다.!");
+                $("#menuModal").modal('hide');
+            },
+            error: function(error) {
+                console.error("메뉴를 담는데 실패하였습니다.", error);
+                alert("메뉴를 담는데 실패");
+            }
+        });
+        }
+        
+        //cart 내용을 디비에 저장하고 세션에서 삭제
+        $('#orderDetail').click(function() 
+        {
+    		$.ajax({
+	    	    url: "/menu/orderdetail",
+	    	    type: "POST",
+	    	    contentType: "application/json",
+	    	    success: function(response) 
+	    	    {
+	    	      console.log("메뉴가 담겨졌습니다.");
+	    	      window.location.href = "/order/complete";
+	    	    },
+	    	    error: function(error) 
+	    	    {
+	    	      console.error("담기 실패:", error);
+	    	      alert("담기에 실패했습니다. 다시 시도해주세요.");
+	    	    }
+        	});
+        });
+        
+        
+        
+    </script>
 
     <!-- 푸터 시작 -->
     <div class="footer bg-light position-relative bottom-0">
